@@ -1,7 +1,0 @@
-{
-  "servers": {
-    "browserstack": {
-      "url": "https://mcp.browserstack.com/mcp"
-    }
-  }
-}
