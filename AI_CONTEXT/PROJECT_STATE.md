@@ -4,7 +4,7 @@ Last updated: 2026-09-14
 
 ## Current milestone
 
-**Phase 0 — Foundation: implemented in repository bootstrap; verification pending first CI/local install.**
+**Phase 0 — Foundation: code/CI verified. Mobile visual smoke test remains before closing the milestone completely.**
 
 ## Implemented
 
@@ -22,22 +22,22 @@ Last updated: 2026-09-14
 - GitHub Actions CI definition
 - persistent AI handoff/context system
 
+## Verification status
+
+Verified on 2026-09-14:
+
+- TypeScript compile/typecheck passed in local reconstruction using the repository-authored source
+- 3/3 geometry/polyline unit tests passed
+- content validator passed
+- GitHub Actions run #2 passed end-to-end: install → `npm run check`
+
+Still pending:
+
+- visual/mobile smoke check at 360×640 and 390×844 in a real browser
+
 ## Not implemented yet
 
 No gameplay system is being claimed as complete. In particular: Atlas rendering, ingredient content, grinding input, cauldron/path queue, stirring gesture, resonance, Infuse, bottling, customers, economy, persistence, PWA, assets, audio, garden, progression.
-
-## Verification status
-
-Repository files have been authored against the GDD constraints. The next action after commit is to run/install and verify:
-
-- `npm install`
-- `npm run typecheck`
-- `npm test`
-- `npm run validate:content`
-- `npm run build`
-- mobile browser smoke test
-
-Do not mark Phase 0 fully complete until those checks pass.
 
 ## Known risks / watch items
 

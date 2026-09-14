@@ -6,7 +6,7 @@ Work in vertical slices. Do not skip ahead for content volume.
 
 Deliver project structure, TypeScript, static build, screen manager, design tokens, save skeleton/test runner/content-validation foundations. Gate: title screen loads on mobile and CI passes.
 
-Current state: implementation authored; verification gate still pending.
+Current state: **code and CI verified; mobile visual smoke check pending.**
 
 ## Phase 1 — Brewing vertical slice
 

@@ -2,15 +2,18 @@
 
 ## Immediate objective
 
-Verify Phase 0, then implement **Milestone 1: the first real brewing vertical slice**. Do not start customers before the brew loop works.
+Finish the Phase 0 mobile visual smoke check, then implement **Milestone 1: the first real brewing vertical slice**. Do not start customers before the brew loop works.
+
+## Current verification fact
+
+GitHub Actions run #2 is green and `npm run check` passes. Do not repeat repository archaeology or redesign the foundation without a concrete reason.
 
 ## First actions
 
 1. Read `PROJECT_STATE.md`, `DECISIONS.md`, and current source/tests.
-2. Run `npm install` and the full `npm run check` pipeline.
-3. Fix any foundation failures before feature work.
-4. Smoke-test the title screen at 360×640 and 390×844.
-5. Begin the brewing slice in a cohesive series of commits.
+2. Run the app locally and smoke-test the title screen at 360×640 and 390×844 when a browser is available.
+3. Begin the brewing slice in a cohesive series of commits.
+4. Keep `npm run check` green after each meaningful milestone.
 
 ## Milestone 1 implementation order
 
