@@ -2,6 +2,13 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-14 — BrowserStack MCP reverted
+
+- Removed the project-level BrowserStack MCP configuration and the related MCP-specific documentation.
+- BrowserStack will be integrated through GitHub Actions secrets instead of MCP.
+- Expected secret names: `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY`.
+- Secret values must never be written into repository files or AI context.
+
 ## 2026-09-14 — Foundation verification / CI repair
 
 - Reconstructed the authored TypeScript foundation locally because the execution container could not resolve external GitHub/npm hosts.
