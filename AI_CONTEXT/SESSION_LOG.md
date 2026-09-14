@@ -2,6 +2,17 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Vercel deployment repaired and verified
+
+- Reproduced the Vercel MCP failure: the surfaced `deploy_to_vercel` schema exposed no arguments while its backend required `target`, `name`, and `files`.
+- Confirmed from Vercel documentation that the tool is supposed to accept those fields; passing the documented hidden arguments directly works.
+- Added `scripts/build-site.mjs`, `npm run build:site`, `dist-site/` ignore, and `vercel.json` so the project has an explicit reproducible static build/output contract.
+- GitHub Actions CI run #34 passed with the new site-build configuration.
+- Verified a preview deployment by fetching the deployed HTML and new `styles/brewing-polish.css` successfully.
+- Deployed production successfully; `https://alchemy-trail.vercel.app` now points at the new build and serves the polished brewing version.
+- Current Vercel project is not Git-linked, so the verified temporary deployment workaround uses a tiny bootstrap deployment whose Vercel build clones public `main`, runs `npm install`, runs `npm run build:site`, and publishes `dist-site`.
+- No Vercel credentials were added to repository files.
+
 ## 2026-09-15 — First brew feel/feedback polish
 
 - Continued the first playable brewing slice without adding customers/economy.
