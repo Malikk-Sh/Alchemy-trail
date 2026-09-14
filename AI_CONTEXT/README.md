@@ -9,8 +9,9 @@ This directory is the persistent memory/handoff layer for Alchemy Trail. Its pur
 3. `DECISIONS.md` — durable decisions and why they were made.
 4. `TECHNICAL_NOTES.md` — architecture contracts, implementation details, pitfalls.
 5. `PRODUCT_SPEC.md` — distilled product/GDD requirements.
-6. `ROADMAP.md` — milestone order and acceptance gates.
-7. `SESSION_LOG.md` — chronological development history.
+6. `VISUAL_DIRECTION.md` — durable art/UI language from the user's reference set.
+7. `ROADMAP.md` — milestone order and acceptance gates.
+8. `SESSION_LOG.md` — chronological development history.
 
 ## Update rule
 

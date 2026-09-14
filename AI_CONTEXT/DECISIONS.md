@@ -36,3 +36,17 @@ Avoid a test dependency until test ergonomics require one. Tests consume compile
 **Status:** accepted
 
 Use DOM/CSS for screen structure and controls; reserve Canvas 2D for the Essence Atlas, paths, marker, and tightly coupled map effects.
+
+## D-006 — Reference art defines material language, not copy targets
+
+**Date:** 2026-09-14  
+**Status:** accepted
+
+The user's supplied screens establish a warm low-poly apothecary direction, dark wood chrome, parchment information surfaces, teal active actions, amber magic, botanical cards, and large tactile mobile controls. Alchemy Trail keeps original assets and its GDD-defined Essence Atlas rather than reproducing the exact reference maps, characters, illustrations, or layouts.
+
+## D-007 — Real-device BrowserStack checks are manual for now
+
+**Date:** 2026-09-14  
+**Status:** accepted
+
+The BrowserStack workflow remains available through `workflow_dispatch`, but automatic execution on every push is disabled at the user's request until viewport/device verification becomes a priority again.
