@@ -1,0 +1,23 @@
+/* Shared game-motion layer: tactile, short, and reduced-motion aware. */
+.stir-pad{z-index:1;isolation:isolate}
+.action-row button{display:flex;align-items:center;justify-content:center;gap:.42rem}
+.action-row button::before{display:inline-grid;place-items:center;inline-size:1.35em;block-size:1.35em;font-size:1.18em;line-height:1}
+.action-row button:nth-child(1)::before{content:"↻"}
+.action-row button:nth-child(2)::before{content:"✦"}
+.action-row button:nth-child(3)::before{content:"⚗"}
+.control-block>.primary-button::before{content:"✦";margin-inline-end:.4rem;color:#fff2bd}
+.control-block>.primary-button{font-size:.95rem}
+.primary-button:not(:disabled)::after{content:"";position:absolute;inset:-55% auto -55% -35%;inline-size:28%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:translate .45s ease}
+.primary-button:not(:disabled):hover::after{translate:520% 0}
+.game-topbar{animation:chrome-enter .42s cubic-bezier(.2,.75,.28,1) both}
+.atlas-panel{animation:scene-enter .52s cubic-bezier(.2,.75,.28,1) both}
+.workbench{animation:bench-enter .58s .08s cubic-bezier(.2,.75,.28,1) both}
+.panel-heading-row,.ingredient-card,.control-block,.stir-block,.action-row{transition:transform 160ms ease,box-shadow 180ms ease,filter 180ms ease}
+.ingredient-card:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px rgba(255,255,255,.32),0 13px 25px rgba(28,16,10,.28)}
+.control-block:focus-within,.stir-block:focus-within{box-shadow:inset 0 1px rgba(255,255,255,.045),0 0 0 2px rgba(45,205,194,.12),0 12px 22px rgba(26,15,10,.22)}
+.brewing-screen.is-infused .effect-chip{animation:captured-effect .54s cubic-bezier(.2,.8,.3,1.25) both}
+@keyframes chrome-enter{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes scene-enter{from{opacity:.45;filter:saturate(.65) brightness(.75)}to{opacity:1;filter:none}}
+@keyframes bench-enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes captured-effect{0%{transform:scale(.9)}55%{transform:scale(1.1);filter:brightness(1.18)}100%{transform:scale(1);filter:none}}
+@media(prefers-reduced-motion:reduce){.game-topbar,.atlas-panel,.workbench,.brewing-screen.is-infused .effect-chip{animation:none}.panel-heading-row,.ingredient-card,.control-block,.stir-block,.action-row,.primary-button:not(:disabled)::after{transition:none}}
