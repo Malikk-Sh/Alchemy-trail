@@ -11,7 +11,7 @@ platforms:
     playwrightConfigOptions:
       name: ios-safari
       use:
-        baseURL: http://127.0.0.1:4173
+        baseURL: http://localhost:4173
 
   - browserName: chrome
     osVersion: "13.0"
@@ -19,7 +19,7 @@ platforms:
     playwrightConfigOptions:
       name: android-chrome
       use:
-        baseURL: http://127.0.0.1:4173
+        baseURL: http://localhost:4173
 
 networkLogs: true
 video: true

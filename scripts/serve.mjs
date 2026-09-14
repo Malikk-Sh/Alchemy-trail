@@ -39,6 +39,6 @@ createServer((request, response) => {
     "Cache-Control": "no-store",
   });
   createReadStream(filePath).pipe(response);
-}).listen(port, "127.0.0.1", () => {
-  console.log(`Alchemy Trail dev server: http://127.0.0.1:${port}`);
+}).listen(port, "0.0.0.0", () => {
+  console.log(`Alchemy Trail dev server: http://localhost:${port}`);
 });

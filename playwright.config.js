@@ -10,13 +10,12 @@ export default defineConfig({
   retries: 1,
   reporter: "list",
   use: {
-    baseURL: "http://127.0.0.1:4173",
-    trace: "retain-on-failure",
+    baseURL: "http://localhost:4173",
     screenshot: "only-on-failure",
   },
   webServer: {
     command: "npm run serve",
-    url: "http://127.0.0.1:4173",
+    url: "http://localhost:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 30_000,
   },
