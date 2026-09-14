@@ -36,15 +36,6 @@ Gameplay content belongs under `src/data/` and must be data-driven. `scripts/val
 
 Not implemented yet. When added, IndexedDB is primary storage, explicit `schemaVersion` and migrations are mandatory, and daily generated content must be seeded/deterministic.
 
-## BrowserStack / real-device testing
-
-- Project-level BrowserStack Remote MCP configuration lives at `.vscode/mcp.json`.
-- It uses the hosted endpoint `https://mcp.browserstack.com/mcp` and OAuth; do not commit BrowserStack username/access keys.
-- Primary intended use: real-device/browser smoke testing for iOS Safari, Android Chrome, and representative desktop browsers.
-- Prefer Remote MCP for normal project testing because it avoids credential files in the repo. Use local `@browserstack/mcp-server` only when local/private-network testing requires local process access.
-- BrowserStack is complementary to deterministic unit/integration/E2E tests, not a replacement for them.
-- Before closing major mobile UI milestones, run at least one real-device smoke pass when BrowserStack access is available.
-
 ## Performance baseline
 
 Mobile interaction takes priority. Avoid layout thrashing during gestures, avoid unnecessary 60 FPS loops, and keep DOM updates out of the hot Atlas drawing path.
