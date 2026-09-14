@@ -1,0 +1,82 @@
+html {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+body {
+  min-inline-size: 320px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(155, 180, 131, 0.13), transparent 32rem),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+}
+
+.app-shell {
+  min-block-size: 100dvh;
+  padding:
+    max(var(--space-3), env(safe-area-inset-top))
+    max(var(--space-3), env(safe-area-inset-right))
+    max(var(--space-3), env(safe-area-inset-bottom))
+    max(var(--space-3), env(safe-area-inset-left));
+}
+
+.screen {
+  inline-size: min(100%, 52rem);
+  min-block-size: calc(100dvh - 2 * var(--space-3));
+  margin-inline: auto;
+}
+
+.title-screen {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: clamp(1.25rem, 8vw, 4rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 55%),
+    var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow,
+.build-status {
+  color: var(--moss);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-inline-size: 8ch;
+  font-size: clamp(3rem, 15vw, 6.5rem);
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+}
+
+.title-copy {
+  max-inline-size: 34rem;
+  color: var(--ink-muted);
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.build-status {
+  margin-block-start: var(--space-4);
+  color: var(--ember);
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+@media (max-width: 370px) {
+  .app-shell {
+    padding-inline: max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .title-screen {
+    padding: 1.25rem;
+  }
+}

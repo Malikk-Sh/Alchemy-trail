@@ -1,0 +1,20 @@
+:root {
+  color-scheme: dark;
+  --ink: #f3ecd7;
+  --ink-muted: #c8bfa5;
+  --paper-deep: #17150f;
+  --paper: #252116;
+  --paper-raised: #342e1e;
+  --moss: #9bb483;
+  --ember: #d99a5a;
+  --line: rgba(243, 236, 215, 0.16);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  --radius-lg: 24px;
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  font-family: Georgia, "Times New Roman", serif;
+}

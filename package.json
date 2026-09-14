@@ -1,0 +1,18 @@
+{
+  "name": "alchemy-trail",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mobile-first browser alchemy shop simulator built with Vanilla TypeScript.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "test": "npm run build --silent && node --test tests/unit/*.test.mjs",
+    "validate:content": "node scripts/validate-content.mjs",
+    "serve": "node scripts/serve.mjs",
+    "check": "npm run typecheck && npm test && npm run validate:content && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
