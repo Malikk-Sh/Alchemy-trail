@@ -8,11 +8,14 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc",
     "test": "npm run build --silent && node --test tests/unit/*.test.mjs",
+    "test:e2e:browserstack": "browserstack-node-sdk playwright test --config=playwright.config.js",
     "validate:content": "node scripts/validate-content.mjs",
     "serve": "node scripts/serve.mjs",
     "check": "npm run typecheck && npm test && npm run validate:content && npm run build"
   },
   "devDependencies": {
+    "@playwright/test": "1.59.1",
+    "browserstack-node-sdk": "^1.21.1",
     "typescript": "^5.9.2"
   }
 }
