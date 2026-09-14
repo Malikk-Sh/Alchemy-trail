@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400">
+  <defs>
+    <linearGradient id="iron" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#575660"/><stop offset=".38" stop-color="#343238"/><stop offset="1" stop-color="#1f2025"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#777783"/><stop offset="1" stop-color="#35343a"/></linearGradient>
+  </defs>
+  <ellipse cx="260" cy="350" rx="190" ry="32" fill="#211713" opacity=".45"/>
+  <g><polygon points="132,330 158,278 181,332" fill="#f3702e"/><polygon points="170,334 205,265 235,336" fill="#ffb33e"/><polygon points="220,338 260,250 300,338" fill="#ffcf58"/><polygon points="286,336 320,267 349,334" fill="#ff9b38"/><polygon points="338,332 364,282 389,332" fill="#e85e28"/></g>
+  <polygon points="95,310 132,274 388,274 425,310 395,355 125,355" fill="#5c5653"/>
+  <polygon points="116,306 146,286 374,286 404,306 385,333 135,333" fill="#373536"/>
+  <path d="M115 134 C112 250 145 307 260 318 C375 307 408 250 405 134Z" fill="url(#iron)"/>
+  <polygon points="132,145 205,164 194,285 145,255" fill="#45434a" opacity=".75"/>
+  <polygon points="205,164 280,150 296,305 194,285" fill="#2b2a30" opacity=".82"/>
+  <polygon points="280,150 387,143 374,258 296,305" fill="#3b3941" opacity=".72"/>
+  <ellipse cx="260" cy="132" rx="165" ry="54" fill="#242329"/>
+  <ellipse cx="260" cy="128" rx="154" ry="43" fill="url(#rim)"/>
+  <ellipse cx="260" cy="127" rx="127" ry="29" fill="#141419"/>
+  <ellipse cx="260" cy="131" rx="112" ry="20" fill="#2d251e"/>
+  <path d="M122 161 C83 174 73 210 92 235 C109 257 132 238 147 215" fill="none" stroke="#29282d" stroke-width="18" stroke-linecap="round"/>
+  <path d="M398 161 C437 174 447 210 428 235 C411 257 388 238 373 215" fill="none" stroke="#29282d" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="118" cy="198" r="11" fill="#77727a"/><circle cx="402" cy="198" r="11" fill="#77727a"/>
+</svg>
