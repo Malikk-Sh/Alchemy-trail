@@ -21,6 +21,7 @@ export class ScreenManager {
       throw new Error(`Screen '${screen}' is not registered.`);
     }
 
+    this.#root.firstElementChild?.dispatchEvent(new Event("screenwillhide"));
     this.#root.replaceChildren(renderer());
     this.#current = screen;
     this.#root.dataset.screen = screen;

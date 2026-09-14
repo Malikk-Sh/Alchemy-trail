@@ -1,7 +1,12 @@
-export function createTitleScreen(): HTMLElement {
+export function createTitleScreen(onStart: () => void): HTMLElement {
   const screen = document.createElement("section");
   screen.className = "screen title-screen";
   screen.setAttribute("aria-labelledby", "game-title");
+
+  const seal = document.createElement("div");
+  seal.className = "title-seal";
+  seal.setAttribute("aria-hidden", "true");
+  seal.textContent = "✦";
 
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
@@ -14,12 +19,18 @@ export function createTitleScreen(): HTMLElement {
   const description = document.createElement("p");
   description.className = "title-copy";
   description.textContent =
-    "A tactile alchemy shop simulator about discovering the hidden geometry of ingredients.";
+    "Trace the hidden geometry of ingredients, steer a living essence path, and capture effects by hand.";
+
+  const start = document.createElement("button");
+  start.className = "primary-button title-start";
+  start.type = "button";
+  start.textContent = "Open the Essence Atlas";
+  start.addEventListener("click", onStart);
 
   const status = document.createElement("p");
   status.className = "build-status";
-  status.textContent = "Foundation build · Brewing vertical slice next";
+  status.textContent = "First playable brew · Sunleaf → Warmth";
 
-  screen.append(eyebrow, title, description, status);
+  screen.append(seal, eyebrow, title, description, start, status);
   return screen;
 }
