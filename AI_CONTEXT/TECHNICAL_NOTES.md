@@ -36,6 +36,13 @@ Gameplay content belongs under `src/data/` and must be data-driven. `scripts/val
 
 Not implemented yet. When added, IndexedDB is primary storage, explicit `schemaVersion` and migrations are mandatory, and daily generated content must be seeded/deterministic.
 
+## BrowserStack credentials
+
+- Do not use a project MCP configuration for BrowserStack.
+- BrowserStack automation credentials are expected from GitHub Actions secrets named `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY`.
+- Never commit, print, echo, or persist the secret values in repository files, logs, screenshots, or AI context.
+- Wire these secrets into BrowserStack/Playwright CI only when the real-device or cross-browser test stage is implemented.
+
 ## Performance baseline
 
 Mobile interaction takes priority. Avoid layout thrashing during gestures, avoid unnecessary 60 FPS loops, and keep DOM updates out of the hot Atlas drawing path.
