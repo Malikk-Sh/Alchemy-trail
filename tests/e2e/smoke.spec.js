@@ -7,10 +7,15 @@ test("title screen renders without horizontal overflow", async ({ page }) => {
   });
   page.on("pageerror", (error) => consoleErrors.push(error.message));
 
-  await page.goto("/", { waitUntil: "networkidle" });
+  const response = await page.goto("/", { waitUntil: "domcontentloaded" });
+  expect(response?.ok()).toBe(true);
 
-  await expect(page.getByRole("heading", { name: "Alchemy Trail" })).toBeVisible();
-  await expect(page.getByText("Foundation build · Brewing vertical slice next")).toBeVisible();
+  const title = page.locator("#game-title");
+  await title.waitFor({ state: "visible" });
+  await expect(title).toHaveText("Alchemy Trail");
+  await expect(page.locator(".build-status")).toHaveText(
+    "Foundation build · Brewing vertical slice next",
+  );
 
   const overflow = await page.evaluate(() =>
     document.documentElement.scrollWidth > document.documentElement.clientWidth,
