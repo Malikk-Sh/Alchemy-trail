@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Alchemy Trail">
+  <rect width="64" height="64" rx="14" fill="#252116"/>
+  <path d="M22 12h20v6l-5 7v8l12 17a5 5 0 0 1-4 8H19a5 5 0 0 1-4-8l12-17v-8l-5-7z" fill="#d9c58a"/>
+  <path d="M23 45c6-6 12 5 19-1l5 8H17z" fill="#8aa06b"/>
+  <circle cx="32" cy="38" r="3" fill="#f0df9a"/>
+</svg>
