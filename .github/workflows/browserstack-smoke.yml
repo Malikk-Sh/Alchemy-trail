@@ -2,8 +2,6 @@ name: BrowserStack Mobile Smoke
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
 
 jobs:
   mobile-smoke:
