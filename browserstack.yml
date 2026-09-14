@@ -1,0 +1,26 @@
+projectName: Alchemy_Trail
+buildName: mobile-smoke
+browserstackAutomation: true
+browserstackLocal: true
+parallelsPerPlatform: 1
+
+platforms:
+  - browserName: safari
+    osVersion: "18"
+    deviceName: iPhone 14
+    playwrightConfigOptions:
+      name: ios-safari
+      use:
+        baseURL: http://127.0.0.1:4173
+
+  - browserName: chrome
+    osVersion: "13.0"
+    deviceName: Google Pixel 7 Pro
+    playwrightConfigOptions:
+      name: android-chrome
+      use:
+        baseURL: http://127.0.0.1:4173
+
+networkLogs: true
+video: true
+debug: true
