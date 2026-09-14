@@ -23,3 +23,11 @@ export interface BottledPotion {
   ingredientId: string;
   ingredientName: string;
 }
+
+export type PotionQualityId = "faint" | "steady" | "potent" | "masterwork";
+
+export interface PotionQuality {
+  id: PotionQualityId;
+  name: string;
+  description: string;
+}
