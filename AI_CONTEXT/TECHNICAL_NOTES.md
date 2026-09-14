@@ -8,6 +8,16 @@
 - source imports use explicit `.js` suffixes so emitted ES Modules are browser-valid
 - no continuous game loop while static; requestAnimationFrame should run only for active animation/gesture work
 
+## Vercel deployment contract
+
+- `npm run build:site` compiles TypeScript and assembles the deployable static tree under `dist-site/`.
+- `dist-site/` contains `index.html`, `styles/`, `assets/`, and compiled `dist/js/`; it is generated output and must not be committed.
+- `vercel.json` uses `npm run build:site` and `dist-site` as the output directory.
+- Verified production domain: `https://alchemy-trail.vercel.app`.
+- As of 2026-09-15 the surfaced Vercel MCP schema incorrectly exposes `deploy_to_vercel` with no arguments even though the backend/documented tool requires `target`, `name`, and `files`. Passing those documented arguments explicitly works despite the surfaced schema mismatch.
+- The existing Vercel project is not currently Git-linked. Until that changes, the verified deployment workaround sends a tiny bootstrap file and uses Vercel's build command to clone public `main`, run `npm install`, run `npm run build:site`, and publish `dist-site`.
+- Do not add Vercel credentials or access tokens to repository files for this workaround.
+
 ## Screen architecture
 
 `Game` owns a lightweight `ScreenManager`. Screen modules return DOM roots. Do not turn screen classes into content databases or domain-logic containers. Future domain services should live under `src/systems/`.
