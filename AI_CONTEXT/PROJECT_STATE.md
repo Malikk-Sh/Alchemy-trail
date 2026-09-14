@@ -1,10 +1,10 @@
 # Current project state
 
-Last updated: 2026-09-14
+Last updated: 2026-09-15
 
 ## Current milestone
 
-**Phase 1 — first real brewing vertical slice is implemented in code and entering visual/gameplay verification.**
+**Phase 1 — first real brewing vertical slice is playable and has received its first interaction/feedback polish pass.**
 
 The user explicitly deferred continuous viewport/BrowserStack checking for now. BrowserStack remains available as a manual workflow only.
 
@@ -25,26 +25,32 @@ First brewing slice:
 - original `Warmth` effect/resonance node data
 - Canvas 2D Essence Atlas with DPR handling
 - live ingredient-path preview driven by grind amount
-- tactile grinding based on pointer travel distance, not circle recognition
-- keyboard-accessible grind progression
-- commit ingredient to a real queued path
+- tactile grinding by pointer travel distance plus press-and-hold fallback and keyboard progression
+- commit gating so the chosen path must actually be capable of reaching Warmth resonance
 - circular stirring gesture using Pointer Events and unwrapped angular travel
 - marker movement by polyline arc length
+- separate travelled and remaining path visualization
 - deterministic distance-based resonance + potency preview
+- live resonance meter/link and stronger visual state near the node
 - explicit `Infuse Warmth` gate available only inside resonance
-- bottle result card with captured effect and potency
+- captured Infuse-time potency used for the bottled result
+- deterministic quality tiers: Faint / Steady / Potent / Masterwork
+- original inline bottle result graphic and parchment quality card
+- four-stage `Grind → Stir → Infuse → Bottle` guidance with contextual instructions
 - Reset / Brew another flows
-- title screen now has a real navigation action into brewing
-- UI material language updated toward the supplied references: dark wood, parchment cards, teal primary actions, amber magical accents
+- title screen real navigation into brewing
+- UI material language based on supplied references: dark wood, parchment cards, teal primary actions, amber magical accents
 
 ## Verification status
 
-Verified locally before commit:
+Verified on 2026-09-15:
 
 - strict TypeScript compilation passes
-- 4 new brewing-math tests pass: grind-path slicing/translation, arc-length marker travel, deterministic resonance, angle unwrap
+- all 10 unit tests pass
+- tests cover geometry, grind slicing/translation, arc-length marker travel, path completion, deterministic resonance, exact Sunleaf→Warmth reachability, quality tiers, and angle unwrap
+- GitHub Actions CI run #29 completed successfully with the full repository `npm run check`
 
-GitHub CI is expected to remain the source of truth for the full `npm run check` suite. Continuous BrowserStack real-device checks are intentionally deferred/manual.
+Continuous BrowserStack real-device checks remain intentionally deferred/manual.
 
 ## Not implemented yet
 
@@ -55,12 +61,12 @@ GitHub CI is expected to remain the source of truth for the full `npm run check`
 - IndexedDB persistence/migrations
 - journal/recipes, traders, garden, progression
 - PWA/offline, sound, production content scale
-- final generated art assets matching the visual direction
+- final generated art/content scale
 
 ## Known risks / watch items
 
 - current first brew is intentionally narrow: one ingredient → one effect
-- visual/gameplay inspection of the deployed build is still needed before declaring the slice polished
+- human visual/gameplay feedback on the current deployed build is still needed before declaring the core brew feel accepted
 - `moduleResolution: Bundler` without a bundler remains intentional
 - no package lock is committed yet; CI still uses `npm install`
 - the full original GDD is not yet copied into the repository; `PRODUCT_SPEC.md` is a working distillation

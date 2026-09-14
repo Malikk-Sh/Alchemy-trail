@@ -14,7 +14,18 @@ Append concise factual session summaries. Newest entry may go at the top.
 - Added a resonance meter plus deterministic bottled quality tiers: Faint, Steady, Potent, Masterwork.
 - Added an original inline bottle graphic and quality treatment for the result card.
 - Local strict TypeScript compilation passed; all 10 unit tests passed before commit.
+- GitHub Actions CI run #29 passed the full repository check.
 - BrowserStack remains manual/deferred as requested.
+
+## 2026-09-14 — Visual references + first playable brew
+
+- User supplied six visual reference screens covering map/quest, brew, customer, garden, trader, and journal UI.
+- Recorded their durable visual language in `VISUAL_DIRECTION.md` without treating the references as pixel-copy targets.
+- Changed BrowserStack Mobile Smoke from push-triggered to manual `workflow_dispatch`; constant viewport checks are deferred by user request.
+- Implemented the first playable Essence Atlas brewing slice: Sunleaf data/path, Warmth node, Canvas renderer, live path preview, ingredient commit, stirring, resonance, explicit Infuse, bottling result, and reset/rebrew flow.
+- Grinding was upgraded from a numeric control to pointer-travel interaction on a mortar-like surface; it measures travel distance rather than recognizing circles.
+- Added deterministic brewing tests for path slicing/translation, arc-length travel, resonance potency, and angular unwrap.
+- Reworked the title/brew visual layer toward warm wood + parchment + teal/amber reference cues while retaining original assets and the GDD-defined Atlas mechanic.
 
 ## 2026-09-14 — BrowserStack MCP reverted
 
@@ -30,7 +41,7 @@ Append concise factual session summaries. Newest entry may go at the top.
 - First GitHub Actions run failed before install because `setup-node cache: npm` requires a lockfile.
 - Fixed CI by removing npm cache until a lockfile is intentionally committed.
 - GitHub Actions run #2 passed end-to-end, including dependency install and `npm run check`.
-- Phase 0 code/CI is verified; only real-browser mobile visual smoke remains before fully closing Phase 0.
+- Phase 0 code/CI is verified; viewport/device matrix checking is intentionally deferred/manual by user request.
 
 ## 2026-09-14 — Repository bootstrap
 

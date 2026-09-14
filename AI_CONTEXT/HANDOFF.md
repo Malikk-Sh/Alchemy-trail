@@ -2,26 +2,33 @@
 
 ## Immediate objective
 
-Verify and refine the **first playable brew** now present on `main`, using the deployed build for human visual/gameplay feedback. Do not jump to customers until this core interaction feels correct.
+Get human feel/visual feedback on the polished **first playable brew** and fix any concrete friction before adding customers or economy.
 
 ## Current playable flow
 
-Title → Open the Essence Atlas → grind Sunleaf by pointer travel → commit ingredient → stir in circles → steer marker along the real path → reach Warmth resonance → Infuse → Bottle → see potency result.
+Title → Open the Essence Atlas → grind Sunleaf by dragging or holding → commit a path capable of reaching Warmth → stir in circles → advance the marker along the actual essence path → enter Warmth resonance → choose when to Infuse → Bottle → receive potency + deterministic quality tier.
+
+The UI now explains the four stages and visually distinguishes travelled path, remaining path, resonance strength, and captured result.
+
+## Verification fact
+
+GitHub Actions CI run #29 is green. Local strict TypeScript compilation and all 10 unit tests also passed. BrowserStack/device-matrix checks are manual/deferred by user request.
 
 ## Next work package
 
-1. Inspect the deployed brew visually and fix obvious mobile usability/layout issues reported by the user.
-2. Tune grind travel, stirring sensitivity, Atlas framing, resonance radius, and feedback based on feel rather than adding more systems prematurely.
-3. Add small original procedural/SVG visual assets where they materially improve readability (ingredient/mortar/bottle/effect), without copying the reference art.
-4. Once the one-potion flow feels good, add the next data-driven ingredient/effect only if it proves the architecture rather than bloating content.
-5. Keep `npm run check` green.
+1. Use human feedback from the playable build to tune grind rate, stirring sensitivity, Atlas framing, guidance wording, resonance radius, and control sizing.
+2. Fix any real mobile interaction problem before expanding content.
+3. If the one-potion loop is accepted, add one additional ingredient/effect pair only to prove data-driven composition and multi-path architecture.
+4. After that, move toward the first customer/economic vertical slice from the GDD, not before.
+5. Keep `npm run check` green and update this handoff after meaningful work.
 
 ## Deferred intentionally
 
-- BrowserStack viewport/device matrix is manual-only for now; user asked to postpone constant viewport checking.
-- customers/economy remain after the brew slice.
-- persistence remains after the core brew interaction is stable enough to save meaningful state.
+- BrowserStack viewport/device matrix is manual-only for now.
+- customers/economy wait until the core brew interaction is accepted.
+- persistence waits until there is meaningful gameplay state worth saving.
+- broad content generation, garden, traders, progression, sound, and PWA remain later phases.
 
 ## Acceptance gate before customers
 
-A player should understand, without a fake bypass, that grinding exposes more of an ingredient path, stirring advances the marker along that path, resonance depends on actual spatial proximity, Infuse captures the effect, and Bottle resolves a real potion result.
+A player should understand through direct interaction—not fake bypass UI—that grinding exposes more of an ingredient path, stirring advances the marker along that exact path, resonance depends on spatial proximity, Infuse captures the current potency, and Bottle resolves a real potion result.
