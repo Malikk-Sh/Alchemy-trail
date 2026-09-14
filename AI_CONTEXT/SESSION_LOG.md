@@ -2,6 +2,14 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-14 — BrowserStack MCP setup
+
+- Reviewed BrowserStack's official MCP server and current docs.
+- Confirmed Remote MCP supports BrowserStack testing through OAuth and avoids repository-stored credentials.
+- Added project-level `.vscode/mcp.json` pointing to `https://mcp.browserstack.com/mcp`.
+- Recorded BrowserStack as the preferred real-device/mobile smoke-testing path when MCP access is available.
+- Current ChatGPT tool environment does not expose arbitrary third-party MCP servers directly, so BrowserStack tools could not be invoked from this session itself.
+
 ## 2026-09-14 — Foundation verification / CI repair
 
 - Reconstructed the authored TypeScript foundation locally because the execution container could not resolve external GitHub/npm hosts.
