@@ -12,13 +12,15 @@ import type { BottledPotion } from "../../types/content.js";
 import type { Vec2 } from "../../types/game.js";
 
 const STIR_WORLD_UNITS_PER_RADIAN = 28;
+const GRIND_TRAVEL_FOR_FULL = 520;
 
 export function createBrewingScreen(onExit: () => void): HTMLElement {
   const screen = document.createElement("section");
   screen.className = "screen brewing-screen";
   screen.setAttribute("aria-labelledby", "brew-title");
 
-  let grindFraction = 0.72;
+  let grindTravel = 0;
+  let grindFraction = 0;
   let committedPath: Vec2[] = [];
   let travelled = 0;
   let marker: Vec2 = { x: 0, y: 0 };
@@ -26,6 +28,8 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   let bottled: BottledPotion | null = null;
   let activePointer: number | null = null;
   let previousAngle: number | null = null;
+  let grindPointer: number | null = null;
+  let grindPoint: Vec2 | null = null;
 
   const header = document.createElement("header");
   header.className = "game-topbar";
@@ -88,21 +92,24 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   grindTitle.textContent = "Grind Sunleaf";
   grindLabel.append(grindTitle, grindValue);
 
-  const grindRange = document.createElement("input");
-  grindRange.id = "grind-range";
-  grindRange.type = "range";
-  grindRange.min = "20";
-  grindRange.max = "100";
-  grindRange.step = "1";
-  grindRange.value = String(Math.round(grindFraction * 100));
-  grindRange.className = "grind-range";
+  const grindPad = document.createElement("button");
+  grindPad.id = "grind-range";
+  grindPad.type = "button";
+  grindPad.className = "grind-pad";
+  grindPad.setAttribute("aria-label", "Grind Sunleaf by dragging across the mortar");
+  grindPad.innerHTML = '<span class="mortar-icon" aria-hidden="true">✦</span><strong>Grind</strong><small>drag across the mortar</small>';
+
+  const grindProgress = document.createElement("div");
+  grindProgress.className = "grind-progress";
+  const grindProgressFill = document.createElement("span");
+  grindProgress.append(grindProgressFill);
 
   const commitButton = document.createElement("button");
   commitButton.className = "primary-button";
   commitButton.type = "button";
   commitButton.textContent = "Commit ingredient";
 
-  grindBlock.append(grindLabel, grindRange, commitButton);
+  grindBlock.append(grindLabel, grindPad, grindProgress, commitButton);
 
   const stirBlock = document.createElement("div");
   stirBlock.className = "stir-block";
@@ -161,8 +168,10 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
     const completion = total > 0 ? Math.min(1, travelled / total) : 0;
 
     grindValue.textContent = `${Math.round(grindFraction * 100)}%`;
-    grindRange.disabled = committedPath.length > 1 || infused;
-    commitButton.disabled = committedPath.length > 1 || infused;
+    grindPad.disabled = committedPath.length > 1 || infused || grindFraction >= 1;
+    commitButton.disabled = committedPath.length > 1 || infused || grindFraction < 0.08;
+    grindProgressFill.style.inlineSize = `${Math.round(grindFraction * 100)}%`;
+    grindPad.setAttribute("aria-label", `Grind Sunleaf. ${Math.round(grindFraction * 100)} percent ground.`);
     stirPad.classList.toggle("is-disabled", committedPath.length < 2 || infused);
     infuseButton.disabled = !preview.resonating || infused;
     bottleButton.disabled = !infused || bottled !== null;
@@ -196,19 +205,52 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   };
 
   const reset = (): void => {
-    grindFraction = 0.72;
+    grindTravel = 0;
+    grindFraction = 0;
     committedPath = [];
     travelled = 0;
     marker = { x: 0, y: 0 };
     infused = false;
     bottled = null;
-    grindRange.value = "72";
     update();
   };
 
-  grindRange.addEventListener("input", () => {
-    grindFraction = Number(grindRange.value) / 100;
+  const addGrindTravel = (distance: number): void => {
+    if (committedPath.length > 1 || infused) return;
+    grindTravel = Math.min(GRIND_TRAVEL_FOR_FULL, grindTravel + Math.max(0, distance));
+    grindFraction = grindTravel / GRIND_TRAVEL_FOR_FULL;
     update();
+  };
+
+  grindPad.addEventListener("pointerdown", (event) => {
+    if (grindPad.disabled) return;
+    grindPointer = event.pointerId;
+    grindPoint = { x: event.clientX, y: event.clientY };
+    grindPad.setPointerCapture(event.pointerId);
+    grindPad.classList.add("is-grinding");
+  });
+
+  grindPad.addEventListener("pointermove", (event) => {
+    if (grindPointer !== event.pointerId || !grindPoint) return;
+    const next = { x: event.clientX, y: event.clientY };
+    const travel = Math.min(48, Math.hypot(next.x - grindPoint.x, next.y - grindPoint.y));
+    grindPoint = next;
+    addGrindTravel(travel);
+  });
+
+  const endGrinding = (event: PointerEvent): void => {
+    if (grindPointer !== event.pointerId) return;
+    grindPointer = null;
+    grindPoint = null;
+    grindPad.classList.remove("is-grinding");
+  };
+
+  grindPad.addEventListener("pointerup", endGrinding);
+  grindPad.addEventListener("pointercancel", endGrinding);
+  grindPad.addEventListener("keydown", (event) => {
+    if (event.key !== " " && event.key !== "Enter") return;
+    event.preventDefault();
+    addGrindTravel(36);
   });
 
   commitButton.addEventListener("click", () => {

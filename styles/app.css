@@ -327,21 +327,71 @@ button:disabled {
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
-.grind-range {
+.grind-pad {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.1rem;
   inline-size: 100%;
-  accent-color: var(--ember);
+  min-block-size: 126px;
+  border: 1px solid rgba(242, 224, 190, 0.2);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 50% 68%, #403630 0 20%, #6a5b51 21% 28%, transparent 29%),
+    radial-gradient(ellipse at 50% 58%, #817267 0 24%, #4e433d 25% 38%, transparent 39%),
+    linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.14)),
+    #30241e;
+  color: var(--ink);
+  box-shadow: inset 0 -16px 28px rgba(0,0,0,0.18);
+  touch-action: none;
+  user-select: none;
 }
 
-.grind-range::-webkit-slider-runnable-track {
+.grind-pad:not(:disabled):focus-visible {
+  outline: 3px solid var(--ember);
+  outline-offset: 3px;
+}
+
+.grind-pad.is-grinding {
+  border-color: rgba(239, 169, 79, 0.8);
+  box-shadow:
+    0 0 0 4px rgba(239, 169, 79, 0.09),
+    inset 0 -16px 28px rgba(0,0,0,0.18);
+}
+
+.mortar-icon {
+  color: #f5ba5a;
+  font-size: 2rem;
+  line-height: 1;
+  transform: rotate(-12deg);
+}
+
+.grind-pad strong {
+  font-size: 1.1rem;
+}
+
+.grind-pad small {
+  color: var(--ink-muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+}
+
+.grind-progress {
+  overflow: hidden;
   block-size: 10px;
+  border: 1px solid rgba(245, 230, 204, 0.12);
   border-radius: 999px;
-  background: rgba(15, 10, 8, 0.55);
+  background: rgba(12, 8, 6, 0.5);
 }
 
-.grind-range::-webkit-slider-thumb {
-  inline-size: 28px;
-  block-size: 28px;
-  margin-block-start: -9px;
+.grind-progress > span {
+  display: block;
+  inline-size: 0;
+  block-size: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d98732, #f6c45e);
+  transition: inline-size 90ms linear;
 }
 
 .stir-block {
