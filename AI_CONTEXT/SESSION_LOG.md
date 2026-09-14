@@ -2,6 +2,18 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Brew Scene v2 production-art pass
+
+- User rejected the current prototype-level design/animation quality and asked to push much closer to the supplied low-poly mobile-game references, allowing GLB source assets if useful.
+- Chose an illustration-first 2.5D runtime approach: DOM/CSS + procedural SVG + Canvas 2D remain the runtime foundation; GLB is reserved as an optional source-authoring format rather than adding a real-time 3D engine for decoration.
+- Added an original low-poly Brew asset set under `assets/generated/brew/`: workshop environment, cauldron/hearth, mortar/pestle, Sunleaf botanical art, and potion bottle.
+- Added `styles/brew-production.css` to turn the Brew screen and title into a layered game scene with wood/parchment materials, environmental depth, physical props, dimensional buttons, fire/steam/herb motion, and result art.
+- Reworked `AtlasRenderer` away from a development grid toward magical cartography: topographic contours, deterministic star marks, compass motif, material path rendering, stronger Warmth node treatment, and vignette.
+- Added `styles/motion.css` for shared scene entrances, tactile button sheen/icons, interaction focus treatment, captured-effect motion, and reduced-motion support.
+- Gameplay logic and the real Grind → Stir → Infuse → Bottle flow were preserved.
+- GitHub Actions CI run #38 passed after the Atlas renderer change; CI run #39 passed after the shared motion layer.
+- This is the first production-art pass, not a claim of final reference-level parity. Next priority is human visual feedback on the deployed Brew Scene v2 and another art refinement pass before expanding gameplay scope.
+
 ## 2026-09-15 — Vercel deployment repaired and verified
 
 - Reproduced the Vercel MCP failure: the surfaced `deploy_to_vercel` schema exposed no arguments while its backend required `target`, `name`, and `files`.
