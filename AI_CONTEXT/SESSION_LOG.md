@@ -2,15 +2,19 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
-## 2026-09-14 — Visual references + first playable brew
+## 2026-09-15 — First brew feel/feedback polish
 
-- User supplied six visual reference screens covering map/quest, brew, customer, garden, trader, and journal UI.
-- Recorded their durable visual language in `VISUAL_DIRECTION.md` without treating the references as pixel-copy targets.
-- Changed BrowserStack Mobile Smoke from push-triggered to manual `workflow_dispatch`; constant viewport checks are deferred by user request.
-- Implemented the first playable Essence Atlas brewing slice: Sunleaf data/path, Warmth node, Canvas renderer, live path preview, ingredient commit, stirring, resonance, explicit Infuse, bottling result, and reset/rebrew flow.
-- Grinding was upgraded from a numeric control to pointer-travel interaction on a mortar-like surface; it measures travel distance rather than recognizing circles.
-- Added deterministic brewing tests for path slicing/translation, arc-length travel, resonance potency, and angular unwrap.
-- Reworked the title/brew visual layer toward warm wood + parchment + teal/amber reference cues while retaining original assets and the GDD-defined Atlas mechanic.
+- Continued the first playable brewing slice without adding customers/economy.
+- Added a four-stage brew guide (`Grind → Stir → Infuse → Bottle`) with live contextual guidance.
+- Grinding now supports both pointer-travel and press-and-hold progression; keyboard progression remains supported.
+- Prevented committing a Sunleaf path until its endpoint can actually reach Warmth resonance, avoiding an early dead-end tutorial state.
+- Tuned stirring from 28 to 36 world units per radian so the tutorial path takes roughly one deliberate circular stirring motion rather than feeling sluggish.
+- Tuned the tutorial Warmth node to the full Sunleaf endpoint so a careful full grind/stir can produce 100% potency.
+- Atlas now distinguishes remaining path from travelled path, intensifies the Warmth node in resonance, and draws a live resonance link from marker to node.
+- Added a resonance meter plus deterministic bottled quality tiers: Faint, Steady, Potent, Masterwork.
+- Added an original inline bottle graphic and quality treatment for the result card.
+- Local strict TypeScript compilation passed; all 10 unit tests passed before commit.
+- BrowserStack remains manual/deferred as requested.
 
 ## 2026-09-14 — BrowserStack MCP reverted
 
@@ -26,7 +30,7 @@ Append concise factual session summaries. Newest entry may go at the top.
 - First GitHub Actions run failed before install because `setup-node cache: npm` requires a lockfile.
 - Fixed CI by removing npm cache until a lockfile is intentionally committed.
 - GitHub Actions run #2 passed end-to-end, including dependency install and `npm run check`.
-- Phase 0 code/CI is verified; real-device viewport checking is now deferred/manual.
+- Phase 0 code/CI is verified; only real-browser mobile visual smoke remains before fully closing Phase 0.
 
 ## 2026-09-14 — Repository bootstrap
 
