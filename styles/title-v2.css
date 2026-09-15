@@ -1,0 +1,169 @@
+/* Title v2 — dedicated key art and game-entry composition. */
+
+.title-screen {
+  position: relative;
+  display: grid !important;
+  align-content: end !important;
+  justify-items: stretch !important;
+  gap: .58rem !important;
+  min-block-size: 100dvh;
+  padding:
+    max(1rem, env(safe-area-inset-top))
+    max(.8rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom))
+    max(.8rem, env(safe-area-inset-left)) !important;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(25,16,12,.05) 0 39%, rgba(30,18,13,.14) 52%, rgba(27,15,11,.78) 76%, rgba(22,13,10,.97) 100%),
+    url("../assets/generated/title/hero.svg") center top / cover no-repeat,
+    #34231b !important;
+}
+
+.title-screen::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 76% 17%, rgba(255,207,108,.15), transparent 12rem),
+    linear-gradient(90deg, rgba(18,11,8,.16), transparent 26%, transparent 76%, rgba(18,11,8,.16));
+}
+
+.title-screen::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset-inline: .65rem;
+  inset-block-end: max(.65rem, env(safe-area-inset-bottom));
+  block-size: 21rem;
+  pointer-events: none;
+  border: 1px solid rgba(238,208,163,.1);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 24% 0%, rgba(255,255,255,.05), transparent 24%),
+    linear-gradient(180deg, rgba(63,41,31,.32), rgba(34,21,17,.82));
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.04),
+    0 18px 38px rgba(17,9,6,.28);
+  backdrop-filter: blur(7px);
+}
+
+.title-screen > * {
+  position: relative;
+  z-index: 2;
+}
+
+.title-seal {
+  inline-size: 58px !important;
+  block-size: 58px !important;
+  margin-inline-start: .18rem;
+  border: 1px solid rgba(240,211,159,.18) !important;
+  border-radius: 18px !important;
+  background:
+    url("../assets/generated/icons/leaf-mark.svg") center / 67% 67% no-repeat,
+    linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.07)),
+    rgba(48,31,24,.8) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.05),
+    0 8px 17px rgba(0,0,0,.22) !important;
+}
+
+.title-screen .eyebrow {
+  inline-size: fit-content;
+  margin: .12rem 0 0 .18rem !important;
+  padding: .27rem .5rem !important;
+  border: 1px solid rgba(230,192,124,.11);
+  border-radius: 999px;
+  background: rgba(38,24,18,.72) !important;
+  color: #e0bd7b !important;
+  font-size: .56rem !important;
+  letter-spacing: .14em !important;
+  backdrop-filter: blur(5px);
+}
+
+.title-screen h1 {
+  max-inline-size: 8.2ch !important;
+  margin: 0 !important;
+  color: #fff0d8 !important;
+  font: 600 clamp(2.95rem,14vw,5.35rem)/.87 Georgia,"Times New Roman",serif !important;
+  letter-spacing: -.045em !important;
+  text-shadow:
+    0 4px 14px rgba(0,0,0,.5),
+    0 1px rgba(255,255,255,.04) !important;
+}
+
+.title-copy {
+  max-inline-size: 31rem !important;
+  margin: 0 !important;
+  color: #ead8bb !important;
+  font: 400 clamp(.85rem,3.8vw,1rem)/1.42 Georgia,"Times New Roman",serif !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.52);
+}
+
+.title-start {
+  position: relative;
+  overflow: hidden;
+  inline-size: 100% !important;
+  min-block-size: 58px !important;
+  margin-block-start: .2rem !important;
+  border: 1px solid rgba(103,239,229,.55) !important;
+  border-bottom: 4px solid #066f6d !important;
+  border-radius: 15px !important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.17),transparent 42%),
+    linear-gradient(180deg,#30cac2,#12938f) !important;
+  color: #f2fffd !important;
+  font: 700 clamp(.92rem,4.5vw,1.08rem)/1 Georgia,"Times New Roman",serif !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.24),
+    0 10px 20px rgba(5,77,74,.3) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+.title-start::before {
+  content: "✦" !important;
+  margin-inline-end: .45rem;
+  color: #c9fff7;
+}
+
+.title-start:active {
+  transform: translateY(2px) !important;
+  border-bottom-width: 2px !important;
+}
+
+.build-status {
+  inline-size: fit-content !important;
+  margin: 0 0 .12rem .18rem !important;
+  padding: .28rem .48rem !important;
+  border: 1px solid rgba(231,190,115,.1);
+  border-radius: 999px;
+  background: rgba(40,25,19,.73) !important;
+  color: #f2c777 !important;
+  font-size: .56rem !important;
+  box-shadow: 0 4px 9px rgba(0,0,0,.14);
+}
+
+@media (max-height: 720px) {
+  .title-screen::after {
+    block-size: 18.5rem;
+  }
+
+  .title-seal {
+    inline-size: 50px !important;
+    block-size: 50px !important;
+  }
+
+  .title-screen h1 {
+    font-size: clamp(2.65rem,13vw,4.1rem) !important;
+  }
+
+  .title-copy {
+    font-size: .82rem !important;
+    line-height: 1.34 !important;
+  }
+
+  .title-start {
+    min-block-size: 52px !important;
+  }
+}
