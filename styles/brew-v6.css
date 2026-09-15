@@ -1,0 +1,247 @@
+/* Brew Scene v6 — reward moment and final interaction polish. */
+
+/* Keep the workbench readable as a scene while the player brews. */
+.workbench {
+  perspective: 900px;
+}
+
+.control-block,
+.stir-block {
+  transform-origin: 50% 100%;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.control-block:has(.grind-pad.is-grinding) {
+  transform: translateY(-2px) rotateZ(-.25deg);
+}
+
+.stir-block:has(.stir-pad.is-stirring) {
+  transform: translateY(-2px) rotateZ(.18deg);
+}
+
+/* A faint magical haze makes the cauldron feel alive without another render loop. */
+.stir-pad {
+  background:
+    radial-gradient(ellipse at 49% 28%, rgba(242,236,197,.08), transparent 21%),
+    radial-gradient(ellipse at 55% 21%, rgba(244,219,151,.06), transparent 16%) !important;
+}
+
+.stir-pad > strong::before,
+.stir-pad > strong::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(5px);
+  opacity: .28;
+}
+.stir-pad > strong::before {
+  inline-size: 28px;
+  block-size: 42px;
+  inset-inline-start: -42px;
+  inset-block-start: -108px;
+  background: radial-gradient(ellipse, rgba(245,238,206,.78), rgba(245,238,206,0) 70%);
+  animation: v6-steam-a 2.8s ease-in-out infinite;
+}
+.stir-pad > strong::after {
+  inline-size: 34px;
+  block-size: 50px;
+  inset-inline-end: -48px;
+  inset-block-start: -116px;
+  background: radial-gradient(ellipse, rgba(239,235,211,.7), rgba(239,235,211,0) 70%);
+  animation: v6-steam-b 3.2s ease-in-out infinite .55s;
+}
+
+.brewing-screen.is-resonating .stir-pad > strong::before,
+.brewing-screen.is-resonating .stir-pad > strong::after,
+.brewing-screen.is-infused .stir-pad > strong::before,
+.brewing-screen.is-infused .stir-pad > strong::after {
+  opacity: .5;
+  filter: blur(5px) drop-shadow(0 0 5px rgba(255,203,105,.2));
+}
+
+/* Make the active step read like a game state, not a disabled HTML form. */
+.action-row button:disabled,
+.control-block > .primary-button:disabled {
+  color: rgba(239,222,195,.58);
+  text-shadow: none;
+  box-shadow: inset 0 1px rgba(255,255,255,.025);
+}
+
+.action-row .primary-button:not(:disabled) {
+  animation: v6-primary-breathe 1.7s ease-in-out infinite alternate;
+}
+
+/* Bottle completion becomes a cinematic reward overlay instead of another card down-page. */
+.result-card:not([hidden]) {
+  position: fixed !important;
+  z-index: 1000 !important;
+  inset-inline: max(.8rem, env(safe-area-inset-left)) max(.8rem, env(safe-area-inset-right));
+  inset-block-start: 50%;
+  inline-size: min(calc(100% - 1.6rem), 29rem);
+  max-block-size: min(82dvh, 42rem);
+  margin: 0 auto !important;
+  padding: 1rem .9rem 1rem !important;
+  overflow: auto;
+  border: 3px solid rgba(122,82,48,.28) !important;
+  border-radius: 20px !important;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255,255,255,.82), transparent 32%),
+    radial-gradient(circle at 82% 5%, rgba(243,181,77,.18), transparent 24%),
+    linear-gradient(145deg,#fff1d4,#e7c996 76%,#dab783) !important;
+  box-shadow:
+    0 0 0 100vmax rgba(18,10,8,.72),
+    inset 0 0 0 2px rgba(255,255,255,.36),
+    inset 0 0 0 7px rgba(117,78,47,.055),
+    0 24px 70px rgba(17,9,6,.56),
+    0 0 45px rgba(241,171,67,.14) !important;
+  transform: translateY(-50%);
+  backdrop-filter: blur(2px);
+  animation: v6-result-pop .48s cubic-bezier(.18,.82,.22,1.08) both !important;
+}
+
+.result-card:not([hidden])::before {
+  inset: 8px !important;
+  border: 1px solid rgba(130,84,47,.18) !important;
+  border-radius: 14px !important;
+}
+
+.result-card:not([hidden])::after {
+  inline-size: 230px !important;
+  block-size: 230px !important;
+  inset-inline-end: -72px !important;
+  inset-block-start: -86px !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,211,112,.2), transparent 60%),
+    conic-gradient(from 12deg, transparent 0 7%, rgba(204,126,42,.07) 7% 8%, transparent 8% 19%, rgba(204,126,42,.08) 19% 20%, transparent 20% 100%) !important;
+  animation: v6-sunburst 18s linear infinite;
+}
+
+.result-card .eyebrow {
+  text-align: center;
+  letter-spacing: .15em;
+}
+
+.result-potion {
+  grid-template-columns: 112px minmax(0,1fr) !important;
+  gap: .8rem !important;
+  margin-block: .45rem .65rem !important;
+  padding: .35rem .35rem .25rem;
+}
+
+.bottle-mark {
+  inline-size: 108px !important;
+  block-size: 142px !important;
+  filter:
+    drop-shadow(0 12px 8px rgba(67,38,18,.2))
+    drop-shadow(0 0 12px rgba(239,169,68,.16)) !important;
+}
+
+.result-title h3 {
+  font-size: clamp(1.7rem,8.5vw,2.45rem) !important;
+  line-height: .92 !important;
+}
+
+.quality-badge {
+  margin-block-start: .55rem !important;
+  padding: .34rem .65rem !important;
+}
+
+.result-card > p {
+  max-inline-size: 31ch;
+  margin-inline: auto;
+  font-size: .82rem !important;
+  text-align: center;
+}
+
+.result-reset {
+  min-block-size: 60px !important;
+  margin-block-start: .85rem !important;
+  font-size: 1.02rem !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.12),
+    inset 0 1px rgba(255,255,255,.22),
+    0 10px 19px rgba(6,84,80,.28) !important;
+}
+.result-reset::before {
+  content: "✦";
+  margin-inline-end: .42rem;
+  color: #c9fff8;
+}
+
+.result-card[data-quality="masterwork"] .bottle-mark {
+  animation: v6-masterwork-bottle 2.1s ease-in-out infinite alternate !important;
+}
+.result-card[data-quality="masterwork"]::before {
+  box-shadow: inset 0 0 24px rgba(248,193,90,.09);
+}
+.result-card[data-quality="masterwork"] .result-title > span {
+  animation: v6-masterwork-gem 1.05s ease-in-out infinite alternate;
+}
+
+/* Background stays visible enough behind the reward to preserve the diorama feeling. */
+.brewing-screen:has(.result-card:not([hidden])) .game-topbar,
+.brewing-screen:has(.result-card:not([hidden])) .atlas-panel,
+.brewing-screen:has(.result-card:not([hidden])) .workbench > :not(.result-card) {
+  filter: saturate(.72) brightness(.72);
+  transition: filter .3s ease;
+}
+
+@keyframes v6-steam-a {
+  0% { transform: translate(0,10px) scale(.72); opacity: 0; }
+  28% { opacity: .32; }
+  72% { opacity: .2; }
+  100% { transform: translate(-8px,-24px) scale(1.25); opacity: 0; }
+}
+@keyframes v6-steam-b {
+  0% { transform: translate(0,8px) scale(.75); opacity: 0; }
+  24% { opacity: .3; }
+  76% { opacity: .18; }
+  100% { transform: translate(9px,-28px) scale(1.3); opacity: 0; }
+}
+@keyframes v6-primary-breathe {
+  from { box-shadow: inset 0 0 0 2px rgba(0,0,0,.13),0 7px 14px rgba(6,84,81,.24),0 0 0 rgba(69,231,220,0); }
+  to { box-shadow: inset 0 0 0 2px rgba(0,0,0,.13),0 8px 16px rgba(6,84,81,.28),0 0 18px rgba(69,231,220,.13); }
+}
+@keyframes v6-result-pop {
+  from { opacity: 0; transform: translateY(calc(-50% + 28px)) scale(.93); }
+  to { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+@keyframes v6-sunburst {
+  to { transform: rotate(360deg); }
+}
+@keyframes v6-masterwork-bottle {
+  from { transform: translateY(0) rotate(-1deg) scale(1); filter: drop-shadow(0 12px 8px rgba(67,38,18,.2)) drop-shadow(0 0 11px rgba(239,169,68,.18)); }
+  to { transform: translateY(-5px) rotate(1deg) scale(1.025); filter: drop-shadow(0 14px 9px rgba(67,38,18,.18)) drop-shadow(0 0 22px rgba(244,180,72,.34)); }
+}
+@keyframes v6-masterwork-gem {
+  from { transform: scale(.9) rotate(-5deg); opacity: .72; }
+  to { transform: scale(1.12) rotate(5deg); opacity: 1; }
+}
+
+@media (max-width: 370px) {
+  .result-card:not([hidden]) {
+    inset-inline: .5rem;
+    inline-size: calc(100% - 1rem);
+    padding-inline: .68rem !important;
+  }
+  .result-potion { grid-template-columns: 90px minmax(0,1fr) !important; }
+  .bottle-mark { inline-size: 88px !important; block-size: 118px !important; }
+  .result-title h3 { font-size: 1.5rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-block,
+  .stir-block,
+  .action-row .primary-button:not(:disabled),
+  .stir-pad > strong::before,
+  .stir-pad > strong::after,
+  .result-card:not([hidden]),
+  .result-card:not([hidden])::after,
+  .result-card[data-quality="masterwork"] .bottle-mark,
+  .result-card[data-quality="masterwork"] .result-title > span {
+    animation: none !important;
+    transition: none !important;
+  }
+}
