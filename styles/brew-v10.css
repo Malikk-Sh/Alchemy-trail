@@ -1,0 +1,238 @@
+/* Brew Scene v10 — compact mobile-game HUD composition. */
+
+.game-topbar {
+  min-block-size: 64px !important;
+  grid-template-columns: 42px minmax(0,1fr) auto !important;
+  padding-block: max(.4rem, env(safe-area-inset-top)) .4rem !important;
+}
+
+.icon-button {
+  inline-size: 42px !important;
+  min-block-size: 42px !important;
+  border-radius: 13px !important;
+  font-size: 1.72rem !important;
+}
+
+.brand-lockup {
+  font-size: clamp(1rem,4.8vw,1.3rem) !important;
+}
+
+.brand-lockup > span {
+  inline-size: 30px !important;
+  block-size: 30px !important;
+}
+
+.day-chip {
+  padding: .48rem .62rem !important;
+  font-size: .76rem !important;
+}
+
+/* Atlas becomes a compact magical dashboard rather than a full screen of its own. */
+.atlas-panel,
+.atlas-canvas-wrap,
+.atlas-canvas {
+  min-block-size: 216px !important;
+  block-size: 216px !important;
+}
+
+.panel-heading-row {
+  inset: 8px 9px auto 9px !important;
+  min-block-size: 43px !important;
+  padding: .34rem .5rem .34rem .58rem !important;
+}
+
+.panel-heading-row h2 {
+  font-size: 1rem !important;
+}
+
+.panel-heading-row .eyebrow {
+  font-size: .48rem !important;
+}
+
+.effect-chip {
+  padding: .31rem .55rem !important;
+  font-size: .68rem !important;
+}
+
+.brew-guidance {
+  inset-inline: 10px !important;
+  inset-block-end: 39px !important;
+  padding: .3rem .5rem !important;
+  font-size: .56rem !important;
+}
+
+.brew-stages {
+  inset: auto 9px 7px 9px !important;
+}
+
+.brew-stages li {
+  min-block-size: 24px !important;
+  font-size: .49rem !important;
+}
+
+/* Keep the illustrated scene dominant while shortening document-like spacing. */
+.workbench {
+  gap: .42rem .28rem !important;
+  padding-block-start: 9.9rem !important;
+  padding-block-end: max(5.4rem, calc(env(safe-area-inset-bottom) + 4.7rem)) !important;
+  overflow: visible !important;
+}
+
+.control-block {
+  min-block-size: 252px !important;
+}
+
+.grind-pad,
+.grind-pad:disabled {
+  min-block-size: 174px !important;
+}
+
+.stir-block {
+  min-block-size: 282px !important;
+}
+
+/* The single implemented ingredient reads like an inventory slot, not a description article. */
+.ingredient-card {
+  grid-template-columns: 66px minmax(0,1fr) !important;
+  gap: .62rem !important;
+  min-block-size: 82px !important;
+  padding: .58rem .68rem !important;
+  border-radius: 15px !important;
+}
+
+.ingredient-symbol {
+  inline-size: 62px !important;
+  block-size: 62px !important;
+  border-radius: 15px !important;
+}
+
+.ingredient-copy .eyebrow {
+  font-size: .53rem !important;
+  letter-spacing: .11em !important;
+}
+
+.ingredient-copy h3 {
+  margin-block: .02rem .13rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+}
+
+.ingredient-copy p:last-child {
+  display: -webkit-box;
+  overflow: hidden;
+  max-inline-size: none !important;
+  color: #725b48 !important;
+  font-size: .72rem !important;
+  line-height: 1.25 !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Real actions become a bottom game HUD. No fake navigation is introduced. */
+.action-row {
+  position: sticky !important;
+  z-index: 30 !important;
+  inset-block-end: max(.4rem, env(safe-area-inset-bottom));
+  grid-area: actions;
+  gap: .38rem !important;
+  margin-inline: -.18rem;
+  padding: .48rem !important;
+  border: 1px solid rgba(225,192,147,.16) !important;
+  border-radius: 17px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045), transparent 34%),
+    rgba(49,31,24,.93) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.045),
+    0 12px 28px rgba(20,11,8,.36),
+    0 0 0 1px rgba(23,12,8,.18) !important;
+  backdrop-filter: blur(12px);
+}
+
+.action-row button {
+  min-block-size: 50px !important;
+  border-radius: 12px !important;
+  font-size: clamp(.68rem,3.1vw,.82rem) !important;
+  line-height: 1.05;
+}
+
+.action-row .primary-button {
+  min-inline-size: 0;
+}
+
+/* Compact labels keep the physical objects as the visual focus. */
+.control-label {
+  padding: .24rem .42rem !important;
+  font-size: .63rem !important;
+}
+
+.control-value {
+  font-size: .64rem !important;
+}
+
+.grind-pad strong,
+.stir-pad > strong {
+  font-size: .76rem !important;
+}
+
+.grind-pad small,
+.stir-pad > small {
+  font-size: .46rem !important;
+}
+
+.brew-readout {
+  padding: .62rem .65rem !important;
+  border-radius: 14px !important;
+}
+
+.brew-readout > div {
+  font-size: .66rem !important;
+}
+
+.brew-readout strong {
+  font-size: .86rem !important;
+}
+
+@media (max-width: 370px) {
+  .game-topbar {
+    grid-template-columns: 39px minmax(0,1fr) auto !important;
+  }
+
+  .brand-lockup {
+    font-size: .98rem !important;
+  }
+
+  .brand-lockup > span {
+    inline-size: 27px !important;
+    block-size: 27px !important;
+  }
+
+  .atlas-panel,
+  .atlas-canvas-wrap,
+  .atlas-canvas {
+    min-block-size: 204px !important;
+    block-size: 204px !important;
+  }
+
+  .workbench {
+    padding-block-start: 9.35rem !important;
+  }
+
+  .ingredient-card {
+    grid-template-columns: 58px minmax(0,1fr) !important;
+  }
+
+  .ingredient-symbol {
+    inline-size: 54px !important;
+    block-size: 54px !important;
+  }
+
+  .ingredient-copy p:last-child {
+    -webkit-line-clamp: 1;
+  }
+
+  .action-row {
+    gap: .26rem !important;
+    padding: .4rem !important;
+  }
+}
