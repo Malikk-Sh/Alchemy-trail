@@ -2,7 +2,9 @@
 
 ## Immediate objective
 
-Get human visual/feel feedback on the **four-PR Brew production-art overhaul** now being deployed. Do not add customers/economy until the user has judged this new visual baseline.
+Get human visual/feel feedback on the newly deployed **second production-art cycle**. The user specifically supplied a screenshot showing the bottled-result modal displaced downward; that concrete bug has now been fixed at the CSS containing-block level rather than by hard-coded offsets.
+
+Do not add customers/economy until the user has judged this new visual baseline.
 
 ## Current playable flow
 
@@ -10,39 +12,41 @@ Title → open the Essence Atlas → grind `Солнцелист` by dragging or
 
 All player-facing copy is Russian by default; `Alchemy Trail` remains the product name. Stable gameplay IDs remain English.
 
-## Current visual baseline
+## New visual cycle completed
 
-The previous deployed build was rated about 4.5/10 by the user. In response, four autonomous visual PRs were completed and squash-merged after green CI:
+After the previous roughly 4.5/10 user rating, PRs #5–#9 were completed autonomously and squash-merged only after green CI:
 
-1. PR #1 — Brew Scene v4: rebuilt original workshop environment, upgraded cauldron/mortar/flask, custom leaf brand mark, scene-first composition, non-ghosted disabled props.
-2. PR #2 — Brew Scene v5: upgraded Sunleaf and bottle art, richer title screen, physical resonance/Infuse glow, tactile buttons, premium result styling.
-3. PR #3 — Brew Scene v6: bottling became a cinematic modal reward moment; added steam and stronger active-state motion.
-4. PR #4 — Atlas v2: replaced neon/debug-graph feeling with a material magical chart, runes, etched frame, layered path/anchors, alchemical node sigil and curved resonance link.
+1. PR #5 — fixed mobile reward positioning. Root cause: `.workbench { perspective: 900px; }` made the workbench the containing block for `position: fixed`. Final layer disables that perspective; reward is viewport-centred, safe-area-aware and self-scrolls on short phones.
+2. PR #6 — redrew the workshop with denser low-poly exterior/interior detail and upgraded material/lighting treatment.
+3. PR #7 — added tactile motion: mortar rocking + herb flecks, simmer bubbles, fire/cauldron response, resonance/Infuse coupling, stage pulses and controlled reward backdrop.
+4. PR #8 — compacted Brew into a more game-like HUD: shorter topbar/Atlas, compact ingredient slot and sticky real action bar.
+5. PR #9 — created dedicated portrait title key-art instead of reusing the Brew background.
 
-Latest merged gameplay/art SHA before context-only commits: `370bde593805fa14d1d80e6699d852b1c69fcadc`.
+Latest merged art SHA before context-only commits: `4bd7831d61325129da335159f0eafbd0e1941022`.
 
 ## Verification fact
 
-- All four visual PRs passed GitHub Actions before merge.
-- Latest visual PR CI: run #63 — success.
-- Strict TypeScript and the existing 10 unit tests remain green.
-- BrowserStack/device-matrix checks are manual/deferred by user request.
+- PRs #5–#9 each passed GitHub Actions before merge.
+- CI runs: #72, #74, #76, #78 and #80 — success.
+- Strict TypeScript and all 10 deterministic unit tests remain green.
+- BrowserStack/device-matrix checks remain manual/deferred by user request.
 
 ## Next work package
 
-1. Inspect user feedback/screenshots from the newly deployed four-PR visual package.
-2. Fix concrete composition/art friction before expanding gameplay.
-3. If the new visual baseline is accepted, stop stacking temporary CSS override layers and schedule a safe consolidation pass without changing appearance.
-4. Then add one additional ingredient/effect pair to prove the data-driven multi-path architecture.
-5. Only after the one-potion visual/interaction baseline is accepted should the first customer/economic vertical slice begin.
+1. Inspect the user's next screenshots/rating from production.
+2. Fix any concrete layout or interaction regressions immediately.
+3. If visual quality is still below acceptance, continue scene/asset passes rather than adding gameplay breadth.
+4. Once the user accepts the one-potion visual baseline, consolidate temporary additive CSS layers without changing appearance.
+5. Then add one additional ingredient/effect pair to prove data-driven multi-path composition.
+6. Only after brew interaction + presentation are accepted should the first customer/economic slice begin.
 
 ## Deferred intentionally
 
 - BrowserStack viewport/device matrix is manual-only for now.
 - customers/economy wait until the core brew interaction + presentation is accepted.
 - persistence waits until there is meaningful gameplay state worth saving.
-- broad content generation, garden, traders, progression, sound, and PWA remain later phases.
+- broad content generation, garden, traders, progression, sound and PWA remain later phases.
 
 ## Acceptance gate before customers
 
-A player should understand through direct interaction—not fake bypass UI—that grinding exposes more of an ingredient path, stirring advances the marker along that exact path, resonance depends on spatial proximity, Infuse captures the current potency, and Bottle resolves a real potion result. The same flow should now read visually as a cohesive illustrated mobile game rather than a styled web prototype.
+A player should understand through direct interaction—not fake bypass UI—that grinding exposes more of an ingredient path, stirring advances the marker along that exact path, resonance depends on spatial proximity, Infuse captures current potency, and Bottle resolves a real potion result. The same flow should read visually as a cohesive illustrated mobile game rather than a styled web prototype.
