@@ -1,20 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 360" role="img" aria-label="Флакон зелья Тепла">
   <defs>
-    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edfdf9" stop-opacity=".88"/><stop offset=".35" stop-color="#b7ddd7" stop-opacity=".7"/><stop offset=".72" stop-color="#78aaa7" stop-opacity=".68"/><stop offset="1" stop-color="#467878" stop-opacity=".82"/></linearGradient>
-    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffd96a"/><stop offset=".48" stop-color="#f3a13a"/><stop offset="1" stop-color="#d86529"/></linearGradient>
-    <linearGradient id="cork" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7a367"/><stop offset="1" stop-color="#875638"/></linearGradient>
-    <radialGradient id="glow"><stop stop-color="#ffd56b" stop-opacity=".52"/><stop offset="1" stop-color="#f28a34" stop-opacity="0"/></radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5fffd" stop-opacity=".92"/><stop offset=".28" stop-color="#cce9e3" stop-opacity=".77"/><stop offset=".62" stop-color="#8abbb6" stop-opacity=".72"/><stop offset="1" stop-color="#4b7e7b" stop-opacity=".88"/></linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe477"/><stop offset=".42" stop-color="#f4ae43"/><stop offset=".76" stop-color="#ec7d2d"/><stop offset="1" stop-color="#c95425"/></linearGradient>
+    <linearGradient id="cork" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5b778"/><stop offset=".52" stop-color="#b2764a"/><stop offset="1" stop-color="#77482f"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#ffe59a" stop-opacity=".66"/><stop offset=".44" stop-color="#ffb54c" stop-opacity=".24"/><stop offset="1" stop-color="#ef812f" stop-opacity="0"/></radialGradient>
   </defs>
-  <ellipse cx="130" cy="325" rx="88" ry="18" fill="#2b1b14" opacity=".25"/>
-  <ellipse cx="130" cy="238" rx="118" ry="112" fill="url(#glow)"/>
-  <polygon points="96,23 164,23 158,75 102,75" fill="url(#cork)"/>
-  <polygon points="88,69 172,69 178,96 82,96" fill="#e3efea" stroke="#829e9d" stroke-width="4"/>
-  <path d="M100 94 L160 94 L169 132 Q204 157 211 202 L213 277 Q211 318 130 324 Q49 318 47 277 L49 202 Q56 157 91 132Z" fill="url(#glass)" stroke="#679a99" stroke-width="7"/>
-  <path d="M60 214 Q130 192 200 214 L202 274 Q199 301 130 307 Q61 301 58 274Z" fill="url(#amber)" opacity=".96"/>
-  <polygon points="62,186 96,134 82,294 57,278" fill="#fff" opacity=".24"/>
-  <polygon points="162,105 181,141 202,198 187,288 159,306" fill="#276c72" opacity=".16"/>
-  <path d="M78 162 Q109 138 149 147" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".35"/>
-  <rect x="77" y="196" width="106" height="67" rx="10" fill="#f3e1bc" stroke="#a77b4d" stroke-width="5"/>
-  <path d="M130 210 C105 228 108 246 130 255 C152 246 155 228 130 210Z" fill="#d96b2d"/>
-  <path d="M130 216 C121 229 122 238 130 243 C138 238 139 229 130 216Z" fill="#ffb447"/>
+
+  <ellipse cx="130" cy="329" rx="91" ry="19" fill="#281914" opacity=".28"/>
+  <ellipse cx="130" cy="237" rx="120" ry="116" fill="url(#glow)"/>
+
+  <!-- stopper and neck -->
+  <polygon points="94,21 166,21 159,77 101,77" fill="url(#cork)"/>
+  <polygon points="94,21 120,15 166,21 154,35 100,35" fill="#ecc78e"/>
+  <polygon points="103,34 128,28 127,76 101,77" fill="#d99f64" opacity=".4"/>
+  <polygon points="88,68 172,68 181,95 79,95" fill="#e8f4ef" stroke="#769b99" stroke-width="4"/>
+  <polygon points="88,68 122,73 118,94 79,95" fill="#ffffff" opacity=".28"/>
+
+  <!-- glass body -->
+  <path d="M99 93 L161 93 L171 131 Q204 153 213 200 L215 277 Q212 321 130 327 Q48 321 45 277 L47 200 Q56 153 89 131Z" fill="url(#glass)" stroke="#639897" stroke-width="7"/>
+  <polygon points="58,192 91,132 81,299 52,280" fill="#fff" opacity=".25"/>
+  <polygon points="88,111 113,98 104,314 76,294" fill="#eefcf9" opacity=".18"/>
+  <polygon points="164,105 186,145 207,199 191,294 158,315" fill="#2b6d70" opacity=".17"/>
+  <polygon points="126,96 162,94 171,132 145,141" fill="#ffffff" opacity=".08"/>
+
+  <!-- potion -->
+  <path d="M57 215 Q130 192 203 215 L205 273 Q202 304 130 310 Q58 304 55 273Z" fill="url(#amber)" opacity=".98"/>
+  <polygon points="58,219 105,208 99,301 60,287" fill="#ffd668" opacity=".2"/>
+  <polygon points="105,208 164,205 166,302 99,301" fill="#ffbd4d" opacity=".1"/>
+  <path d="M64 219 Q130 199 196 218" fill="none" stroke="#ffeaa0" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+  <circle cx="92" cy="238" r="5" fill="#fff1ae" opacity=".34"/><circle cx="174" cy="252" r="4" fill="#ffd477" opacity=".28"/>
+
+  <!-- label -->
+  <rect x="75" y="194" width="110" height="72" rx="12" fill="#f5e6c7" stroke="#9a7046" stroke-width="5"/>
+  <rect x="82" y="201" width="96" height="58" rx="8" fill="none" stroke="#caa373" stroke-width="2" opacity=".55"/>
+  <path d="M130 210 C104 229 107 248 130 258 C153 248 156 229 130 210Z" fill="#d46129"/>
+  <path d="M130 217 C119 231 120 241 130 247 C140 241 141 231 130 217Z" fill="#ffba49"/>
+  <path d="M101 178 Q125 153 154 159" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".34"/>
+
+  <!-- tiny neck reflections -->
+  <path d="M106 101 V131" stroke="#fff" stroke-width="6" opacity=".2" stroke-linecap="round"/>
+  <path d="M174 122 Q194 143 200 169" fill="none" stroke="#d5f0eb" stroke-width="5" opacity=".2" stroke-linecap="round"/>
 </svg>

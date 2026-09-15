@@ -1,28 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" role="img" aria-label="Солнцелист">
   <defs>
-    <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe47d"/><stop offset=".5" stop-color="#f6ad3d"/><stop offset="1" stop-color="#d96f29"/></linearGradient>
-    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6b9f4f"/><stop offset="1" stop-color="#315f39"/></linearGradient>
+    <linearGradient id="petalA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff08d"/><stop offset=".38" stop-color="#ffc94c"/><stop offset=".74" stop-color="#f28b31"/><stop offset="1" stop-color="#cf5f26"/></linearGradient>
+    <linearGradient id="petalB" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd95e"/><stop offset="1" stop-color="#dc6d28"/></linearGradient>
+    <linearGradient id="leafA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80b45b"/><stop offset=".55" stop-color="#4f8547"/><stop offset="1" stop-color="#2f5d3a"/></linearGradient>
+    <linearGradient id="leafB" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6ea451"/><stop offset="1" stop-color="#28513a"/></linearGradient>
+    <radialGradient id="warm"><stop stop-color="#ffeaa1" stop-opacity=".56"/><stop offset="1" stop-color="#f1a442" stop-opacity="0"/></radialGradient>
   </defs>
-  <ellipse cx="169" cy="292" rx="102" ry="19" fill="#5b3e28" opacity=".17"/>
-  <g>
-    <path d="M151 182 C102 155 61 170 57 211 C83 228 122 220 155 195Z" fill="url(#leaf)"/>
-    <polygon points="58,211 109,183 155,195 115,220 83,228" fill="#345f39" opacity=".58"/>
-    <path d="M184 181 C224 143 276 153 286 196 C256 224 218 221 179 202Z" fill="#6c9b4d"/>
-    <polygon points="184,181 245,173 286,196 250,218 179,202" fill="#497d42" opacity=".58"/>
-    <path d="M165 199 C126 231 124 276 157 288 C189 287 204 242 184 204Z" fill="#38663e"/>
-    <polygon points="165,199 184,204 184,270 157,288 146,244" fill="#2c5639" opacity=".7"/>
-  </g>
-  <g transform="translate(170 158)">
-    <g transform="rotate(0)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(45)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(90)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(135)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(180)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(225)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(270)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <g transform="rotate(315)"><path d="M0 0 C-38 -12 -58 -59 -32 -82 C-5 -99 15 -52 0 0Z" fill="url(#p1)"/><polygon points="0,0 -17,-48 -32,-82 -5,-53" fill="#ffd56b" opacity=".42"/></g>
-    <circle r="35" fill="#ffe69b"/>
-    <polygon points="0,-26 25,-8 15,21 -15,21 -25,-8" fill="#f0b048"/>
-    <polygon points="0,-26 0,0 25,-8" fill="#ffd866" opacity=".7"/>
+
+  <ellipse cx="169" cy="294" rx="105" ry="20" fill="#563a27" opacity=".17"/>
+  <ellipse cx="169" cy="171" rx="121" ry="118" fill="url(#warm)" opacity=".26"/>
+
+  <!-- stems -->
+  <path d="M171 183 C164 220 164 252 166 284" fill="none" stroke="#4b7643" stroke-width="13" stroke-linecap="round"/>
+  <path d="M171 187 C176 224 179 252 179 283" fill="none" stroke="#345d3d" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+
+  <!-- leaves -->
+  <path d="M154 193 C105 157 60 168 54 210 C80 232 122 224 157 198Z" fill="url(#leafA)"/>
+  <polygon points="54,210 104,181 157,198 118,223 80,232" fill="#315e39" opacity=".52"/>
+  <path d="M183 190 C226 146 278 151 289 194 C260 226 219 223 178 203Z" fill="url(#leafA)"/>
+  <polygon points="183,190 246,170 289,194 252,220 178,203" fill="#467a43" opacity=".5"/>
+  <path d="M164 207 C124 235 124 279 155 292 C189 291 207 247 184 207Z" fill="url(#leafB)"/>
+  <polygon points="164,207 184,207 185,273 155,292 145,248" fill="#294f39" opacity=".62"/>
+  <path d="M147 221 C116 208 91 219 89 244 C112 258 136 253 158 235Z" fill="#5b9349"/>
+  <path d="M191 221 C216 202 244 206 254 228 C235 250 210 251 187 238Z" fill="#4b8146"/>
+  <path d="M75 209 C100 205 128 199 151 194" fill="none" stroke="#a5c979" stroke-width="4" opacity=".34" stroke-linecap="round"/>
+  <path d="M191 199 C221 191 249 190 275 194" fill="none" stroke="#aad07b" stroke-width="4" opacity=".3" stroke-linecap="round"/>
+
+  <!-- flower -->
+  <g transform="translate(170 156)">
+    <g transform="rotate(0)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalA)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#fff0a0" opacity=".38"/><polygon points="0,0 -4,-54 14,-36" fill="#dd762b" opacity=".2"/></g>
+    <g transform="rotate(45)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalB)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#ffe781" opacity=".32"/></g>
+    <g transform="rotate(90)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalA)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#fff0a0" opacity=".38"/></g>
+    <g transform="rotate(135)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalB)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#ffe781" opacity=".32"/></g>
+    <g transform="rotate(180)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalA)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#fff0a0" opacity=".38"/></g>
+    <g transform="rotate(225)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalB)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#ffe781" opacity=".32"/></g>
+    <g transform="rotate(270)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalA)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#fff0a0" opacity=".38"/></g>
+    <g transform="rotate(315)"><path d="M0 0 C-41 -13 -62 -62 -34 -87 C-4 -105 17 -55 0 0Z" fill="url(#petalB)"/><polygon points="0,0 -20,-51 -34,-87 -3,-56" fill="#ffe781" opacity=".32"/></g>
+    <circle r="39" fill="#ffeba0"/>
+    <polygon points="0,-30 28,-9 18,24 -18,24 -28,-9" fill="#eda844"/>
+    <polygon points="0,-30 0,0 28,-9" fill="#ffd76b" opacity=".72"/>
+    <polygon points="0,0 28,-9 18,24" fill="#d98532" opacity=".26"/>
+    <circle r="12" fill="#fff2ad" opacity=".7"/>
   </g>
 </svg>
