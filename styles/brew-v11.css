@@ -1,0 +1,218 @@
+/* Brew Scene v11 — focal composition and physical workshop props. */
+
+/* Let the workshop dominate the viewport: Atlas stays present, but no longer competes with the scene. */
+.atlas-panel,
+.atlas-canvas-wrap,
+.atlas-canvas {
+  min-block-size: 196px !important;
+  block-size: 196px !important;
+}
+
+.panel-heading-row {
+  inset-block-start: 7px !important;
+}
+
+.brew-guidance {
+  inset-block-end: 36px !important;
+  max-inline-size: calc(100% - 20px);
+  margin-inline: auto !important;
+  font-size: .54rem !important;
+}
+
+.brew-stages {
+  inset-block-end: 6px !important;
+}
+
+/* Brew reads as one diorama: small preparation station, dominant cauldron, supporting props. */
+.workbench {
+  grid-template-columns: minmax(0,.68fr) minmax(0,1.32fr) !important;
+  gap: .28rem .12rem !important;
+  padding-block-start: 9.45rem !important;
+  background:
+    linear-gradient(180deg, transparent 0 47%, rgba(42,24,17,.025) 57%, rgba(38,22,17,.36) 77%, #2b1a14 100%),
+    url("../assets/generated/brew/workshop.svg") center top / auto 27.6rem no-repeat,
+    #69472f !important;
+}
+
+.workbench::before {
+  background:
+    radial-gradient(ellipse at 73% 29%, rgba(255,185,78,.2), transparent 9.5rem),
+    radial-gradient(ellipse at 18% 36%, rgba(255,226,168,.055), transparent 7rem),
+    linear-gradient(180deg, transparent 0 54%, rgba(24,14,10,.03) 60%, rgba(24,14,10,.25) 100%) !important;
+}
+
+.control-block {
+  min-block-size: 246px !important;
+  transform: translateY(7px);
+}
+
+.grind-pad,
+.grind-pad:disabled {
+  min-block-size: 166px !important;
+}
+
+.grind-pad::before {
+  inset: 5px -30px 0 -20px !important;
+  filter:
+    drop-shadow(0 15px 9px rgba(26,14,10,.32))
+    drop-shadow(0 1px 0 rgba(255,255,255,.06)) !important;
+}
+
+.control-label {
+  z-index: 8;
+  max-inline-size: 9.5rem;
+  text-align: center;
+}
+
+/* Small herb flecks make the preparation side feel occupied, not like an empty form column. */
+.control-block::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inline-size: 58px;
+  block-size: 42px;
+  inset-inline-end: -16px;
+  inset-block-start: 112px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 27% 58%, #6d9e50 0 17%, transparent 18%),
+    radial-gradient(ellipse at 58% 36%, #4d7d45 0 18%, transparent 19%),
+    radial-gradient(ellipse at 77% 69%, #88b45b 0 14%, transparent 15%);
+  filter: drop-shadow(0 5px 4px rgba(35,21,13,.22));
+  transform: rotate(-12deg);
+  opacity: .86;
+}
+
+.stir-block {
+  z-index: 7 !important;
+  min-block-size: 306px !important;
+  transform: translate(-7px, 2px);
+}
+
+.stir-pad,
+.stir-pad:disabled {
+  inline-size: min(132%, 278px) !important;
+  max-inline-size: none !important;
+  aspect-ratio: 1.04 !important;
+}
+
+.stir-pad::before {
+  inset: -18px -37px -36px !important;
+  filter:
+    drop-shadow(0 20px 12px rgba(20,11,8,.43))
+    drop-shadow(0 1px 0 rgba(255,255,255,.035)) !important;
+}
+
+.stir-pad::after {
+  inset-inline: 20% !important;
+  inset-block-end: 2% !important;
+  block-size: 34% !important;
+  filter: blur(8px) !important;
+}
+
+/* A physical water bottle on the right echoes the supplied Brew reference without adding fake controls. */
+.stir-block::after {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  inline-size: 78px;
+  block-size: 116px;
+  inset-inline-end: -21px;
+  inset-block-start: 83px;
+  pointer-events: none;
+  background: url("../assets/generated/brew/water-flask.svg") center / contain no-repeat;
+  filter:
+    drop-shadow(0 10px 8px rgba(22,14,10,.3))
+    drop-shadow(0 0 8px rgba(129,209,213,.08));
+  transform: rotate(2deg);
+  opacity: .96;
+}
+
+/* The readout becomes a small plaque attached to the cauldron area. */
+.brew-readout {
+  inline-size: min(92%, 218px) !important;
+  margin-block-start: -6px;
+  padding: .52rem .58rem !important;
+  border-width: 2px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.24),
+    0 9px 18px rgba(44,25,14,.18) !important;
+}
+
+.brew-readout::before {
+  content: "ТЕКУЩЕЕ ЗЕЛЬЕ";
+  display: block;
+  margin-block-end: .28rem;
+  color: #8f7253;
+  font: 800 .45rem/1 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing: .13em;
+  text-align: center;
+}
+
+.brew-readout > div {
+  min-block-size: 26px;
+}
+
+/* Inventory slot reads like a collectible item card, not explanatory body copy. */
+.ingredient-card {
+  border-width: 2px !important;
+  background:
+    radial-gradient(circle at 7% 12%, rgba(255,255,255,.72), transparent 22%),
+    linear-gradient(145deg,#fff0d1,#e6c493) !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.25),
+    0 9px 18px rgba(37,20,12,.18) !important;
+}
+
+.ingredient-symbol {
+  filter: drop-shadow(0 7px 5px rgba(70,44,22,.16));
+}
+
+/* Current game action should feel like the one important choice in the HUD. */
+.action-row .primary-button:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.12),
+    inset 0 1px rgba(255,255,255,.24),
+    0 9px 18px rgba(6,84,80,.32),
+    0 0 20px rgba(69,231,220,.09) !important;
+}
+
+.brewing-screen.is-resonating .stir-block::after,
+.brewing-screen.is-infused .stir-block::after {
+  filter:
+    drop-shadow(0 10px 8px rgba(22,14,10,.28))
+    drop-shadow(0 0 12px rgba(255,195,88,.14));
+}
+
+@media (max-width: 370px) {
+  .atlas-panel,
+  .atlas-canvas-wrap,
+  .atlas-canvas {
+    min-block-size: 188px !important;
+    block-size: 188px !important;
+  }
+
+  .workbench {
+    grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr) !important;
+    padding-block-start: 9.05rem !important;
+  }
+
+  .stir-pad,
+  .stir-pad:disabled {
+    inline-size: min(138%, 256px) !important;
+  }
+
+  .stir-block::after {
+    inline-size: 62px;
+    block-size: 96px;
+    inset-inline-end: -15px;
+    inset-block-start: 92px;
+  }
+
+  .control-block::after {
+    inline-size: 44px;
+    block-size: 36px;
+    inset-inline-end: -13px;
+  }
+}
