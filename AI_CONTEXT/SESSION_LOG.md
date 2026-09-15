@@ -2,6 +2,17 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Reward overlay fix + second autonomous visual cycle
+
+- User supplied a real-device screenshot showing the bottled-result reward shifted downward and asked to continue design work.
+- Root cause was identified precisely: `.workbench { perspective: 900px; }` established a containing block for the descendant `position: fixed` reward card, so it centred against the long workbench instead of the viewport.
+- PR #5 removed the containing-block cause in the final visual layer and made the reward viewport-centred, safe-area-aware, scrollable on short phones, and less over-darkened behind the modal. CI run #72 passed before merge.
+- PR #6 rebuilt `workshop.svg` with denser low-poly art: clouds, deeper mountain layers, river, village, more trees, shelves, bottles, books, hanging herbs, banner, lantern and counter props; also improved lighting/material grading. CI run #74 passed before merge.
+- PR #7 added tactile motion without a continuous render loop: mortar rocking/herb flecks, simmer bubbles, cauldron/fire response, resonance/Infuse coupling, stage pulses, reward backdrop and reduced-motion handling. CI run #76 passed before merge.
+- PR #8 compressed Brew into a more game-like mobile HUD: shorter topbar and Atlas, compact ingredient slot, reduced vertical document spacing, and a sticky real action bar for Reset/Infuse/Bottle. CI run #78 passed before merge.
+- PR #9 added dedicated portrait title key-art (alchemy desk, journal, potion, Sunleaf and mountain valley) plus a new entry-screen composition instead of reusing the Brew background. CI run #80 passed before merge.
+- PRs #5–#9 were automatically squash-merged after green CI. Gameplay math and the real Grind → Stir → Resonance → Infuse → Bottle flow were not changed.
+
 ## 2026-09-15 — Autonomous four-PR production-art overhaul
 
 - User explicitly authorized autonomous PR creation/merging and continuing visual work until there was a significant improvement over the approximately 4.5/10 deployed baseline.
