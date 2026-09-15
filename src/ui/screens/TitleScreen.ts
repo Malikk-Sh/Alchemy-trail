@@ -10,7 +10,7 @@ export function createTitleScreen(onStart: () => void): HTMLElement {
 
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
-  eyebrow.textContent = "Apothecary field journal";
+  eyebrow.textContent = "Полевой журнал алхимика";
 
   const title = document.createElement("h1");
   title.id = "game-title";
@@ -19,17 +19,17 @@ export function createTitleScreen(onStart: () => void): HTMLElement {
   const description = document.createElement("p");
   description.className = "title-copy";
   description.textContent =
-    "Trace the hidden geometry of ingredients, steer a living essence path, and capture effects by hand.";
+    "Исследуй скрытую геометрию ингредиентов, направляй живой путь эссенции и захватывай эффекты своими руками.";
 
   const start = document.createElement("button");
   start.className = "primary-button title-start";
   start.type = "button";
-  start.textContent = "Open the Essence Atlas";
+  start.textContent = "Открыть Атлас эссенций";
   start.addEventListener("click", onStart);
 
   const status = document.createElement("p");
   status.className = "build-status";
-  status.textContent = "First playable brew · Sunleaf → Warmth";
+  status.textContent = "Первое зелье · Солнцелист → Тепло";
 
   screen.append(seal, eyebrow, title, description, start, status);
   return screen;
