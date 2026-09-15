@@ -2,7 +2,7 @@
 
 ## Immediate objective
 
-Get human visual/feel feedback on the newly deployed **second production-art cycle**. The user specifically supplied a screenshot showing the bottled-result modal displaced downward; that concrete bug has now been fixed at the CSS containing-block level rather than by hard-coded offsets.
+Get human visual/feel feedback on the newly deployed **third production-art cycle**. The user explicitly told the agent to continue autonomously after the previous screenshot/reward fix, so design work proceeded through four more visual PRs without expanding gameplay breadth.
 
 Do not add customers/economy until the user has judged this new visual baseline.
 
@@ -12,33 +12,38 @@ Title → open the Essence Atlas → grind `Солнцелист` by dragging or
 
 All player-facing copy is Russian by default; `Alchemy Trail` remains the product name. Stable gameplay IDs remain English.
 
-## New visual cycle completed
+## Third visual cycle completed
 
-After the previous roughly 4.5/10 user rating, PRs #5–#9 were completed autonomously and squash-merged only after green CI:
+PRs #10–#13 were completed autonomously and squash-merged only after green CI:
 
-1. PR #5 — fixed mobile reward positioning. Root cause: `.workbench { perspective: 900px; }` made the workbench the containing block for `position: fixed`. Final layer disables that perspective; reward is viewport-centred, safe-area-aware and self-scrolls on short phones.
-2. PR #6 — redrew the workshop with denser low-poly exterior/interior detail and upgraded material/lighting treatment.
-3. PR #7 — added tactile motion: mortar rocking + herb flecks, simmer bubbles, fire/cauldron response, resonance/Infuse coupling, stage pulses and controlled reward backdrop.
-4. PR #8 — compacted Brew into a more game-like HUD: shorter topbar/Atlas, compact ingredient slot and sticky real action bar.
-5. PR #9 — created dedicated portrait title key-art instead of reusing the Brew background.
+1. PR #10 — raised core prop fidelity: completely redrew the cauldron/hearth, mortar/pestle, potion bottle and Sunleaf with richer faceted low-poly geometry, reflections, material faces and details.
+2. PR #11 — made the cauldron the Brew focal point: compacted Atlas further, reduced prep visual weight, enlarged the cauldron station, added a physical decorative water flask and turned the readout into a smaller potion plaque.
+3. PR #12 — choreographed the scene by gameplay stage: preparation dominates before commit, cauldron after commit, Atlas/cauldron intensify at resonance, and Bottle becomes the visual primary action after Infuse.
+4. PR #13 — deepened atmosphere/materials: upgraded water-flask art, cool window light + warm hearth/lantern light, vignette, more carved wood, more physical parchment and stronger grounding shadows.
 
-Latest merged art SHA before context-only commits: `4bd7831d61325129da335159f0eafbd0e1941022`.
+Latest merged visual SHA before context-only commits: `ddfa7b98eecd8b00c178e45ef2c040a64c72db2c`.
+
+The earlier mobile reward-position bug remains fixed at its root cause: workbench perspective no longer turns the long scene into the containing block for the fixed reward modal.
 
 ## Verification fact
 
-- PRs #5–#9 each passed GitHub Actions before merge.
-- CI runs: #72, #74, #76, #78 and #80 — success.
+- PR #10 CI run #85 — success.
+- PR #11 CI run #87 — success.
+- PR #12 CI run #89 — success.
+- PR #13 CI run #91 — success.
 - Strict TypeScript and all 10 deterministic unit tests remain green.
+- Vercel Git integration automatically deploys branches to Preview and `main` to Production.
 - BrowserStack/device-matrix checks remain manual/deferred by user request.
 
 ## Next work package
 
 1. Inspect the user's next screenshots/rating from production.
-2. Fix any concrete layout or interaction regressions immediately.
-3. If visual quality is still below acceptance, continue scene/asset passes rather than adding gameplay breadth.
-4. Once the user accepts the one-potion visual baseline, consolidate temporary additive CSS layers without changing appearance.
-5. Then add one additional ingredient/effect pair to prove data-driven multi-path composition.
-6. Only after brew interaction + presentation are accepted should the first customer/economic slice begin.
+2. Fix any concrete layout or interaction regression immediately.
+3. If visual quality is still below acceptance, continue improving scene/asset fidelity and composition rather than adding gameplay breadth.
+4. Avoid stacking low-value micro-CSS tweaks; favor asset redraws, composition, lighting and object-specific motion.
+5. Once the user accepts the one-potion visual baseline, consolidate additive CSS layers through `brew-v13.css` without changing appearance.
+6. Then add one additional ingredient/effect pair to prove data-driven multi-path composition.
+7. Only after brew interaction + presentation are accepted should the first customer/economic slice begin.
 
 ## Deferred intentionally
 
