@@ -1,0 +1,187 @@
+/* Brew Scene v12 — stage choreography. Existing gameplay states drive the scene focus. */
+
+.control-block,
+.stir-block,
+.atlas-panel,
+.action-row,
+.ingredient-card {
+  transition:
+    transform 260ms cubic-bezier(.2,.72,.24,1),
+    filter 220ms ease,
+    opacity 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* Before the path is committed, preparation owns the scene. */
+.brewing-screen:not(:has(.stir-pad:not(:disabled))) .control-block {
+  transform: translate(3px, 0) scale(1.035);
+  filter: saturate(1.05) brightness(1.02);
+}
+
+.brewing-screen:not(:has(.stir-pad:not(:disabled))) .stir-block {
+  transform: translate(-5px, 7px) scale(.94);
+  filter: saturate(.78) brightness(.9);
+}
+
+.brewing-screen:not(:has(.stir-pad:not(:disabled))) .stir-block::after {
+  opacity: .76;
+}
+
+/* Once the ingredient path is committed, the mortar recedes and the cauldron becomes the hero. */
+.brewing-screen:has(.stir-pad:not(:disabled)) .control-block {
+  transform: translate(-3px, 12px) scale(.9);
+  filter: saturate(.72) brightness(.88);
+  opacity: .9;
+}
+
+.brewing-screen:has(.stir-pad:not(:disabled)) .stir-block {
+  transform: translate(-9px, -4px) scale(1.035);
+  filter: saturate(1.04) brightness(1.02);
+}
+
+.brewing-screen:has(.stir-pad:not(:disabled)) .stir-pad::before {
+  filter:
+    drop-shadow(0 21px 12px rgba(20,11,8,.45))
+    drop-shadow(0 0 8px rgba(255,174,67,.09)) !important;
+}
+
+/* A subtle chart shimmer makes the Atlas feel linked to the physical brew. */
+.atlas-panel::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(112deg, transparent 0 42%, rgba(229,210,156,.08) 48%, rgba(255,207,111,.12) 50%, rgba(229,210,156,.05) 53%, transparent 59%);
+  transform: translateX(-55%);
+}
+
+.brewing-screen:has(.stir-pad.is-stirring) .atlas-panel::after {
+  opacity: .7;
+  animation: v12-atlas-sweep 1.15s ease-out infinite;
+}
+
+/* Resonance is the dramatic peak before Infuse. */
+.brewing-screen.is-resonating .atlas-panel {
+  box-shadow:
+    inset 0 -24px 38px rgba(0,0,0,.28),
+    inset 0 0 42px rgba(241,177,65,.08),
+    0 5px 0 #755038,
+    0 0 26px rgba(240,168,61,.08) !important;
+}
+
+.brewing-screen.is-resonating .stir-block {
+  transform: translate(-9px, -7px) scale(1.055) !important;
+}
+
+.brewing-screen.is-resonating .stir-pad::before {
+  filter:
+    drop-shadow(0 22px 13px rgba(20,11,8,.44))
+    drop-shadow(0 0 18px rgba(247,184,76,.38))
+    drop-shadow(0 0 34px rgba(247,184,76,.13)) !important;
+}
+
+.brewing-screen.is-resonating .brew-guidance {
+  border: 1px solid rgba(255,215,134,.16) !important;
+  background: rgba(43,28,20,.82) !important;
+  color: #ffe4ad !important;
+  box-shadow: 0 5px 14px rgba(0,0,0,.2), 0 0 18px rgba(238,167,62,.08) !important;
+}
+
+.brewing-screen.is-resonating .effect-chip {
+  animation: v12-effect-pulse 1s ease-in-out infinite alternate;
+}
+
+/* Infuse freezes the magical state and hands focus to bottling. */
+.brewing-screen.is-infused .atlas-panel {
+  filter: saturate(.92) brightness(.94);
+}
+
+.brewing-screen.is-infused .stir-block {
+  transform: translate(-9px, -5px) scale(1.045) !important;
+}
+
+.brewing-screen.is-infused .stir-pad::before {
+  filter:
+    drop-shadow(0 22px 13px rgba(20,11,8,.42))
+    drop-shadow(0 0 22px rgba(255,205,99,.45)) !important;
+}
+
+.brewing-screen.is-infused .action-row .secondary-button:last-child:not(:disabled) {
+  color: #effffb !important;
+  border-color: rgba(106,238,223,.34) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12), transparent 38%),
+    linear-gradient(180deg,#27bcb5,#0f8582) !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.11),
+    inset 0 1px rgba(255,255,255,.2),
+    0 8px 16px rgba(6,84,80,.28),
+    0 0 18px rgba(64,220,209,.11) !important;
+  animation: v12-bottle-ready 1.15s ease-in-out infinite alternate;
+}
+
+.brewing-screen.is-infused .action-row .primary-button:disabled {
+  opacity: .58 !important;
+  filter: saturate(.5) brightness(.88) !important;
+}
+
+/* Keep the sticky HUD visually attached to the game scene while scrolling. */
+.action-row {
+  transform-origin: 50% 100%;
+}
+
+.brewing-screen:has(.result-card:not([hidden])) .action-row {
+  transform: translateY(8px) scale(.97);
+  opacity: .4;
+}
+
+/* Result appearance has a tiny depth settle after the initial pop. */
+.result-card:not([hidden]) .result-potion {
+  animation: v12-result-content .62s cubic-bezier(.2,.78,.2,1) .06s both;
+}
+
+.result-card:not([hidden]) .result-reset {
+  animation: v12-result-content .62s cubic-bezier(.2,.78,.2,1) .13s both;
+}
+
+@keyframes v12-atlas-sweep {
+  0% { transform: translateX(-65%); opacity: 0; }
+  22% { opacity: .65; }
+  72% { opacity: .28; }
+  100% { transform: translateX(65%); opacity: 0; }
+}
+
+@keyframes v12-effect-pulse {
+  from { transform: scale(1); filter: brightness(1); box-shadow: inset 0 1px rgba(255,255,255,.62),0 3px 8px rgba(65,35,17,.26); }
+  to { transform: scale(1.035); filter: brightness(1.08); box-shadow: inset 0 1px rgba(255,255,255,.7),0 4px 10px rgba(65,35,17,.3),0 0 15px rgba(247,184,76,.18); }
+}
+
+@keyframes v12-bottle-ready {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2px); }
+}
+
+@keyframes v12-result-content {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-block,
+  .stir-block,
+  .atlas-panel,
+  .action-row,
+  .ingredient-card,
+  .atlas-panel::after,
+  .brewing-screen.is-resonating .effect-chip,
+  .brewing-screen.is-infused .action-row .secondary-button:last-child:not(:disabled),
+  .result-card:not([hidden]) .result-potion,
+  .result-card:not([hidden]) .result-reset {
+    animation: none !important;
+    transition: none !important;
+  }
+}
