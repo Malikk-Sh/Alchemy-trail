@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1280" role="img" aria-label="Алхимический стол у окна с видом на горную долину">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bfe6f3"/><stop offset=".55" stop-color="#8dc5df"/><stop offset="1" stop-color="#6aa2c0"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8f6046"/><stop offset=".5" stop-color="#66412f"/><stop offset="1" stop-color="#39231d"/></linearGradient>
+    <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a86f49"/><stop offset=".18" stop-color="#80513a"/><stop offset="1" stop-color="#4a2d23"/></linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0d5"/><stop offset="1" stop-color="#dfbf8c"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dff8f4" stop-opacity=".85"/><stop offset="1" stop-color="#65a9a5" stop-opacity=".72"/></linearGradient>
+    <linearGradient id="potion" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffd564"/><stop offset="1" stop-color="#e67b2e"/></linearGradient>
+    <radialGradient id="warm"><stop stop-color="#ffd676" stop-opacity=".56"/><stop offset="1" stop-color="#ffab45" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <rect width="720" height="1280" fill="#2d1e18"/>
+  <rect x="54" y="70" width="612" height="666" rx="24" fill="#3a281f"/>
+  <rect x="80" y="96" width="560" height="615" rx="14" fill="url(#sky)"/>
+
+  <!-- exterior -->
+  <circle cx="554" cy="184" r="48" fill="#ffe79b"/>
+  <circle cx="554" cy="184" r="118" fill="url(#warm)"/>
+  <polygon points="80,420 164,326 231,389 328,235 424,407 507,290 640,425 640,711 80,711" fill="#71839d"/>
+  <polygon points="80,450 164,326 188,361 231,389 328,235 360,297 424,407 507,290 540,344 640,425 640,711 80,711" fill="#98a8b6" opacity=".72"/>
+  <polygon points="139,356 164,326 190,362 172,356" fill="#eef3ef"/>
+  <polygon points="300,278 328,235 360,297 334,284" fill="#f2f4ef"/>
+  <polygon points="481,325 507,290 540,344 515,331" fill="#edf2ef"/>
+  <path d="M80 474 C181 439 264 449 347 485 C430 520 519 488 640 470 V711 H80Z" fill="#88a76b"/>
+  <path d="M80 550 C202 505 295 519 384 553 C477 588 555 548 640 536 V711 H80Z" fill="#608550"/>
+  <path d="M306 482 C341 514 367 533 406 552 C447 572 482 587 522 612 L458 711 H355 C374 655 392 624 410 600 C373 576 344 555 320 530Z" fill="#5ba8cb"/>
+  <path d="M323 492 C352 518 378 536 410 551" fill="none" stroke="#a7e7f3" stroke-width="9" stroke-linecap="round" opacity=".45"/>
+
+  <!-- distant village -->
+  <g transform="translate(171 500) scale(.72)">
+    <rect x="0" y="28" width="44" height="34" fill="#ebc998"/><polygon points="-5,28 22,7 49,28" fill="#b7613c"/>
+    <rect x="55" y="38" width="37" height="27" fill="#f2d5a5"/><polygon points="50,38 73,19 97,38" fill="#9e5137"/>
+    <rect x="107" y="30" width="34" height="34" fill="#dfb67e"/><polygon points="102,30 124,11 146,30" fill="#c46b3f"/>
+  </g>
+
+  <!-- trees -->
+  <g fill="#356b4c">
+    <polygon points="112,516 94,559 130,559"/><polygon points="153,543 136,584 170,584"/>
+    <polygon points="572,501 551,553 593,553"/><polygon points="612,533 595,578 629,578"/>
+  </g>
+
+  <!-- window structure -->
+  <rect x="347" y="96" width="27" height="615" fill="url(#wood)"/>
+  <rect x="80" y="96" width="560" height="22" fill="#53352a"/>
+  <rect x="80" y="689" width="560" height="22" fill="#4b3026"/>
+  <polygon points="0,0 84,0 235,214 197,245" fill="url(#wood)"/>
+  <polygon points="720,0 637,0 492,214 527,244" fill="url(#wood)"/>
+
+  <!-- lantern -->
+  <g transform="translate(72 88)">
+    <circle cx="34" cy="87" r="85" fill="url(#warm)" opacity=".5"/>
+    <path d="M34 0v29" stroke="#2d211c" stroke-width="9"/>
+    <rect x="5" y="28" width="58" height="93" rx="8" fill="#3b2a24"/>
+    <rect x="16" y="43" width="36" height="61" rx="5" fill="#ffc75d"/>
+    <rect x="21" y="49" width="26" height="48" rx="4" fill="#fff3ad" opacity=".46"/>
+    <path d="M9 38l49 74M58 38L9 112" stroke="#211816" stroke-width="3" opacity=".55"/>
+  </g>
+
+  <!-- desk -->
+  <rect y="711" width="720" height="569" fill="url(#desk)"/>
+  <rect y="711" width="720" height="24" fill="#bd7d50"/>
+  <path d="M0 842H720M0 1001H720M0 1159H720" stroke="#3e271f" stroke-width="5" opacity=".3"/>
+  <path d="M172 735V1280M505 735V1280" stroke="#3e271f" stroke-width="5" opacity=".18"/>
+
+  <!-- open journal -->
+  <g transform="translate(120 816) rotate(-4 215 132)">
+    <ellipse cx="217" cy="255" rx="205" ry="24" fill="#241713" opacity=".23"/>
+    <path d="M14 36 Q105 10 214 44 V250 Q106 218 14 240Z" fill="url(#paper)" stroke="#b98f62" stroke-width="5"/>
+    <path d="M214 44 Q323 10 417 36 V240 Q325 218 214 250Z" fill="url(#paper)" stroke="#b98f62" stroke-width="5"/>
+    <path d="M214 44V250" stroke="#a27855" stroke-width="4"/>
+    <g stroke="#9d7b57" stroke-width="3" opacity=".34">
+      <path d="M46 86H176M46 112H185M46 138H164M247 90H382M247 117H363M247 144H390"/>
+    </g>
+    <path d="M79 183 C106 139 144 143 153 181 C130 209 100 211 79 183Z" fill="#d58532" opacity=".72"/>
+    <path d="M294 181 C319 142 353 147 365 181 C342 207 313 208 294 181Z" fill="#5d8a50" opacity=".72"/>
+  </g>
+
+  <!-- potion bottle -->
+  <g transform="translate(478 820)">
+    <ellipse cx="70" cy="196" rx="63" ry="14" fill="#251714" opacity=".25"/>
+    <rect x="50" y="0" width="40" height="37" rx="6" fill="#ad7848"/>
+    <rect x="44" y="34" width="52" height="18" rx="7" fill="#dce9e4" stroke="#8ca3a0" stroke-width="4"/>
+    <path d="M52 51 38 78Q22 93 20 119v53q0 27 50 27t50-27v-53q-2-26-18-41L88 51Z" fill="url(#glass)" stroke="#6f9e9c" stroke-width="5"/>
+    <path d="M29 133q41-10 82 0v37q0 18-41 18t-41-18Z" fill="url(#potion)"/>
+    <path d="M40 78q10-10 18-17" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".43"/>
+  </g>
+
+  <!-- Sunleaf specimen -->
+  <g transform="translate(90 1035)">
+    <ellipse cx="86" cy="127" rx="71" ry="14" fill="#251714" opacity=".17"/>
+    <path d="M80 77C49 61 18 72 16 96c-1 22 28 28 62 7Z" fill="#456f3b"/>
+    <path d="M95 80c28-23 62-14 65 13 2 21-26 31-60 13Z" fill="#5c8b44"/>
+    <g transform="translate(89 61)">
+      <g fill="#f5a33d">
+        <ellipse rx="18" ry="42" transform="rotate(0) translate(0 -31)"/>
+        <ellipse rx="18" ry="42" transform="rotate(60) translate(0 -31)"/>
+        <ellipse rx="18" ry="42" transform="rotate(120) translate(0 -31)"/>
+        <ellipse rx="18" ry="42" transform="rotate(180) translate(0 -31)"/>
+        <ellipse rx="18" ry="42" transform="rotate(240) translate(0 -31)"/>
+        <ellipse rx="18" ry="42" transform="rotate(300) translate(0 -31)"/>
+      </g>
+      <circle r="23" fill="#ffe08d"/>
+      <polygon points="0,-17 16,-5 10,14 -10,14 -16,-5" fill="#e5a646"/>
+    </g>
+  </g>
+
+  <!-- vignette -->
+  <rect width="720" height="1280" fill="url(#warm)" opacity=".04"/>
+</svg>
