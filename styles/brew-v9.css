@@ -1,0 +1,247 @@
+/* Brew Scene v9 — tactile motion pass. */
+
+/* Freeze page drift while the reward is open. */
+body:has(.result-card:not([hidden])) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* Mortar: physical rocking plus tiny herb flecks while grinding. */
+.grind-pad.is-grinding::before {
+  animation: v9-mortar-rock .26s ease-in-out infinite alternate !important;
+}
+
+.grind-pad > strong::before,
+.grind-pad > strong::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inline-size: 7px;
+  block-size: 4px;
+  border-radius: 70% 30% 70% 30%;
+  background: #7aa158;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.grind-pad > strong::before {
+  inset-inline-start: 11px;
+  inset-block-start: -88px;
+  transform: rotate(-24deg);
+}
+.grind-pad > strong::after {
+  inset-inline-end: 14px;
+  inset-block-start: -74px;
+  background: #5d874c;
+  transform: rotate(31deg);
+}
+
+.grind-pad.is-grinding > strong::before {
+  animation: v9-herb-fleck-a .7s ease-out infinite;
+}
+.grind-pad.is-grinding > strong::after {
+  animation: v9-herb-fleck-b .84s ease-out infinite .18s;
+}
+
+/* Cauldron: stirring becomes visibly kinetic, with simmer bubbles and fire response. */
+.stir-pad.is-stirring::before {
+  animation: v9-cauldron-weight .42s ease-in-out infinite alternate;
+}
+
+.stir-pad > small::before,
+.stir-pad > small::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inline-size: 7px;
+  block-size: 7px;
+  border: 1px solid rgba(255,236,189,.64);
+  border-radius: 50%;
+  background: rgba(255,217,139,.11);
+  opacity: .2;
+  pointer-events: none;
+}
+
+.stir-pad > small::before {
+  inset-inline-start: 15px;
+  inset-block-start: -117px;
+  box-shadow: 31px 10px 0 -1px rgba(255,229,174,.22), 58px -5px 0 -2px rgba(255,226,162,.18);
+  animation: v9-bubble-rise-a 1.7s ease-in infinite;
+}
+.stir-pad > small::after {
+  inset-inline-end: 18px;
+  inset-block-start: -102px;
+  inline-size: 5px;
+  block-size: 5px;
+  box-shadow: -34px -7px 0 1px rgba(255,229,174,.16);
+  animation: v9-bubble-rise-b 2.05s ease-in infinite .45s;
+}
+
+.stir-pad.is-stirring > small::before,
+.stir-pad.is-stirring > small::after,
+.brewing-screen.is-resonating .stir-pad > small::before,
+.brewing-screen.is-resonating .stir-pad > small::after {
+  opacity: .68;
+}
+
+.brewing-screen.is-resonating .stir-pad::before {
+  filter:
+    drop-shadow(0 18px 12px rgba(18,10,7,.38))
+    drop-shadow(0 0 20px rgba(242,174,70,.23)) !important;
+}
+
+.brewing-screen.is-infused .stir-pad::before {
+  filter:
+    drop-shadow(0 18px 12px rgba(18,10,7,.38))
+    drop-shadow(0 0 26px rgba(255,202,101,.34)) !important;
+  animation: v9-infused-settle 1.6s ease-in-out infinite alternate;
+}
+
+/* Active primary action should feel ready, not merely colored differently. */
+.action-row .primary-button:not(:disabled)::after,
+.control-block > .primary-button:not(:disabled)::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 4px;
+  border-radius: inherit;
+  border: 1px solid rgba(184,255,247,.12);
+  opacity: .5;
+}
+
+.action-row .primary-button:not(:disabled) {
+  transform-origin: 50% 70%;
+  animation: v9-ready-action 1.8s ease-in-out infinite alternate !important;
+}
+
+/* Stage progression becomes a compact game-HUD transition. */
+.brew-stages li.is-current > span {
+  box-shadow: 0 0 0 0 rgba(74,232,219,.25);
+  animation: v9-stage-pulse 1.45s ease-out infinite;
+}
+
+.brew-stages li.is-done > span {
+  background: rgba(220,167,74,.16) !important;
+  color: #f3ce83 !important;
+}
+
+/* Atlas response is coupled to the physical cauldron. */
+.atlas-canvas-wrap.is-resonating {
+  animation: v9-atlas-resonance 1.3s ease-in-out infinite alternate !important;
+}
+
+.brewing-screen.is-infused .atlas-canvas-wrap {
+  box-shadow:
+    inset 0 0 44px rgba(242,179,77,.13),
+    inset 0 -10px 32px rgba(255,202,104,.05) !important;
+}
+
+/* Reward backdrop enters softly and the potion card stays visually stable. */
+.brewing-screen:has(.result-card:not([hidden]))::after {
+  content: "";
+  position: fixed;
+  z-index: 998;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(246,191,84,.065), transparent 15rem),
+    rgba(17,10,8,.16);
+  animation: v9-reward-backdrop .24s ease-out both;
+}
+
+.result-card:not([hidden]) {
+  z-index: 1000 !important;
+}
+
+.result-card[data-quality="masterwork"] {
+  box-shadow:
+    0 0 0 100vmax rgba(18,10,8,.66),
+    inset 0 0 0 2px rgba(255,255,255,.38),
+    inset 0 0 0 7px rgba(117,78,47,.055),
+    0 24px 70px rgba(17,9,6,.5),
+    0 0 52px rgba(244,178,69,.2) !important;
+}
+
+.result-card[data-quality="masterwork"] .quality-badge {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.62),
+    0 0 16px rgba(238,169,64,.17);
+}
+
+@keyframes v9-mortar-rock {
+  from { transform: translate(-2px,1px) rotate(-1.4deg) scale(.995); }
+  to { transform: translate(3px,-1px) rotate(1.8deg) scale(1.008); }
+}
+
+@keyframes v9-herb-fleck-a {
+  0% { opacity: 0; transform: translate(0,0) rotate(-25deg) scale(.7); }
+  22% { opacity: .75; }
+  100% { opacity: 0; transform: translate(-17px,-32px) rotate(-115deg) scale(1.05); }
+}
+
+@keyframes v9-herb-fleck-b {
+  0% { opacity: 0; transform: translate(0,0) rotate(31deg) scale(.7); }
+  24% { opacity: .68; }
+  100% { opacity: 0; transform: translate(20px,-28px) rotate(128deg) scale(1.04); }
+}
+
+@keyframes v9-cauldron-weight {
+  from { transform: translateY(1px) rotate(-.35deg); }
+  to { transform: translateY(-1px) rotate(.3deg); }
+}
+
+@keyframes v9-bubble-rise-a {
+  0% { transform: translateY(11px) scale(.7); opacity: 0; }
+  20% { opacity: .3; }
+  72% { opacity: .55; }
+  100% { transform: translateY(-27px) scale(1.08); opacity: 0; }
+}
+
+@keyframes v9-bubble-rise-b {
+  0% { transform: translateY(8px) scale(.7); opacity: 0; }
+  20% { opacity: .28; }
+  74% { opacity: .5; }
+  100% { transform: translateY(-23px) scale(1.12); opacity: 0; }
+}
+
+@keyframes v9-infused-settle {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-1px) scale(1.008); }
+}
+
+@keyframes v9-ready-action {
+  from { transform: translateY(0) scale(1); filter: brightness(1); }
+  to { transform: translateY(-1px) scale(1.008); filter: brightness(1.045); }
+}
+
+@keyframes v9-stage-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(74,232,219,.26); }
+  70% { box-shadow: 0 0 0 7px rgba(74,232,219,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,232,219,0); }
+}
+
+@keyframes v9-atlas-resonance {
+  from { filter: saturate(1) brightness(1); }
+  to { filter: saturate(1.08) brightness(1.035); }
+}
+
+@keyframes v9-reward-backdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grind-pad.is-grinding::before,
+  .grind-pad.is-grinding > strong::before,
+  .grind-pad.is-grinding > strong::after,
+  .stir-pad.is-stirring::before,
+  .stir-pad > small::before,
+  .stir-pad > small::after,
+  .brewing-screen.is-infused .stir-pad::before,
+  .action-row .primary-button:not(:disabled),
+  .brew-stages li.is-current > span,
+  .atlas-canvas-wrap.is-resonating,
+  .brewing-screen:has(.result-card:not([hidden]))::after {
+    animation: none !important;
+  }
+}
