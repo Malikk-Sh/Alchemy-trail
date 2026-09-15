@@ -1,28 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 250" role="img" aria-label="Гранёный стеклянный флакон с водой">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 310" role="img" aria-label="Бутыль с родниковой водой">
   <defs>
-    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#e7fbff" stop-opacity=".88"/>
-      <stop offset=".45" stop-color="#9edce8" stop-opacity=".74"/>
-      <stop offset="1" stop-color="#5aaab9" stop-opacity=".82"/>
-    </linearGradient>
-    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#89e6ef"/>
-      <stop offset="1" stop-color="#3ba8bd"/>
-    </linearGradient>
-    <linearGradient id="cork" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#d5a567"/>
-      <stop offset="1" stop-color="#8e6038"/>
-    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eafcff" stop-opacity=".92"/><stop offset=".45" stop-color="#a7dce5" stop-opacity=".72"/><stop offset="1" stop-color="#4e97a7" stop-opacity=".84"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8fe8f0"/><stop offset="1" stop-color="#3ba5bd"/></linearGradient>
+    <linearGradient id="cork" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9aa6b"/><stop offset="1" stop-color="#855735"/></linearGradient>
   </defs>
-  <ellipse cx="91" cy="228" rx="63" ry="14" fill="#221714" opacity=".24"/>
-  <polygon points="73,19 108,19 105,51 76,51" fill="url(#cork)"/>
-  <polygon points="69,48 112,48 116,67 66,67" fill="#e8f4ef" opacity=".9"/>
-  <path d="M72 64 L109 64 L116 95 L145 124 L151 211 Q150 226 91 230 Q31 226 30 211 L36 124 L65 95Z" fill="url(#glass)" stroke="#d7f4f5" stroke-width="4"/>
-  <path d="M38 150 Q91 136 144 150 L149 207 Q147 218 91 222 Q35 218 33 207Z" fill="url(#water)" opacity=".9"/>
-  <polygon points="42,123 67,96 58,210 36,205" fill="#f2ffff" opacity=".22"/>
-  <polygon points="108,68 116,96 143,125 132,209 111,219" fill="#378e9d" opacity=".18"/>
-  <rect x="51" y="132" width="79" height="54" rx="5" fill="#f5e5c6" stroke="#b99568" stroke-width="3"/>
-  <text x="90" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#4a3428">Родниковая</text>
-  <text x="90" y="174" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#6d5845">вода</text>
-  <path d="M49 89 Q77 76 104 84" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+  <ellipse cx="111" cy="282" rx="76" ry="16" fill="#241611" opacity=".27"/>
+  <polygon points="89,18 133,18 129,58 93,58" fill="url(#cork)"/>
+  <polygon points="83,54 139,54 143,75 79,75" fill="#eaf5ef" stroke="#9ebfc1" stroke-width="3"/>
+  <path d="M87 73 H136 L143 111 L177 143 L184 257 Q181 279 111 284 Q41 279 38 257 L45 143 L79 111Z" fill="url(#glass)" stroke="#d8f4f6" stroke-width="5"/>
+  <path d="M45 183 Q111 166 177 183 L181 252 Q179 269 111 274 Q43 269 41 252Z" fill="url(#water)" opacity=".92"/>
+  <polygon points="51,145 82,112 69,260 43,251" fill="#fff" opacity=".22"/>
+  <polygon points="137,79 146,113 175,145 163,256 136,269" fill="#327d8e" opacity=".16"/>
+  <rect x="60" y="160" width="102" height="66" rx="7" fill="#f2dfbc" stroke="#a98357" stroke-width="4"/>
+  <text x="111" y="187" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#49342a">Родниковая</text>
+  <text x="111" y="212" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#65503d">вода</text>
+  <path d="M61 124 Q92 104 126 112" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".4"/>
 </svg>
