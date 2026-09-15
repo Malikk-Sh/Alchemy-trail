@@ -1,0 +1,398 @@
+/* Brew Scene v3 — physical-workshop composition.
+   This layer deliberately overrides the earlier card-stack composition without changing brew logic. */
+
+.brewing-screen {
+  inline-size: min(100%, 32rem);
+  min-block-size: 100dvh;
+  margin-inline: auto;
+  overflow-x: clip;
+  background: #2a1b16;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.58);
+}
+
+/* Top chrome: compact, game-like and visually subordinate to the scene. */
+.game-topbar {
+  z-index: 30;
+  min-block-size: 70px;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: .5rem;
+  padding-inline: max(.7rem, env(safe-area-inset-left)) max(.7rem, env(safe-area-inset-right));
+  border-block-end: 2px solid #1d1210;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.055), transparent 34%),
+    linear-gradient(180deg, #4a362e, #33231e);
+  box-shadow: inset 0 -1px rgba(255,255,255,.035), 0 5px 14px rgba(15,8,6,.32);
+}
+
+.brand-lockup {
+  gap: .42rem;
+  font-size: clamp(1.05rem, 5vw, 1.42rem);
+}
+.brand-lockup strong { color: #f5e7ce; }
+.brand-lockup > span { inline-size: 32px; block-size: 32px; background-size: 38px 38px; }
+.icon-button,
+.day-chip {
+  border-color: rgba(15,9,7,.58);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.08)), #35241f;
+  box-shadow: inset 0 1px rgba(255,255,255,.055), 0 2px 5px rgba(0,0,0,.18);
+}
+
+/* Essence Atlas is now a compact magical strip, not the dominant full-screen panel. */
+.atlas-panel {
+  position: relative;
+  min-block-size: 252px;
+  padding: 0;
+  overflow: hidden;
+  background: #0f1b17;
+  box-shadow: inset 0 -18px 36px rgba(0,0,0,.32);
+}
+.atlas-panel::after { display: none; }
+.atlas-panel::before {
+  z-index: 8;
+  background: linear-gradient(180deg, rgba(12,8,7,.4), transparent 31%, transparent 70%, rgba(12,8,7,.5));
+  mix-blend-mode: normal;
+}
+
+.panel-heading-row {
+  position: absolute;
+  z-index: 14;
+  inset: 10px 10px auto 10px;
+  margin: 0;
+  min-block-size: 50px;
+  padding: .48rem .6rem .48rem .72rem;
+  border: 1px solid rgba(245,225,191,.22);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.065), transparent 45%), rgba(43,29,23,.78);
+  color: #f5e5c9;
+  box-shadow: 0 5px 14px rgba(0,0,0,.18);
+  backdrop-filter: blur(8px);
+}
+.panel-heading-row .eyebrow { color: #d6b780; font-size: .58rem; }
+.panel-heading-row h2 {
+  margin: .04rem 0 0;
+  color: #fff0d4;
+  font-size: 1.14rem;
+  line-height: 1.05;
+  text-shadow: 0 2px 2px rgba(0,0,0,.38);
+}
+.effect-chip {
+  padding: .36rem .58rem;
+  border-color: rgba(255,216,138,.38);
+  background: linear-gradient(180deg, #ffe9a7, #eba94b);
+  color: #5a3219;
+  box-shadow: inset 0 1px rgba(255,255,255,.55), 0 3px 8px rgba(66,37,17,.22);
+}
+
+.brew-stages {
+  position: absolute;
+  z-index: 14;
+  inset: auto 10px 10px 10px;
+  margin: 0;
+  padding: .25rem;
+  gap: .18rem;
+  border: 1px solid rgba(245,225,191,.14);
+  background: rgba(34,22,18,.76);
+  box-shadow: 0 5px 13px rgba(0,0,0,.18);
+  backdrop-filter: blur(8px);
+}
+.brew-stages li {
+  min-block-size: 29px;
+  padding-inline: .18rem;
+  font-size: .57rem;
+}
+.brew-stages li > span { inline-size: 17px; block-size: 17px; font-size: .55rem; }
+
+.brew-guidance {
+  position: absolute;
+  z-index: 14;
+  inset-inline: 14px;
+  inset-block-end: 50px;
+  margin: 0;
+  min-block-size: 0;
+  padding: .38rem .56rem;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(24,16,13,.7);
+  color: #ead8b8;
+  font-size: .64rem;
+  line-height: 1.32;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  backdrop-filter: blur(6px);
+}
+
+.atlas-canvas-wrap {
+  z-index: 3;
+  inline-size: 100%;
+  block-size: 252px;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
+}
+.atlas-canvas-wrap::before,
+.atlas-canvas-wrap::after { display: none; }
+.atlas-canvas { block-size: 252px; }
+.atlas-canvas-wrap.is-resonating {
+  border: 0;
+  box-shadow: inset 0 -18px 44px rgba(239,169,79,.1), inset 0 0 34px rgba(255,203,99,.08);
+}
+
+/* --------------------------------------------------------------------------
+   Physical workshop stage. The environment is the screen; controls sit inside it.
+   -------------------------------------------------------------------------- */
+.workbench {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+  align-items: end;
+  gap: .35rem .28rem;
+  margin: 0;
+  padding:
+    10.8rem
+    max(.65rem, env(safe-area-inset-right))
+    max(1.1rem, env(safe-area-inset-bottom))
+    max(.65rem, env(safe-area-inset-left));
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, transparent 0 49%, rgba(49,30,21,.05) 57%, rgba(51,31,22,.83) 80%, #342018 100%),
+    url("../assets/generated/brew/workshop.svg") center top / auto 30rem no-repeat,
+    #614432;
+  box-shadow: inset 0 4px rgba(228,174,115,.14);
+}
+.workbench::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+  background:
+    radial-gradient(circle at 66% 38%, rgba(255,174,74,.13), transparent 10rem),
+    linear-gradient(180deg, transparent 0 54%, rgba(32,18,13,.08) 62%, rgba(28,16,12,.34) 100%);
+}
+.workbench::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset-inline: 0;
+  inset-block-start: 27.6rem;
+  block-size: 5rem;
+  pointer-events: none;
+  background: linear-gradient(180deg, #8b5e3f 0 9%, #68442f 10% 25%, #493024 26% 100%);
+  box-shadow: inset 0 4px rgba(232,172,109,.14), 0 -10px 24px rgba(24,13,9,.18);
+}
+.workbench > * { position: relative; z-index: 2; }
+
+/* Mortar station — the prop itself is the interaction surface. */
+.control-block {
+  align-self: end;
+  display: grid;
+  gap: .28rem;
+  min-inline-size: 0;
+  min-block-size: 285px;
+  padding: 0 .08rem .45rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.control-block::before { display: none; }
+.control-label {
+  justify-self: center;
+  gap: .45rem;
+  padding: .32rem .54rem;
+  border: 1px solid rgba(103,72,50,.24);
+  border-radius: 9px;
+  background: linear-gradient(180deg, #fff0d3, #e7cba0);
+  color: #4e382a;
+  box-shadow: inset 0 1px rgba(255,255,255,.62), 0 4px 9px rgba(40,23,15,.2);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: .72rem;
+}
+.control-value { color: #9d5b25; font-size: .72rem; }
+
+.grind-pad {
+  min-block-size: 190px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.grind-pad::before {
+  inset: -2px -16px 10px;
+  background-size: contain;
+  filter: drop-shadow(0 15px 9px rgba(26,14,10,.32));
+}
+.grind-pad::after {
+  inset: 30% 7% 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,192,78,.18), transparent 62%);
+}
+.grind-pad strong,
+.grind-pad small {
+  transform: translateY(68px);
+  padding: .12rem .42rem;
+  border-radius: 999px;
+  background: rgba(46,29,22,.68);
+}
+.grind-pad strong { color: #fff1d5; font-size: .86rem; }
+.grind-pad small { color: #d9c4a4; font-size: .55rem; }
+.grind-pad.is-grinding { box-shadow: none; }
+
+.grind-progress {
+  justify-self: center;
+  inline-size: 82%;
+  block-size: 9px;
+  border: 1px solid rgba(45,27,19,.55);
+  background: rgba(38,22,16,.76);
+}
+.control-block > .primary-button {
+  justify-self: stretch;
+  min-block-size: 42px;
+  border-radius: 11px;
+  font-size: .72rem;
+}
+
+/* Cauldron station — larger than the mortar and visually dominant. */
+.stir-block {
+  align-self: end;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: .18rem;
+  min-inline-size: 0;
+  min-block-size: 320px;
+  padding: 0 0 .4rem;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.stir-block::before {
+  inset: 36% 4% 7%;
+  inline-size: auto;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,147,51,.31), rgba(255,100,31,.08) 43%, transparent 70%);
+  filter: blur(4px);
+}
+.stir-pad {
+  inline-size: min(100%, 230px);
+  aspect-ratio: .96;
+  overflow: visible;
+}
+.stir-pad::before {
+  inset: -5px -18px -24px;
+  filter: drop-shadow(0 18px 11px rgba(21,11,8,.38));
+}
+.stir-pad::after { inset-inline: 22%; inset-block-end: 7%; }
+.stir-pad > strong {
+  inset-block-end: 18px;
+  inset-block-start: auto;
+  font-size: .78rem;
+}
+.stir-pad > small {
+  inset-block-end: 1px;
+  inset-block-start: auto;
+  font-size: .52rem;
+}
+
+.stir-spoon {
+  inset-block-start: 25px;
+  block-size: 125px;
+  inline-size: 11px;
+}
+
+/* Potion status becomes a small parchment plaque mounted below the cauldron. */
+.brew-readout {
+  inline-size: 100%;
+  padding: .46rem .52rem .5rem;
+  border: 1px solid rgba(98,68,45,.28);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 18% 0, rgba(255,255,255,.67), transparent 32%),
+    linear-gradient(145deg, #faecd1, #e4c89e);
+  color: #513a2c;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.25), 0 5px 10px rgba(32,18,12,.2);
+}
+.brew-readout > div {
+  min-block-size: 22px;
+  padding-block: .05rem;
+  border: 0;
+  background: transparent;
+}
+.brew-readout span { color: #7f674e; font-size: .57rem; }
+.brew-readout strong { color: #553829; font-size: .72rem; }
+.resonance-meter { margin-block-start: .22rem; block-size: 8px; border-color: rgba(99,67,43,.18); background: rgba(91,64,43,.16); }
+
+/* Inventory card sits after the illustrated stage, like a real game HUD. */
+.ingredient-card {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-block-start: .42rem;
+  min-block-size: 92px;
+  grid-template-columns: 78px 1fr;
+  gap: .6rem;
+  padding: .58rem .68rem;
+  border-width: 2px;
+  border-radius: 13px;
+}
+.ingredient-symbol { inline-size: 72px; block-size: 72px; }
+.ingredient-copy .eyebrow { font-size: .56rem; }
+.ingredient-copy h3 { font-size: 1.12rem; margin-block: .05rem .12rem; }
+.ingredient-copy p:last-child { font-size: .72rem; line-height: 1.25; }
+
+.action-row {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: .78fr 1.45fr .78fr;
+  gap: .42rem;
+  padding: .5rem;
+  border-radius: 15px;
+  background: rgba(45,28,21,.86);
+  box-shadow: inset 0 1px rgba(255,255,255,.045), 0 9px 18px rgba(25,14,10,.22);
+}
+.action-row button { min-block-size: 55px; border-radius: 12px; font-size: .75rem; }
+.action-row .primary-button { font-family: Georgia, "Times New Roman", serif; font-size: 1rem; }
+
+.result-card {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  margin-block-start: .2rem;
+  border-radius: 14px;
+}
+
+/* More physical tactile response. */
+.grind-pad:not(:disabled):active::before { transform: scale(.985) rotate(-1deg); }
+.stir-pad:not(:disabled):active::before { transform: scale(.99); }
+.primary-button:not(:disabled):active,
+.secondary-button:not(:disabled):active { transform: translateY(2px) scale(.99); }
+
+@media (max-width: 390px) {
+  .workbench {
+    padding-inline: .48rem;
+    padding-block-start: 9.6rem;
+    background-size: auto 27rem;
+  }
+  .workbench::after { inset-block-start: 25.1rem; }
+  .control-block { min-block-size: 264px; }
+  .stir-block { min-block-size: 294px; }
+  .stir-pad { inline-size: min(100%, 205px); }
+  .grind-pad { min-block-size: 172px; }
+  .ingredient-card { grid-template-columns: 68px 1fr; }
+  .ingredient-symbol { inline-size: 64px; block-size: 64px; }
+  .action-row { gap: .3rem; padding: .42rem; }
+  .action-row button { min-block-size: 51px; font-size: .68rem; }
+  .action-row .primary-button { font-size: .9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grind-pad:not(:disabled):active::before,
+  .stir-pad:not(:disabled):active::before,
+  .primary-button:not(:disabled):active,
+  .secondary-button:not(:disabled):active { transform: none; }
+}
