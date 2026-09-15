@@ -2,6 +2,17 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Autonomous four-PR production-art overhaul
+
+- User explicitly authorized autonomous PR creation/merging and continuing visual work until there was a significant improvement over the approximately 4.5/10 deployed baseline.
+- Completed and automatically squash-merged four visual PRs, each only after green GitHub Actions CI.
+- PR #1 (`Brew Scene v4`) rebuilt the original low-poly workshop illustration, cauldron/hearth, mortar/pestle and water flask; added a custom leaf brand mark; recomposed Brew around physical props; and prevented disabled controls from ghosting the props.
+- PR #2 (`Brew Scene v5`) upgraded Sunleaf and potion bottle assets, rebuilt the title presentation, added physical resonance/Infuse glow, tactile action motion and premium result styling.
+- PR #3 (`Brew Scene v6`) turned bottling into a cinematic parchment reward overlay and added steam, active cauldron motion and stronger Masterwork feedback.
+- PR #4 (`Atlas v2`) remade the Essence Atlas as a material magical chart with deterministic texture, topography, runes, etched frame, alchemical effect sigil, layered paths/anchors, curved resonance link and less neon/debug-graph styling.
+- Latest visual PR CI run #63 passed before merge. Existing strict TypeScript and 10 deterministic unit tests remained green.
+- No customer/economy scope was added; the work stayed focused on raising the production quality of the one-potion vertical slice.
+
 ## 2026-09-15 — Russian localization pass
 
 - User rated Brew Scene v3 around 4.5/10 and requested moving the game UI to Russian.
