@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 250" role="img" aria-label="Faceted glass water flask">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7fbff" stop-opacity=".88"/>
+      <stop offset=".45" stop-color="#9edce8" stop-opacity=".74"/>
+      <stop offset="1" stop-color="#5aaab9" stop-opacity=".82"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#89e6ef"/>
+      <stop offset="1" stop-color="#3ba8bd"/>
+    </linearGradient>
+    <linearGradient id="cork" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d5a567"/>
+      <stop offset="1" stop-color="#8e6038"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="91" cy="228" rx="63" ry="14" fill="#221714" opacity=".24"/>
+  <polygon points="73,19 108,19 105,51 76,51" fill="url(#cork)"/>
+  <polygon points="69,48 112,48 116,67 66,67" fill="#e8f4ef" opacity=".9"/>
+  <path d="M72 64 L109 64 L116 95 L145 124 L151 211 Q150 226 91 230 Q31 226 30 211 L36 124 L65 95Z" fill="url(#glass)" stroke="#d7f4f5" stroke-width="4"/>
+  <path d="M38 150 Q91 136 144 150 L149 207 Q147 218 91 222 Q35 218 33 207Z" fill="url(#water)" opacity=".9"/>
+  <polygon points="42,123 67,96 58,210 36,205" fill="#f2ffff" opacity=".22"/>
+  <polygon points="108,68 116,96 143,125 132,209 111,219" fill="#378e9d" opacity=".18"/>
+  <rect x="51" y="132" width="79" height="54" rx="5" fill="#f5e5c6" stroke="#b99568" stroke-width="3"/>
+  <text x="90" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="17" font-weight="700" fill="#4a3428">Spring</text>
+  <text x="90" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#6d5845">water</text>
+  <path d="M49 89 Q77 76 104 84" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+</svg>
