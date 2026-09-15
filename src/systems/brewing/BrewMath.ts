@@ -54,30 +54,30 @@ export function potionQuality(potency: number): PotionQuality {
   if (clamped >= 0.9) {
     return {
       id: "masterwork",
-      name: "Masterwork",
-      description: "The essence settled almost exactly on the resonance core.",
+      name: "Шедевр",
+      description: "Эссенция легла почти точно в самое ядро резонанса.",
     };
   }
 
   if (clamped >= 0.65) {
     return {
       id: "potent",
-      name: "Potent",
-      description: "A strong, clean infusion with a vivid magical signature.",
+      name: "Сильное",
+      description: "Мощное чистое насыщение с ярко выраженным магическим следом.",
     };
   }
 
   if (clamped >= 0.35) {
     return {
       id: "steady",
-      name: "Steady",
-      description: "A reliable infusion with a clear but softer effect.",
+      name: "Стабильное",
+      description: "Надёжное насыщение с ясным, но более мягким эффектом.",
     };
   }
 
   return {
     id: "faint",
-    name: "Faint",
-    description: "The effect was captured at the edge of resonance.",
+    name: "Слабое",
+    description: "Эффект удалось захватить лишь на самом краю резонанса.",
   };
 }
