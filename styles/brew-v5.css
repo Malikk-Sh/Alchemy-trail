@@ -1,0 +1,317 @@
+/* Brew Scene v5 — magical state polish, result presentation and title art. */
+
+.title-screen {
+  position: relative;
+  align-content: end;
+  gap: .8rem;
+  overflow: hidden;
+  padding:
+    max(2rem, env(safe-area-inset-top))
+    max(1.15rem, env(safe-area-inset-right))
+    max(2.2rem, env(safe-area-inset-bottom))
+    max(1.15rem, env(safe-area-inset-left));
+  background:
+    linear-gradient(180deg, rgba(27,18,14,.08) 0 38%, rgba(28,17,13,.56) 61%, rgba(24,14,11,.94) 100%),
+    url("../assets/generated/brew/workshop.svg") center top / auto 100% no-repeat,
+    #3e2b22;
+}
+.title-screen::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(255,197,91,.2), transparent 13rem),
+    linear-gradient(90deg, rgba(18,11,8,.22), transparent 22%, transparent 78%, rgba(18,11,8,.18));
+}
+.title-screen > * { position: relative; z-index: 2; }
+.title-seal {
+  inline-size: 66px;
+  block-size: 66px;
+  border: 1px solid rgba(244,218,169,.24);
+  border-radius: 20px;
+  color: transparent;
+  background:
+    url("../assets/generated/brew/sunleaf.svg") center / 82% 82% no-repeat,
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.08)),
+    rgba(45,29,23,.82);
+  box-shadow: inset 0 1px rgba(255,255,255,.06), 0 9px 18px rgba(0,0,0,.24);
+}
+.title-screen .eyebrow {
+  inline-size: fit-content;
+  margin: 0;
+  padding: .28rem .48rem;
+  border-radius: 999px;
+  background: rgba(39,25,19,.72);
+  color: #d9b776;
+  font-size: .58rem;
+  letter-spacing: .13em;
+  backdrop-filter: blur(6px);
+}
+.title-screen h1 {
+  max-inline-size: 9ch;
+  margin: 0;
+  color: #fff0d7;
+  font: 600 clamp(3.2rem, 15vw, 5.8rem)/.86 Georgia,"Times New Roman",serif;
+  letter-spacing: -.045em;
+  text-shadow: 0 4px 12px rgba(0,0,0,.48);
+}
+.title-copy {
+  max-inline-size: 28rem;
+  margin: 0;
+  color: #ead9bb;
+  font: 400 .96rem/1.42 Georgia,"Times New Roman",serif;
+  text-shadow: 0 2px 3px rgba(0,0,0,.52);
+}
+.title-start {
+  inline-size: 100%;
+  min-block-size: 61px;
+  margin-block-start: .22rem;
+  border-radius: 14px;
+  font: 700 1.05rem/1 Georgia,"Times New Roman",serif;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.12), inset 0 1px rgba(255,255,255,.2), 0 10px 19px rgba(5,83,79,.3);
+}
+.title-start::before { content: "✦"; margin-inline-end: .45rem; color: #cafff8; }
+.build-status {
+  inline-size: fit-content;
+  margin: 0;
+  padding: .32rem .52rem;
+  border-radius: 999px;
+  background: rgba(42,27,20,.78);
+  color: #f2c874;
+  font-size: .61rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,.16);
+}
+
+.primary-button,
+.secondary-button,
+.icon-button {
+  transition: transform 110ms ease, filter 130ms ease, box-shadow 130ms ease;
+}
+.primary-button:not(:disabled):active,
+.secondary-button:not(:disabled):active,
+.icon-button:not(:disabled):active {
+  transform: translateY(2px) scale(.985);
+}
+.action-row .primary-button:not(:disabled)::after,
+.title-start:not(:disabled)::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inline-size: 38%;
+  inset-inline-start: -48%;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.22), transparent);
+  transform: skewX(-18deg);
+  animation: v5-button-sheen 3.4s ease-in-out infinite;
+}
+.action-row .primary-button::before { content: "✦"; margin-inline-end: .3rem; }
+.action-row .secondary-button:first-child::before { content: "↻"; margin-inline-end: .28rem; }
+.action-row .secondary-button:last-child::before { content: "◇"; margin-inline-end: .28rem; }
+
+.brewing-screen.is-resonating .stir-pad::before {
+  filter:
+    drop-shadow(0 17px 10px rgba(20,11,8,.4))
+    drop-shadow(0 0 15px rgba(246,182,72,.42))
+    drop-shadow(0 0 28px rgba(246,182,72,.18));
+}
+.brewing-screen.is-resonating .stir-block::before {
+  background:
+    radial-gradient(ellipse, rgba(255,192,73,.44), rgba(255,108,34,.11) 42%, transparent 70%),
+    radial-gradient(circle at 50% 33%, rgba(255,223,143,.18), transparent 26%);
+}
+.brewing-screen.is-resonating .brew-readout {
+  border-color: rgba(224,153,62,.45);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.28),
+    0 0 0 2px rgba(238,168,72,.13),
+    0 0 19px rgba(238,168,72,.2),
+    0 6px 13px rgba(39,22,13,.23);
+}
+.brewing-screen.is-resonating .resonance-meter > span {
+  box-shadow: 0 0 12px rgba(255,191,77,.42);
+}
+
+.brewing-screen.is-infused .stir-pad::before {
+  filter:
+    drop-shadow(0 17px 10px rgba(20,11,8,.4))
+    drop-shadow(0 0 18px rgba(255,205,96,.52));
+  animation: v5-infused-pot 1.45s ease-in-out infinite alternate;
+}
+.brewing-screen.is-infused .stir-pad::after {
+  background: radial-gradient(circle, rgba(255,225,131,.9), rgba(243,120,39,.28) 47%, transparent 73%);
+}
+.brewing-screen.is-infused .brew-readout::after {
+  content: "◆";
+  position: absolute;
+  inset-inline-end: .46rem;
+  inset-block-start: .38rem;
+  color: #d58a2f;
+  font-size: .66rem;
+  filter: drop-shadow(0 0 5px rgba(236,164,64,.42));
+  animation: v5-sigil 1.3s ease-in-out infinite alternate;
+}
+
+.ingredient-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  pointer-events: none;
+  border: 1px solid rgba(126,88,56,.12);
+  border-radius: 10px;
+}
+.ingredient-card::after {
+  content: "✦";
+  position: absolute;
+  inset-inline-end: .62rem;
+  inset-block-start: .5rem;
+  color: rgba(134,87,42,.24);
+  font-size: .9rem;
+}
+
+.result-card {
+  position: relative;
+  overflow: hidden;
+  padding: .82rem .78rem .9rem;
+}
+.result-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  border: 1px solid rgba(128,86,50,.12);
+  border-radius: 11px;
+}
+.result-card::after {
+  content: "";
+  position: absolute;
+  inline-size: 170px;
+  block-size: 170px;
+  inset-inline-end: -55px;
+  inset-block-start: -72px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,174,66,.2), transparent 66%);
+}
+.result-card .eyebrow {
+  position: relative;
+  z-index: 2;
+  color: #755e40;
+  font-size: .56rem;
+}
+.result-potion {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 96px minmax(0,1fr);
+  align-items: center;
+  gap: .68rem;
+  margin-block: .35rem .5rem;
+}
+.bottle-mark {
+  inline-size: 94px;
+  block-size: 118px;
+  background: url("../assets/generated/brew/bottle.svg") center / contain no-repeat;
+  filter: drop-shadow(0 9px 6px rgba(65,39,21,.18));
+  animation: v5-bottle-idle 2.8s ease-in-out infinite alternate;
+}
+.bottle-mark svg { display: none; }
+.result-title {
+  align-items: center;
+  gap: .42rem;
+}
+.result-title > span {
+  color: #d8792b;
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 5px rgba(225,137,47,.22));
+}
+.result-title h3 {
+  color: #39271f;
+  font: 700 clamp(1.45rem,7vw,2.05rem)/.94 Georgia,"Times New Roman",serif;
+}
+.quality-badge {
+  display: inline-flex;
+  margin-block-start: .42rem;
+  padding: .28rem .55rem;
+  border: 1px solid rgba(171,109,51,.28);
+  border-radius: 999px;
+  background: rgba(246,218,167,.58);
+  color: #8a5329;
+  font: 800 .59rem/1 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.result-card > p {
+  position: relative;
+  z-index: 2;
+  color: #6d5947;
+  font: 400 .78rem/1.38 Georgia,"Times New Roman",serif;
+}
+.result-card > p strong { color: #4a3226; }
+.quality-copy { margin-block-start: .34rem; }
+.result-reset {
+  position: relative;
+  z-index: 2;
+  inline-size: 100%;
+  min-block-size: 55px;
+  margin-block-start: .65rem;
+  border-radius: 13px;
+  font: 700 .96rem/1 Georgia,"Times New Roman",serif;
+}
+.result-card[data-quality="masterwork"] {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.3),
+    0 0 0 2px rgba(236,172,73,.16),
+    0 10px 23px rgba(31,17,10,.26),
+    0 0 28px rgba(234,165,65,.12);
+}
+.result-card[data-quality="masterwork"] .quality-badge {
+  background: linear-gradient(180deg,#fff0bd,#eeb963);
+  color: #77451e;
+  box-shadow: inset 0 1px rgba(255,255,255,.55), 0 3px 8px rgba(134,75,29,.12);
+}
+
+.game-topbar::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(235,185,116,.25), transparent);
+}
+
+@keyframes v5-button-sheen {
+  0%, 58% { inset-inline-start: -48%; opacity: 0; }
+  64% { opacity: .8; }
+  84% { inset-inline-start: 118%; opacity: .45; }
+  100% { inset-inline-start: 118%; opacity: 0; }
+}
+@keyframes v5-infused-pot {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2px); }
+}
+@keyframes v5-sigil {
+  from { opacity: .55; transform: scale(.88) rotate(-5deg); }
+  to { opacity: 1; transform: scale(1.08) rotate(5deg); }
+}
+@keyframes v5-bottle-idle {
+  from { transform: translateY(0) rotate(-1deg); }
+  to { transform: translateY(-3px) rotate(1deg); }
+}
+
+@media (max-width: 370px) {
+  .result-potion { grid-template-columns: 80px minmax(0,1fr); }
+  .bottle-mark { inline-size: 79px; block-size: 101px; }
+  .result-title h3 { font-size: 1.35rem; }
+  .title-screen h1 { font-size: clamp(2.9rem,14vw,4.5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-row .primary-button::after,
+  .title-start::after,
+  .brewing-screen.is-infused .stir-pad::before,
+  .brewing-screen.is-infused .brew-readout::after,
+  .bottle-mark { animation: none !important; }
+}
