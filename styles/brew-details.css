@@ -1,0 +1,77 @@
+/* Small scene details that make the brew bench read as an illustrated place rather than stacked UI. */
+
+.stir-block::after {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  inset-inline-end: -18px;
+  inset-block-end: 54px;
+  inline-size: 72px;
+  block-size: 106px;
+  pointer-events: none;
+  background: url("../assets/generated/brew/water-flask.svg") center / contain no-repeat;
+  filter: drop-shadow(0 9px 6px rgba(20,11,8,.28));
+  transform: rotate(2deg);
+  transform-origin: 50% 90%;
+  animation: flask-idle 4.6s ease-in-out infinite alternate;
+}
+
+.control-block::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-inline: 4% 0;
+  inset-block-end: 36px;
+  block-size: 44px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(30,18,13,.34), transparent 66%);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.ingredient-card::after {
+  content: "✦";
+  position: absolute;
+  inset-inline-end: .65rem;
+  inset-block-start: .55rem;
+  color: rgba(142,91,43,.22);
+  font-size: .92rem;
+}
+
+.brew-readout::before {
+  content: "CURRENT POTION";
+  display: block;
+  margin-block-end: .25rem;
+  color: #927453;
+  font: 800 .48rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .12em;
+  text-align: center;
+}
+
+.brewing-screen.is-resonating .brew-readout {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.28),
+    0 0 0 2px rgba(239,169,79,.16),
+    0 6px 14px rgba(45,24,13,.24);
+}
+
+.brewing-screen.is-resonating .stir-block::after {
+  filter: drop-shadow(0 9px 6px rgba(20,11,8,.28)) drop-shadow(0 0 8px rgba(106,221,229,.18));
+}
+
+@keyframes flask-idle {
+  from { transform: rotate(1deg) translateY(0); }
+  to { transform: rotate(3deg) translateY(-2px); }
+}
+
+@media (max-width: 370px) {
+  .stir-block::after {
+    inset-inline-end: -11px;
+    inline-size: 61px;
+    block-size: 92px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stir-block::after { animation: none; }
+}
