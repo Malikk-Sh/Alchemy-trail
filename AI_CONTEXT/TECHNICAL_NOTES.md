@@ -8,6 +8,14 @@
 - source imports use explicit `.js` suffixes so emitted ES Modules are browser-valid
 - no continuous game loop while static; requestAnimationFrame should run only for active animation/gesture work
 
+## Localization contract
+
+- Current player-facing default language is Russian (`<html lang="ru">`).
+- Keep the product/brand name `Alchemy Trail` unchanged unless the user explicitly asks to rename the brand.
+- All visible UI copy, dynamic gameplay messages, accessibility labels, baked text in generated assets, and decorative CSS labels should be Russian.
+- Stable content/system IDs remain English kebab-case (`sunleaf`, `warmth`, `masterwork`, etc.) so localization does not alter persistence or deterministic logic.
+- When new content is added, avoid mixing English player-facing copy into the Russian build.
+
 ## Vercel deployment contract
 
 - `npm run build:site` compiles TypeScript and assembles the deployable static tree under `dist-site/`.
