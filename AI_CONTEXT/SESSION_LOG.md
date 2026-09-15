@@ -2,6 +2,15 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Russian localization pass
+
+- User rated Brew Scene v3 around 4.5/10 and requested moving the game UI to Russian.
+- Kept `Alchemy Trail` as the product/brand name while translating all current player-facing title and brewing copy into Russian.
+- Localized `Sunleaf` → `Солнцелист`, `Warmth` → `Тепло`, brew stage labels, guidance text, action buttons, result card copy, potion quality labels/descriptions, accessibility labels, document metadata, and `<html lang="ru">`.
+- Localized baked/decorative text as well: workshop water flask now reads `Родниковая вода`, and the CSS potion plaque now reads `ТЕКУЩЕЕ ЗЕЛЬЕ`.
+- Stable IDs remain English (`sunleaf`, `warmth`, quality IDs) so localization does not change game logic, tests, persistence contracts, or deterministic behavior.
+- Russian is now the player-facing default language for new content unless the user asks otherwise.
+
 ## 2026-09-15 — Screenshot-driven Brew Scene v3 recomposition
 
 - User rated Brew Scene v2 roughly 3.5/10 and supplied screenshots from the actual deployed game.
