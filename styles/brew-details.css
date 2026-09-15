@@ -39,12 +39,12 @@
 }
 
 .brew-readout::before {
-  content: "CURRENT POTION";
+  content: "ТЕКУЩЕЕ ЗЕЛЬЕ";
   display: block;
   margin-block-end: .25rem;
   color: #927453;
   font: 800 .48rem/1 ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   text-align: center;
 }
 
