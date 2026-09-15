@@ -2,6 +2,18 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Screenshot-driven Brew Scene v3 recomposition
+
+- User rated Brew Scene v2 roughly 3.5/10 and supplied screenshots from the actual deployed game.
+- Visual diagnosis: the screen still read as stacked web panels; the Essence Atlas dominated the composition, while the workshop, mortar, cauldron, and physical alchemy fantasy felt secondary.
+- Changed direction from incremental CSS polish to composition-first restructuring while preserving the real brewing logic.
+- Added `styles/brew-recompose.css`: Atlas is now a compact magical strip; the main screen area is an illustrated workshop; mortar and cauldron are side-by-side physical interaction stations; the cauldron is visually dominant; potion readout is parchment-like; inventory/actions sit below the scene.
+- Added an original `assets/generated/brew/water-flask.svg` decorative prop and `styles/brew-details.css` for scene-level detail and subtle prop motion.
+- Existing Grind → Stir → Resonance → Infuse → Bottle behavior was not changed.
+- GitHub Actions CI run #42 passed after the core recomposition; final CI run #45 passed after the detail layer.
+- Production deployment `dpl_HkkYYWTAYkokf7mz4EgqA3JXnucz` reached READY and `https://alchemy-trail.vercel.app` serves the new v3 CSS layers.
+- Remaining quality gap is primarily asset richness, scene composition, typography, and object-specific animation polish; do not return to generic card-stack layouts.
+
 ## 2026-09-15 — Brew Scene v2 production-art pass
 
 - User rejected the current prototype-level design/animation quality and asked to push much closer to the supplied low-poly mobile-game references, allowing GLB source assets if useful.
