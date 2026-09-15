@@ -2,9 +2,9 @@ import type { IngredientDefinition } from "../types/content.js";
 
 export const SUNLEAF: IngredientDefinition = {
   id: "sunleaf",
-  name: "Sunleaf",
+  name: "Солнцелист",
   symbol: "✦",
-  description: "A bright field herb whose essence bends toward warm, luminous effects.",
+  description: "Яркая полевая трава, чья эссенция тянется к тёплым, светящимся эффектам.",
   path: [
     { x: 0, y: 0 },
     { x: 74, y: -24 },
