@@ -1,11 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 340">
-  <defs><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2f5f4" stop-opacity=".82"/><stop offset=".45" stop-color="#8fc9c5" stop-opacity=".58"/><stop offset="1" stop-color="#4a8d8b" stop-opacity=".75"/></linearGradient><linearGradient id="liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd564"/><stop offset="1" stop-color="#e98130"/></linearGradient></defs>
-  <ellipse cx="120" cy="310" rx="78" ry="15" fill="#231712" opacity=".24"/>
-  <rect x="88" y="24" width="64" height="48" rx="8" fill="#b27b48"/>
-  <rect x="80" y="68" width="80" height="28" rx="10" fill="#d8e5df" stroke="#8a9f9d" stroke-width="6"/>
-  <path d="M88 94 L70 129 Q48 151 46 192 V267 Q46 301 120 301 Q194 301 194 267 V192 Q192 151 170 129 L152 94Z" fill="url(#glass)" stroke="#6b9a9a" stroke-width="7"/>
-  <path d="M59 198 Q120 184 181 198 V265 Q181 286 120 286 Q59 286 59 265Z" fill="url(#liq)" opacity=".94"/>
-  <path d="M72 126 Q83 115 93 104" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".48"/>
-  <rect x="72" y="170" width="96" height="62" rx="8" fill="#f2dfb9" stroke="#aa8457" stroke-width="5"/>
-  <path d="M120 183 C100 198 102 214 120 222 C138 214 140 198 120 183Z" fill="#c66a31"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 360" role="img" aria-label="Флакон зелья Тепла">
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edfdf9" stop-opacity=".88"/><stop offset=".35" stop-color="#b7ddd7" stop-opacity=".7"/><stop offset=".72" stop-color="#78aaa7" stop-opacity=".68"/><stop offset="1" stop-color="#467878" stop-opacity=".82"/></linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffd96a"/><stop offset=".48" stop-color="#f3a13a"/><stop offset="1" stop-color="#d86529"/></linearGradient>
+    <linearGradient id="cork" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7a367"/><stop offset="1" stop-color="#875638"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#ffd56b" stop-opacity=".52"/><stop offset="1" stop-color="#f28a34" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="130" cy="325" rx="88" ry="18" fill="#2b1b14" opacity=".25"/>
+  <ellipse cx="130" cy="238" rx="118" ry="112" fill="url(#glow)"/>
+  <polygon points="96,23 164,23 158,75 102,75" fill="url(#cork)"/>
+  <polygon points="88,69 172,69 178,96 82,96" fill="#e3efea" stroke="#829e9d" stroke-width="4"/>
+  <path d="M100 94 L160 94 L169 132 Q204 157 211 202 L213 277 Q211 318 130 324 Q49 318 47 277 L49 202 Q56 157 91 132Z" fill="url(#glass)" stroke="#679a99" stroke-width="7"/>
+  <path d="M60 214 Q130 192 200 214 L202 274 Q199 301 130 307 Q61 301 58 274Z" fill="url(#amber)" opacity=".96"/>
+  <polygon points="62,186 96,134 82,294 57,278" fill="#fff" opacity=".24"/>
+  <polygon points="162,105 181,141 202,198 187,288 159,306" fill="#276c72" opacity=".16"/>
+  <path d="M78 162 Q109 138 149 147" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".35"/>
+  <rect x="77" y="196" width="106" height="67" rx="10" fill="#f3e1bc" stroke="#a77b4d" stroke-width="5"/>
+  <path d="M130 210 C105 228 108 246 130 255 C152 246 155 228 130 210Z" fill="#d96b2d"/>
+  <path d="M130 216 C121 229 122 238 130 243 C138 238 139 229 130 216Z" fill="#ffb447"/>
 </svg>
