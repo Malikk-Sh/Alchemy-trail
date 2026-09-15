@@ -2,6 +2,17 @@
 
 Append concise factual session summaries. Newest entry may go at the top.
 
+## 2026-09-15 — Third autonomous visual production cycle
+
+- User explicitly said to continue autonomous design work after the reward-offset screenshot and second visual cycle.
+- PR #10 raised core prop fidelity: cauldron/hearth, mortar/pestle, potion bottle and Sunleaf were redrawn with richer faceted low-poly geometry, reflections, material faces and detail. CI run #85 passed before squash merge.
+- PR #11 recomposed Brew around the cauldron as the dominant visual focal point, compacted Atlas further, reduced preparation-station weight, added a decorative physical water flask beside the cauldron, and converted the readout into a smaller potion plaque. CI run #87 passed before squash merge.
+- PR #12 added stage choreography driven entirely by existing gameplay state: preparation emphasis before commit, cauldron emphasis after commit, Atlas sweep during stirring, stronger resonance peak, Bottle emphasis after Infuse, and a more layered result entrance. CI run #89 passed before squash merge.
+- PR #13 deepened atmosphere/materials and upgraded the water flask: cool window light, warm hearth/lantern light, vignette, carved wood treatment, richer parchment, stronger prop grounding and scene-wide resonance warmth. CI run #91 passed before squash merge.
+- PRs #10–#13 were squash-merged into `main`; gameplay math and the real Grind → Stir → Resonance → Infuse → Bottle flow were not changed.
+- Vercel Git integration is active: visual branches receive Preview deployments and `main` receives Production deployments automatically.
+- Active art iteration now extends through `brew-v13.css`; do not consolidate these layers until the user accepts the visual baseline.
+
 ## 2026-09-15 — Reward overlay fix + second autonomous visual cycle
 
 - User supplied a real-device screenshot showing the bottled-result reward shifted downward and asked to continue design work.
@@ -65,7 +76,7 @@ Append concise factual session summaries. Newest entry may go at the top.
 - GitHub Actions CI run #34 passed with the new site-build configuration.
 - Verified a preview deployment by fetching the deployed HTML and new `styles/brewing-polish.css` successfully.
 - Deployed production successfully; `https://alchemy-trail.vercel.app` now points at the new build and serves the polished brewing version.
-- Current Vercel project is not Git-linked, so the verified temporary deployment workaround uses a tiny bootstrap deployment whose Vercel build clones public `main`, runs `npm install`, runs `npm run build:site`, and publishes `dist-site`.
+- Vercel was later linked to GitHub; current pushes to `main` now auto-deploy to production and visual branches receive preview deployments.
 - No Vercel credentials were added to repository files.
 
 ## 2026-09-15 — First brew feel/feedback polish
