@@ -1,0 +1,176 @@
+/* Brew Scene v7 — mobile reward fit + scene polish from real-device screenshot feedback. */
+
+/* A perspective container becomes the containing block for fixed descendants.
+   The bottled-result overlay must be viewport-fixed, so keep perspective off the workbench. */
+.workbench {
+  perspective: none !important;
+}
+
+/* Reward presentation: viewport-centred, safe-area aware, and self-scrolling on short phones. */
+.result-card:not([hidden]) {
+  inset: auto !important;
+  inset-inline-start: 50% !important;
+  inset-block-start: 50% !important;
+  inline-size: min(calc(100vw - 1.25rem), 28rem) !important;
+  max-inline-size: calc(100vw - 1.25rem) !important;
+  max-block-size: calc(100dvh - max(1rem, env(safe-area-inset-top)) - max(1rem, env(safe-area-inset-bottom))) !important;
+  margin: 0 !important;
+  padding: clamp(.82rem, 2.6vw, 1.05rem) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  transform: translate(-50%, -50%) !important;
+  transform-origin: 50% 50%;
+}
+
+@keyframes v6-result-pop {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 22px)) scale(.94); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.result-card .eyebrow {
+  margin-block-end: .18rem;
+  font-size: .72rem;
+}
+
+.result-potion {
+  align-items: center !important;
+  grid-template-columns: minmax(88px, 31%) minmax(0, 1fr) !important;
+  gap: clamp(.55rem, 2.8vw, .9rem) !important;
+  margin-block: .3rem .55rem !important;
+}
+
+.bottle-mark {
+  inline-size: min(100%, 116px) !important;
+  block-size: clamp(116px, 22dvh, 150px) !important;
+  justify-self: center;
+}
+
+.result-title h3 {
+  font-size: clamp(1.55rem, 8vw, 2.35rem) !important;
+  line-height: .94 !important;
+  text-wrap: balance;
+}
+
+.result-card > p {
+  max-inline-size: 33ch !important;
+  line-height: 1.35;
+}
+
+.result-reset {
+  min-block-size: 54px !important;
+  margin-block-start: .68rem !important;
+}
+
+/* Keep the workshop readable behind the modal; reward should feel layered, not blacked out. */
+.brewing-screen:has(.result-card:not([hidden])) .game-topbar,
+.brewing-screen:has(.result-card:not([hidden])) .atlas-panel,
+.brewing-screen:has(.result-card:not([hidden])) .workbench > :not(.result-card) {
+  filter: saturate(.78) brightness(.82) !important;
+}
+
+/* Scene lighting: a focused warm pool around the cauldron plus subtler cool window bounce. */
+.workbench::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 72% 25%, rgba(255,171,63,.15), transparent 21%),
+    radial-gradient(ellipse at 58% 8%, rgba(112,213,226,.055), transparent 32%);
+  mix-blend-mode: screen;
+}
+
+.workbench > * {
+  z-index: 1;
+}
+
+/* Make the physical stations feel less like form fields. */
+.control-block,
+.stir-block {
+  border-color: rgba(238,202,153,.09) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.03),
+    0 12px 24px rgba(25,13,8,.13) !important;
+}
+
+.control-label {
+  letter-spacing: -.01em;
+}
+
+.control-value {
+  padding: .15rem .42rem;
+  border-radius: 999px;
+  background: rgba(55,31,19,.38);
+  box-shadow: inset 0 1px rgba(255,255,255,.05);
+}
+
+.brew-readout {
+  border-color: rgba(141,92,48,.24) !important;
+  background:
+    radial-gradient(circle at 15% 5%, rgba(255,255,255,.6), transparent 28%),
+    linear-gradient(145deg,#fff0d3,#e7cca1) !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.22),
+    0 10px 24px rgba(44,25,14,.16) !important;
+}
+
+.brew-readout strong {
+  color: #513624 !important;
+}
+
+.resonance-meter {
+  background: rgba(86,55,31,.13) !important;
+  box-shadow: inset 0 1px 3px rgba(65,39,20,.16) !important;
+}
+
+.resonance-meter > span {
+  background: linear-gradient(90deg,#b66d2a,#ec9c3e 55%,#ffd979) !important;
+  box-shadow: 0 0 14px rgba(236,154,62,.22);
+}
+
+/* Small-phone reward fit: keep the full CTA visible without pushing the card below the viewport. */
+@media (max-height: 720px) {
+  .result-card:not([hidden]) {
+    inline-size: min(calc(100vw - .8rem), 27rem) !important;
+    max-inline-size: calc(100vw - .8rem) !important;
+    max-block-size: calc(100dvh - .65rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+    padding: .68rem !important;
+  }
+
+  .result-potion {
+    grid-template-columns: 82px minmax(0,1fr) !important;
+    margin-block: .18rem .38rem !important;
+  }
+
+  .bottle-mark {
+    inline-size: 78px !important;
+    block-size: 102px !important;
+  }
+
+  .result-title h3 {
+    font-size: clamp(1.35rem,7vw,1.85rem) !important;
+  }
+
+  .quality-badge {
+    margin-block-start: .35rem !important;
+  }
+
+  .result-card > p {
+    margin-block: .28rem !important;
+    font-size: .76rem !important;
+  }
+
+  .result-reset {
+    min-block-size: 48px !important;
+    margin-block-start: .45rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result-card:not([hidden]) {
+    animation: none !important;
+  }
+}
