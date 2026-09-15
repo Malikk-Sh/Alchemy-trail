@@ -2,8 +2,8 @@ import type { EffectDefinition } from "../types/content.js";
 
 export const WARMTH_EFFECT: EffectDefinition = {
   id: "warmth",
-  name: "Warmth",
-  description: "A steady ember-like resonance that carries comforting heat.",
+  name: "Тепло",
+  description: "Ровный резонанс, похожий на тлеющий уголёк и несущий мягкое согревающее тепло.",
   node: { x: 246, y: -88 },
   resonanceRadius: 72,
 };
