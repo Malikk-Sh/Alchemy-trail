@@ -45,7 +45,7 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   const back = document.createElement("button");
   back.className = "icon-button";
   back.type = "button";
-  back.setAttribute("aria-label", "Back to title");
+  back.setAttribute("aria-label", "Вернуться на главный экран");
   back.textContent = "‹";
   back.addEventListener("click", onExit);
 
@@ -55,7 +55,7 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
 
   const day = document.createElement("span");
   day.className = "day-chip";
-  day.textContent = "Day 1";
+  day.textContent = "День 1";
   header.append(back, brand, day);
 
   const atlasPanel = document.createElement("section");
@@ -63,11 +63,11 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
 
   const atlasHeader = document.createElement("div");
   atlasHeader.className = "panel-heading-row";
-  atlasHeader.innerHTML = '<div><p class="eyebrow">Essence Atlas</p><h2 id="brew-title">First infusion</h2></div><span class="effect-chip">Warmth</span>';
+  atlasHeader.innerHTML = '<div><p class="eyebrow">Атлас эссенций</p><h2 id="brew-title">Первая варка</h2></div><span class="effect-chip">Тепло</span>';
 
   const stages = document.createElement("ol");
   stages.className = "brew-stages";
-  const stageNames = ["Grind", "Stir", "Infuse", "Bottle"] as const;
+  const stageNames = ["Помол", "Мешать", "Напитать", "Разлить"] as const;
   const stageItems = stageNames.map((name, index) => {
     const item = document.createElement("li");
     item.innerHTML = `<span>${index + 1}</span>${name}`;
@@ -84,7 +84,7 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   canvasWrap.className = "atlas-canvas-wrap";
   const canvas = document.createElement("canvas");
   canvas.className = "atlas-canvas";
-  canvas.setAttribute("aria-label", "Essence Atlas showing Sunleaf path and Warmth resonance node");
+  canvas.setAttribute("aria-label", "Атлас эссенций: путь Солнцелиста и узел резонанса эффекта Тепло");
   canvasWrap.append(canvas);
   atlasPanel.append(atlasHeader, stages, guidance, canvasWrap);
 
@@ -96,7 +96,7 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   ingredientCard.innerHTML = `
     <div class="ingredient-symbol" aria-hidden="true">${SUNLEAF.symbol}</div>
     <div class="ingredient-copy">
-      <p class="eyebrow">Ingredient</p>
+      <p class="eyebrow">Ингредиент</p>
       <h3>${SUNLEAF.name}</h3>
       <p>${SUNLEAF.description}</p>
     </div>
@@ -109,20 +109,20 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   const grindValue = document.createElement("strong");
   grindValue.className = "control-value";
   const grindTitle = document.createElement("span");
-  grindTitle.textContent = "Grind Sunleaf";
+  grindTitle.textContent = "Измельчить Солнцелист";
   grindLabel.append(grindTitle, grindValue);
 
   const grindPad = document.createElement("button");
   grindPad.id = "grind-range";
   grindPad.type = "button";
   grindPad.className = "grind-pad";
-  grindPad.setAttribute("aria-label", "Grind Sunleaf by dragging or holding on the mortar");
-  grindPad.innerHTML = '<span class="mortar-icon" aria-hidden="true">✦</span><strong>Grind</strong><small>drag or hold the mortar</small>';
+  grindPad.setAttribute("aria-label", "Измельчайте Солнцелист, водя по ступке пальцем или удерживая её");
+  grindPad.innerHTML = '<span class="mortar-icon" aria-hidden="true">✦</span><strong>Растирать</strong><small>ведите пальцем или удерживайте</small>';
 
   const grindProgress = document.createElement("div");
   grindProgress.className = "grind-progress";
   grindProgress.setAttribute("role", "progressbar");
-  grindProgress.setAttribute("aria-label", "Sunleaf grind progress");
+  grindProgress.setAttribute("aria-label", "Степень измельчения Солнцелиста");
   grindProgress.setAttribute("aria-valuemin", "0");
   grindProgress.setAttribute("aria-valuemax", "100");
   const grindProgressFill = document.createElement("span");
@@ -139,8 +139,8 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   const stirPad = document.createElement("button");
   stirPad.type = "button";
   stirPad.className = "stir-pad";
-  stirPad.setAttribute("aria-label", "Stir the cauldron by tracing circles with your pointer");
-  stirPad.innerHTML = '<span class="stir-spoon" aria-hidden="true">↻</span><strong>Stir</strong><small>trace circles</small>';
+  stirPad.setAttribute("aria-label", "Помешивайте котёл круговыми движениями пальца");
+  stirPad.innerHTML = '<span class="stir-spoon" aria-hidden="true">↻</span><strong>Мешать</strong><small>водите по кругу</small>';
 
   const brewReadout = document.createElement("div");
   brewReadout.className = "brew-readout";
@@ -159,17 +159,17 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
   const resetButton = document.createElement("button");
   resetButton.className = "secondary-button";
   resetButton.type = "button";
-  resetButton.textContent = "Reset";
+  resetButton.textContent = "Сбросить";
 
   const infuseButton = document.createElement("button");
   infuseButton.className = "primary-button";
   infuseButton.type = "button";
-  infuseButton.textContent = "Infuse Warmth";
+  infuseButton.textContent = "Напитать Теплом";
 
   const bottleButton = document.createElement("button");
   bottleButton.className = "secondary-button";
   bottleButton.type = "button";
-  bottleButton.textContent = "Bottle";
+  bottleButton.textContent = "Разлить";
   actionRow.append(resetButton, infuseButton, bottleButton);
 
   const resultCard = document.createElement("article");
@@ -218,10 +218,15 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
     grindValue.textContent = `${grindPercent}%`;
     grindPad.disabled = committedPath.length > 1 || infused || grindFraction >= 1;
     commitButton.disabled = committedPath.length > 1 || infused || !draftReach.resonating;
-    commitButton.textContent = draftReach.resonating ? `Commit ${grindPercent}% path` : "Keep grinding";
+    commitButton.textContent = draftReach.resonating
+      ? `Зафиксировать путь · ${grindPercent}%`
+      : "Измельчайте дальше";
     grindProgressFill.style.inlineSize = `${grindPercent}%`;
     grindProgress.setAttribute("aria-valuenow", `${grindPercent}`);
-    grindPad.setAttribute("aria-label", `Grind Sunleaf. ${grindPercent} percent ground. Drag or hold to continue.`);
+    grindPad.setAttribute(
+      "aria-label",
+      `Солнцелист измельчён на ${grindPercent}%. Водите по ступке пальцем или удерживайте её, чтобы продолжить.`,
+    );
     stirPad.disabled = committedPath.length < 2 || infused;
     stirPad.classList.toggle("is-disabled", stirPad.disabled);
     infuseButton.disabled = !preview.resonating || infused;
@@ -231,25 +236,25 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
     screen.classList.toggle("is-infused", infused);
     canvasWrap.classList.toggle("is-resonating", preview.resonating && !infused);
 
-    pathReadout.innerHTML = `<span>Path travel</span><strong>${Math.round(completion * 100)}%</strong>`;
+    pathReadout.innerHTML = `<span>Путь эссенции</span><strong>${Math.round(completion * 100)}%</strong>`;
     resonanceReadout.innerHTML = preview.resonating
-      ? `<span>Warmth resonance</span><strong>${Math.round(preview.potency * 100)}%</strong>`
-      : `<span>Warmth distance</span><strong>${Math.round(preview.distance)}</strong>`;
+      ? `<span>Резонанс Тепла</span><strong>${Math.round(preview.potency * 100)}%</strong>`
+      : `<span>До Тепла</span><strong>${Math.round(preview.distance)}</strong>`;
     resonanceFill.style.inlineSize = `${Math.round(preview.potency * 100)}%`;
 
     if (bottled) {
       const quality = potionQuality(bottled.potency);
-      guidance.textContent = `${quality.name} Warmth potion bottled. Try another brew and stop even closer to the resonance core.`;
+      guidance.textContent = `${quality.name}: зелье Тепла готово. Попробуйте сварить ещё одно и остановиться ещё ближе к ядру резонанса.`;
     } else if (infused) {
-      guidance.textContent = `Warmth captured at ${Math.round((infusedPotency ?? 0) * 100)}% potency. Bottle it while the essence is stable.`;
+      guidance.textContent = `Эффект «Тепло» захвачен с силой ${Math.round((infusedPotency ?? 0) * 100)}%. Разлейте зелье, пока эссенция стабильна.`;
     } else if (committedPath.length > 1 && preview.resonating) {
-      guidance.textContent = `Resonance found at ${Math.round(preview.potency * 100)}%. Infuse now, or stir closer to the glowing core for more potency.`;
+      guidance.textContent = `Резонанс найден: ${Math.round(preview.potency * 100)}%. Напитайте зелье сейчас или подведите эссенцию ближе к светящемуся ядру.`;
     } else if (committedPath.length > 1) {
-      guidance.textContent = "Trace circles over the cauldron. Stirring advances the marker along the path you exposed by grinding.";
+      guidance.textContent = "Водите пальцем по кругу над котлом. Помешивание двигает маркер по пути эссенции, который вы открыли измельчением.";
     } else if (draftReach.resonating) {
-      guidance.textContent = "Warmth is reachable. Commit this partial path now, or grind farther for a stronger possible infusion.";
+      guidance.textContent = "Эффект «Тепло» уже достижим. Зафиксируйте этот путь или измельчите ингредиент сильнее ради более мощного насыщения.";
     } else {
-      guidance.textContent = "Drag across the mortar or press and hold. More grinding exposes more of Sunleaf's hidden essence path.";
+      guidance.textContent = "Водите пальцем по ступке или нажмите и удерживайте. Чем сильнее измельчён Солнцелист, тем больше его скрытого пути эссенции открывается.";
     }
 
     updateStages(preview.resonating);
@@ -268,19 +273,19 @@ export function createBrewingScreen(onExit: () => void): HTMLElement {
       resultCard.hidden = false;
       resultCard.dataset.quality = quality.id;
       resultCard.innerHTML = `
-        <p class="eyebrow">Bottled result</p>
+        <p class="eyebrow">Готовое зелье</p>
         <div class="result-potion">
           <div class="bottle-mark" aria-hidden="true">
             <svg viewBox="0 0 64 78"><path d="M24 5h16v12l7 8v5H17v-5l7-8V5Z"/><path d="M14 31h36v31c0 7-6 11-18 11S14 69 14 62V31Z"/><path class="bottle-liquid" d="M18 47h28v14c0 5-5 7-14 7s-14-2-14-7V47Z"/></svg>
           </div>
           <div>
-            <div class="result-title"><span aria-hidden="true">◆</span><h3>${bottled.effectName} Potion</h3></div>
+            <div class="result-title"><span aria-hidden="true">◆</span><h3>Зелье «${bottled.effectName}»</h3></div>
             <strong class="quality-badge">${quality.name}</strong>
           </div>
         </div>
-        <p>Potency <strong>${Math.round(bottled.potency * 100)}%</strong> · essence carried by ${bottled.ingredientName}.</p>
+        <p>Сила <strong>${Math.round(bottled.potency * 100)}%</strong> · основа — ${bottled.ingredientName}.</p>
         <p class="quality-copy">${quality.description}</p>
-        <button type="button" class="primary-button result-reset">Brew another</button>
+        <button type="button" class="primary-button result-reset">Сварить ещё</button>
       `;
       resultCard.querySelector<HTMLButtonElement>(".result-reset")?.addEventListener("click", reset);
     } else {
