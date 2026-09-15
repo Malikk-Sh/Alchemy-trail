@@ -1,72 +1,134 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Алхимическая мастерская с окном на горную долину">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Алхимическая мастерская с окном на живописную горную долину">
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bfe7f5"/><stop offset=".58" stop-color="#8fc7df"/><stop offset="1" stop-color="#6ea8c6"/></linearGradient>
-    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0a5"/><stop offset="1" stop-color="#ffc86a"/></linearGradient>
-    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8c6046"/><stop offset=".5" stop-color="#6b4330"/><stop offset="1" stop-color="#4a2c23"/></linearGradient>
-    <linearGradient id="woodDark" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#5b3a2d"/><stop offset="1" stop-color="#2f1d19"/></linearGradient>
-    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d9b78d"/><stop offset="1" stop-color="#b9885d"/></linearGradient>
-    <linearGradient id="counter" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a36b46"/><stop offset=".14" stop-color="#865337"/><stop offset="1" stop-color="#5a3829"/></linearGradient>
-    <linearGradient id="lamp" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff4a8"/><stop offset=".5" stop-color="#ffc14f"/><stop offset="1" stop-color="#ee7b2f"/></linearGradient>
-    <radialGradient id="glow"><stop stop-color="#ffcf72" stop-opacity=".55"/><stop offset="1" stop-color="#ffad48" stop-opacity="0"/></radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#cdeaf5"/><stop offset=".45" stop-color="#9dcfe4"/><stop offset="1" stop-color="#79acc7"/></linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff4b6"/><stop offset="1" stop-color="#ffc969"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#966647"/><stop offset=".48" stop-color="#704834"/><stop offset="1" stop-color="#4a2e25"/></linearGradient>
+    <linearGradient id="woodDark" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#604034"/><stop offset="1" stop-color="#2e1d19"/></linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dfc09a"/><stop offset="1" stop-color="#b9865e"/></linearGradient>
+    <linearGradient id="counter" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ad744d"/><stop offset=".16" stop-color="#8b593b"/><stop offset="1" stop-color="#533226"/></linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cdef0"/><stop offset="1" stop-color="#4b9fc4"/></linearGradient>
+    <linearGradient id="lamp" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff6b1"/><stop offset=".5" stop-color="#ffc45b"/><stop offset="1" stop-color="#e76f29"/></linearGradient>
+    <radialGradient id="sunGlow"><stop stop-color="#ffd881" stop-opacity=".55"/><stop offset="1" stop-color="#ffb450" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lampGlow"><stop stop-color="#ffd67b" stop-opacity=".56"/><stop offset="1" stop-color="#ffad49" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
   </defs>
-  <rect width="1200" height="720" fill="#3a251e"/>
-  <rect x="18" y="22" width="1164" height="522" rx="22" fill="url(#wall)"/>
+
+  <rect width="1200" height="720" fill="#35231d"/>
+  <rect x="16" y="18" width="1168" height="526" rx="24" fill="url(#wall)"/>
+
+  <!-- window and exterior vista -->
+  <rect x="148" y="50" width="904" height="444" rx="22" fill="#3b281f"/>
+  <rect x="178" y="78" width="844" height="388" rx="12" fill="url(#sky)"/>
+  <circle cx="887" cy="139" r="53" fill="url(#sun)"/>
+  <circle cx="887" cy="139" r="126" fill="url(#sunGlow)"/>
+
+  <!-- atmospheric clouds -->
+  <g fill="#edf4f4" opacity=".66">
+    <path d="M222 142c28-31 66-25 82 2 28-12 60 6 64 31H204c1-14 7-25 18-33Z"/>
+    <path d="M702 112c23-24 57-20 70 2 23-10 50 6 53 26H684c2-12 8-21 18-28Z" opacity=".58"/>
+  </g>
+
+  <!-- far mountain range -->
+  <polygon points="178,300 265,221 338,270 430,151 548,291 652,177 772,292 878,194 1022,309 1022,466 178,466" fill="#74849b"/>
+  <polygon points="178,324 265,221 289,251 338,270 430,151 465,211 548,291 652,177 688,231 772,292 878,194 913,242 1022,309 1022,466 178,466" fill="#98a7b6" opacity=".72"/>
+  <g fill="#eef3f0" opacity=".9">
+    <polygon points="242,249 265,221 291,252 274,248"/>
+    <polygon points="401,190 430,151 465,211 436,193"/>
+    <polygon points="625,211 652,177 689,231 659,213"/>
+    <polygon points="849,228 878,194 914,242 885,229"/>
+  </g>
+
+  <!-- foothills -->
+  <path d="M178 327 C294 288 393 301 495 337 C625 382 730 338 839 314 C919 297 973 305 1022 318 L1022 466 L178 466Z" fill="#8fa86b"/>
+  <path d="M178 372 C334 329 423 351 548 391 C672 430 820 366 1022 352 L1022 466 L178 466Z" fill="#6e9258"/>
+  <path d="M178 415 C336 377 463 389 589 424 C733 463 868 411 1022 399 L1022 466 L178 466Z" fill="#587e4d" opacity=".88"/>
+
+  <!-- winding river -->
+  <path d="M533 337 C579 355 612 384 642 403 C676 424 725 432 771 443 C797 449 827 456 856 466 H714 C672 449 631 437 600 419 C567 400 546 376 512 353Z" fill="url(#river)"/>
+  <path d="M548 342 C586 360 616 386 647 402 C682 421 724 429 759 438" fill="none" stroke="#b5eff7" stroke-width="10" stroke-linecap="round" opacity=".45"/>
+
+  <!-- village -->
+  <g transform="translate(320 333)">
+    <rect x="0" y="34" width="46" height="36" fill="#e7c38f"/><polygon points="-6,34 23,9 52,34" fill="#b95f39"/><rect x="18" y="46" width="10" height="24" fill="#7e543b"/>
+    <rect x="58" y="46" width="36" height="28" fill="#f0d3a2"/><polygon points="53,46 76,26 99,46" fill="#9d5136"/>
+    <rect x="108" y="37" width="32" height="34" fill="#dcb47e"/><polygon points="102,37 124,17 146,37" fill="#c46a3d"/>
+    <rect x="137" y="1" width="13" height="54" fill="#bba076"/><polygon points="135,2 143,-13 152,2" fill="#8e5941"/>
+  </g>
+
+  <!-- trees, varied sizes -->
   <g>
-    <rect x="158" y="56" width="884" height="430" rx="20" fill="#3b281f"/>
-    <rect x="187" y="82" width="826" height="377" rx="12" fill="url(#sky)"/>
-    <circle cx="873" cy="145" r="52" fill="url(#sun)" opacity=".96"/>
-    <ellipse cx="873" cy="145" rx="118" ry="100" fill="url(#glow)"/>
-    <polygon points="187,296 300,178 382,248 474,119 586,270 686,151 800,275 902,184 1013,300 1013,459 187,459" fill="#6f87a2"/>
-    <polygon points="187,328 300,178 333,235 382,248 474,119 508,203 586,270 686,151 723,221 800,275 902,184 936,237 1013,300 1013,459 187,459" fill="#91a5b9" opacity=".72"/>
-    <polygon points="271,215 300,178 333,235 314,227" fill="#e8eef0"/>
-    <polygon points="441,164 474,119 508,203 477,181" fill="#eef2ef"/>
-    <polygon points="658,188 686,151 723,221 693,206" fill="#e8edef"/>
-    <polygon points="875,220 902,184 936,237 908,226" fill="#eef2ee"/>
-    <path d="M187 320 C327 278 403 309 524 338 C650 368 790 318 1013 307 L1013 459 L187 459Z" fill="#86a96d"/>
-    <path d="M187 367 C346 335 428 359 551 391 C692 427 835 359 1013 353 L1013 459 L187 459Z" fill="#6e9358"/>
-    <path d="M587 341 C614 372 649 381 696 399 C736 415 793 429 843 459 L733 459 C685 437 643 420 608 406 C571 391 545 366 529 345Z" fill="#5eb4d4"/>
-    <path d="M611 347 C635 372 666 383 705 397" fill="none" stroke="#8dd9ed" stroke-width="13" stroke-linecap="round" opacity=".55"/>
-    <g>
-      <g transform="translate(252 322)"><rect x="-6" y="35" width="12" height="28" fill="#5c4939"/><polygon points="0,0 -26,47 26,47" fill="#356d4c"/><polygon points="0,15 -31,58 31,58" fill="#417e55"/></g>
-      <g transform="translate(340 307) scale(.82)"><rect x="-6" y="35" width="12" height="28" fill="#5c4939"/><polygon points="0,0 -26,47 26,47" fill="#356d4c"/><polygon points="0,15 -31,58 31,58" fill="#417e55"/></g>
-      <g transform="translate(934 302) scale(1.08)"><rect x="-6" y="35" width="12" height="28" fill="#5c4939"/><polygon points="0,0 -26,47 26,47" fill="#356d4c"/><polygon points="0,15 -31,58 31,58" fill="#417e55"/></g>
-      <g transform="translate(848 332) scale(.72)"><rect x="-6" y="35" width="12" height="28" fill="#5c4939"/><polygon points="0,0 -26,47 26,47" fill="#356d4c"/><polygon points="0,15 -31,58 31,58" fill="#417e55"/></g>
-    </g>
-    <rect x="578" y="82" width="42" height="377" fill="url(#woodDark)" opacity=".95"/>
-    <rect x="187" y="82" width="826" height="24" fill="#5a392c"/>
-    <rect x="187" y="435" width="826" height="24" fill="#4b3026"/>
+    <g transform="translate(231 326)"><rect x="-5" y="32" width="10" height="28" fill="#5b4938"/><polygon points="0,-4 -24,41 24,41" fill="#32674b"/><polygon points="0,12 -29,52 29,52" fill="#3e7a53"/></g>
+    <g transform="translate(276 355) scale(.7)"><rect x="-5" y="32" width="10" height="28" fill="#5b4938"/><polygon points="0,-4 -24,41 24,41" fill="#356a4b"/><polygon points="0,12 -29,52 29,52" fill="#497e56"/></g>
+    <g transform="translate(385 350) scale(.62)"><rect x="-5" y="32" width="10" height="28" fill="#5b4938"/><polygon points="0,-4 -24,41 24,41" fill="#2f6548"/><polygon points="0,12 -29,52 29,52" fill="#417752"/></g>
+    <g transform="translate(918 324) scale(1.05)"><rect x="-5" y="32" width="10" height="28" fill="#5b4938"/><polygon points="0,-4 -24,41 24,41" fill="#2f6548"/><polygon points="0,12 -29,52 29,52" fill="#427c55"/></g>
+    <g transform="translate(965 351) scale(.74)"><rect x="-5" y="32" width="10" height="28" fill="#5b4938"/><polygon points="0,-4 -24,41 24,41" fill="#32684a"/><polygon points="0,12 -29,52 29,52" fill="#477d56"/></g>
+    <g transform="translate(815 350) scale(.58)"><rect x="-5" y="32" width="10" height="28" fill="#5b4938"/><polygon points="0,-4 -24,41 24,41" fill="#2f6247"/><polygon points="0,12 -29,52 29,52" fill="#3f7451"/></g>
   </g>
-  <rect x="0" y="0" width="1200" height="48" fill="url(#woodDark)"/>
-  <polygon points="25,0 105,0 332,250 290,278" fill="url(#wood)" opacity=".9"/>
-  <polygon points="1175,0 1095,0 874,250 916,278" fill="url(#wood)" opacity=".9"/>
-  <rect x="0" y="495" width="1200" height="58" fill="#6a4433"/>
-  <g>
-    <rect x="32" y="118" width="122" height="290" rx="8" fill="#654331"/>
-    <rect x="48" y="138" width="90" height="18" fill="#3c281f"/>
-    <rect x="48" y="227" width="90" height="18" fill="#3c281f"/>
-    <rect x="48" y="318" width="90" height="18" fill="#3c281f"/>
-    <rect x="60" y="164" width="28" height="50" rx="8" fill="#91c2bb"/><rect x="100" y="178" width="24" height="36" rx="5" fill="#c99062"/>
-    <rect x="64" y="257" width="20" height="48" rx="5" fill="#d0b07d"/><rect x="94" y="267" width="30" height="38" rx="8" fill="#82a56a"/>
-    <rect x="58" y="347" width="70" height="40" rx="5" fill="#8b5d40"/>
+
+  <!-- window frame -->
+  <rect x="585" y="78" width="45" height="388" fill="url(#woodDark)"/>
+  <rect x="178" y="78" width="844" height="24" fill="#5a392d"/>
+  <rect x="178" y="442" width="844" height="24" fill="#4b3026"/>
+  <rect x="148" y="50" width="904" height="18" rx="9" fill="#51352a" opacity=".86"/>
+
+  <!-- ceiling beams -->
+  <rect width="1200" height="52" fill="url(#woodDark)"/>
+  <polygon points="22,0 105,0 330,251 287,281" fill="url(#wood)" opacity=".92"/>
+  <polygon points="1178,0 1093,0 874,251 918,281" fill="url(#wood)" opacity=".92"/>
+
+  <!-- hanging herb bundles -->
+  <g transform="translate(222 36)" opacity=".95">
+    <path d="M0 0V58" stroke="#4b3529" stroke-width="5"/>
+    <path d="M-18 48c-14 10-10 29 8 27 15-2 18-18 10-29Z" fill="#557a43"/>
+    <path d="M14 52c15 8 11 28-6 27-15-1-20-16-12-28Z" fill="#6d914e"/>
+    <path d="M-4 62c-8 16 2 31 16 22 13-8 7-24-5-29Z" fill="#447142"/>
   </g>
-  <g transform="translate(1023 84)">
-    <rect x="0" y="0" width="125" height="242" rx="5" fill="#e2c79f"/>
-    <polygon points="0,242 62,212 125,242" fill="#d6b88c"/>
-    <path d="M63 66 C34 82 33 112 62 128 C91 111 93 82 63 66Z" fill="#6d7954"/>
-    <path d="M62 128 C48 146 49 171 63 187" fill="none" stroke="#6d7954" stroke-width="11" stroke-linecap="round"/>
+  <g transform="translate(965 42) scale(.86)" opacity=".9">
+    <path d="M0 0V56" stroke="#4b3529" stroke-width="5"/>
+    <path d="M-17 49c-13 11-7 28 9 25 15-3 16-18 8-28Z" fill="#6b8650"/>
+    <path d="M13 48c16 9 12 27-5 27-14 0-19-16-10-27Z" fill="#4b7544"/>
   </g>
-  <g transform="translate(82 48)">
-    <path d="M42 0 V38" stroke="#2a201d" stroke-width="11"/>
-    <rect x="8" y="38" width="68" height="104" rx="8" fill="#3b2a24"/>
-    <rect x="20" y="52" width="44" height="72" rx="5" fill="url(#lamp)"/>
-    <rect x="25" y="58" width="34" height="60" rx="4" fill="#fff1a2" opacity=".45"/>
-    <polygon points="8,38 42,18 76,38" fill="#2f2420"/>
+
+  <!-- left shelving with bottles/books -->
+  <g transform="translate(28 112)">
+    <rect width="126" height="310" rx="9" fill="#654331"/>
+    <rect x="12" y="18" width="102" height="14" fill="#3c281f"/>
+    <rect x="12" y="112" width="102" height="14" fill="#3c281f"/>
+    <rect x="12" y="209" width="102" height="14" fill="#3c281f"/>
+    <g transform="translate(26 42)"><rect x="0" y="20" width="26" height="41" rx="7" fill="#8cc7bf"/><rect x="7" y="8" width="12" height="16" fill="#c89b68"/><rect x="36" y="28" width="23" height="33" rx="5" fill="#d6a16b"/><rect x="43" y="16" width="9" height="14" fill="#9f724c"/><rect x="70" y="16" width="20" height="45" rx="6" fill="#8b75a6"/><rect x="75" y="5" width="10" height="14" fill="#b48a59"/></g>
+    <g transform="translate(22 136)"><rect x="0" y="18" width="20" height="45" rx="5" fill="#d2b17c"/><rect x="5" y="5" width="10" height="16" fill="#9c714d"/><rect x="30" y="27" width="31" height="36" rx="8" fill="#84a867"/><rect x="39" y="12" width="13" height="19" fill="#b78a59"/><rect x="72" y="22" width="19" height="41" rx="6" fill="#6fa2a6"/><rect x="77" y="8" width="9" height="17" fill="#b08252"/></g>
+    <g transform="translate(22 237)"><rect width="76" height="13" rx="3" fill="#a06b47"/><rect x="8" y="14" width="85" height="13" rx="3" fill="#c1925f"/><rect x="20" y="28" width="69" height="13" rx="3" fill="#87513b"/></g>
   </g>
+
+  <!-- right hanging banner -->
+  <g transform="translate(1041 80)">
+    <rect x="0" y="0" width="125" height="250" rx="5" fill="#e5ca9f"/>
+    <polygon points="0,250 62,218 125,250" fill="#d6b88c"/>
+    <path d="M63 64c-30 17-31 49-2 67 30-17 32-50 2-67Z" fill="#657854"/>
+    <path d="M61 132c-13 16-11 39 2 54" fill="none" stroke="#657854" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- lantern -->
+  <g transform="translate(68 44)">
+    <ellipse cx="42" cy="92" rx="92" ry="92" fill="url(#lampGlow)" filter="url(#soft)" opacity=".5"/>
+    <path d="M42 0v36" stroke="#2a201d" stroke-width="11"/>
+    <rect x="8" y="36" width="68" height="108" rx="8" fill="#3b2a24"/>
+    <rect x="20" y="52" width="44" height="74" rx="5" fill="url(#lamp)"/>
+    <rect x="26" y="58" width="32" height="61" rx="4" fill="#fff5ba" opacity=".44"/>
+    <polygon points="8,36 42,18 76,36" fill="#2f2420"/>
+    <path d="M14 44l56 91M70 44L14 135" stroke="#1e1715" stroke-width="4" opacity=".6"/>
+  </g>
+
+  <!-- sill and counter -->
+  <rect x="0" y="498" width="1200" height="62" fill="#6a4433"/>
   <rect x="0" y="520" width="1200" height="200" fill="url(#counter)"/>
-  <rect x="0" y="520" width="1200" height="24" fill="#ba7d50"/>
-  <rect x="0" y="546" width="1200" height="15" fill="#6e432f" opacity=".82"/>
-  <path d="M0 610 H1200 M0 669 H1200" stroke="#4b2d24" stroke-width="5" opacity=".38"/>
-  <path d="M198 546 V720 M406 546 V720 M812 546 V720 M1015 546 V720" stroke="#4b2d24" stroke-width="5" opacity=".24"/>
-  <g transform="translate(1080 432)"><rect x="-34" y="58" width="68" height="57" rx="5" fill="#75503d"/><path d="M0 64 C-42 52 -52 21 -27 12 C-5 5 7 33 0 64Z" fill="#4f7d48"/><path d="M0 67 C35 51 47 18 24 9 C4 2 -7 34 0 67Z" fill="#699656"/><path d="M0 66 C-14 34 -3 4 18 7 C38 10 31 43 0 66Z" fill="#3f6d43"/></g>
-  <g transform="translate(935 480)"><rect x="0" y="20" width="90" height="24" rx="3" fill="#81543b"/><rect x="12" y="0" width="78" height="24" rx="3" fill="#bb8c5e"/></g>
+  <rect x="0" y="520" width="1200" height="25" fill="#bf8153"/>
+  <rect x="0" y="547" width="1200" height="15" fill="#6e432f" opacity=".84"/>
+  <path d="M0 612H1200M0 671H1200" stroke="#462a22" stroke-width="5" opacity=".38"/>
+  <path d="M198 548V720M406 548V720M812 548V720M1015 548V720" stroke="#462a22" stroke-width="5" opacity=".22"/>
+
+  <!-- foreground props on counter -->
+  <g transform="translate(1044 431)"><rect x="-38" y="61" width="76" height="60" rx="6" fill="#75503d"/><path d="M0 67c-42-14-54-46-28-56 23-9 35 22 28 56Z" fill="#507b49"/><path d="M0 69c37-15 50-51 25-60C4 2-8 36 0 69Z" fill="#699957"/><path d="M0 67c-14-34-3-65 19-62 40 6 29 44-19 62Z" fill="#3f6d43"/></g>
+  <g transform="translate(921 480)"><rect x="0" y="20" width="104" height="25" rx="4" fill="#81543b"/><rect x="14" y="0" width="89" height="25" rx="4" fill="#bd8d5d"/><path d="M20 8h60" stroke="#e3be84" stroke-width="2" opacity=".55"/></g>
+  <g transform="translate(182 486)"><ellipse cx="36" cy="42" rx="38" ry="10" fill="#2b1d18" opacity=".2"/><path d="M8 18h56l-5 34H13Z" fill="#b48a68"/><ellipse cx="36" cy="18" rx="28" ry="8" fill="#d0ad86"/><path d="M23 12c-8-18 4-26 15-11 6-18 22-11 16 8" fill="none" stroke="#657e49" stroke-width="8" stroke-linecap="round"/></g>
 </svg>

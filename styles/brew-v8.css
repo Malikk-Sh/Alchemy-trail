@@ -1,0 +1,160 @@
+/* Brew Scene v8 — richer diorama grading and material polish. */
+
+.game-topbar {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 28%),
+    linear-gradient(180deg, rgba(82,55,44,.98), rgba(48,31,25,.99)) !important;
+  box-shadow:
+    inset 0 -1px rgba(255,255,255,.035),
+    0 7px 18px rgba(22,12,9,.32) !important;
+}
+
+.brand-lockup strong {
+  letter-spacing: -.012em;
+}
+
+.workbench {
+  padding-block-start: 10.5rem !important;
+  background:
+    linear-gradient(180deg, transparent 0 43%, rgba(45,27,18,.02) 55%, rgba(40,23,16,.2) 73%, #2d1c16 100%),
+    url("../assets/generated/brew/workshop.svg") center top / auto 27.4rem no-repeat,
+    #704c34 !important;
+}
+
+.workbench::before {
+  background:
+    linear-gradient(90deg, rgba(255,190,102,.05), transparent 20%, transparent 77%, rgba(44,91,94,.035)),
+    radial-gradient(circle at 8% 15%, rgba(255,199,103,.12), transparent 9rem),
+    radial-gradient(circle at 69% 28%, rgba(255,181,73,.15), transparent 10rem),
+    linear-gradient(180deg, transparent 0 51%, rgba(31,17,11,.04) 62%, rgba(31,17,11,.25) 100%) !important;
+}
+
+/* The counter edge should read as a real foreground plane, not a CSS divider. */
+.workbench::after {
+  inset-block-start: 24.8rem !important;
+  block-size: 5.6rem !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045), transparent 13%),
+    linear-gradient(180deg,#a86f49 0 10%,#805139 11% 26%,#513328 27% 100%) !important;
+  box-shadow:
+    inset 0 4px rgba(238,180,116,.18),
+    inset 0 -10px 18px rgba(32,17,11,.17),
+    0 -10px 24px rgba(25,14,10,.2) !important;
+}
+
+/* Give the physical tools a cleaner silhouette against the busier environment. */
+.grind-pad::before {
+  filter:
+    drop-shadow(0 15px 9px rgba(26,14,10,.36))
+    drop-shadow(0 1px 0 rgba(255,255,255,.08)) !important;
+}
+
+.stir-pad::before {
+  filter:
+    drop-shadow(0 18px 12px rgba(18,10,7,.4))
+    drop-shadow(0 1px 0 rgba(255,255,255,.06)) !important;
+}
+
+/* Warm firelight now spills onto the nearby readout and work surface. */
+.stir-block::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 16% -18% -12% -25%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 48% 54%, rgba(255,167,55,.19), transparent 31%),
+    radial-gradient(ellipse at 48% 74%, rgba(241,92,34,.11), transparent 24%);
+  filter: blur(3px);
+}
+
+.brewing-screen.is-resonating .stir-block::after,
+.brewing-screen.is-infused .stir-block::after {
+  background:
+    radial-gradient(ellipse at 48% 50%, rgba(255,198,88,.29), transparent 34%),
+    radial-gradient(ellipse at 48% 72%, rgba(244,103,35,.13), transparent 25%);
+}
+
+/* Parchment reads warmer and less flat against the scene. */
+.ingredient-card,
+.brew-readout,
+.result-card:not([hidden]) {
+  background:
+    radial-gradient(circle at 18% 4%, rgba(255,255,255,.72), transparent 29%),
+    linear-gradient(145deg,#fff0d4,#e9cf9f 72%,#dfbd88) !important;
+}
+
+.ingredient-card {
+  border-color: rgba(108,72,45,.2) !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.3),
+    inset 0 -10px 18px rgba(118,74,38,.035),
+    0 10px 20px rgba(31,17,10,.2) !important;
+}
+
+/* Carved/pressed game controls rather than flat web buttons. */
+.primary-button:not(:disabled),
+.secondary-button:not(:disabled) {
+  border-bottom-width: 3px !important;
+  transition: transform 100ms ease, filter 120ms ease, box-shadow 120ms ease;
+}
+
+.primary-button:not(:disabled):active,
+.secondary-button:not(:disabled):active {
+  transform: translateY(2px) scale(.992) !important;
+  border-bottom-width: 1px !important;
+  filter: brightness(.96);
+}
+
+.primary-button:not(:disabled) {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.25),
+    inset 0 -4px rgba(0,74,72,.16),
+    0 7px 14px rgba(5,77,74,.24) !important;
+}
+
+.secondary-button:not(:disabled) {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.08),
+    inset 0 -4px rgba(35,18,12,.18),
+    0 6px 13px rgba(23,12,8,.18) !important;
+}
+
+/* Make the small Atlas header float more like a game HUD plaque. */
+.panel-heading-row {
+  border-color: rgba(238,209,164,.18) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 38%),
+    rgba(50,32,24,.86) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.04),
+    0 5px 14px rgba(0,0,0,.2) !important;
+}
+
+.effect-chip {
+  border-color: rgba(255,229,160,.48) !important;
+  background:
+    linear-gradient(180deg,#fff0b5,#efbd62 58%,#d89637) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.64),
+    inset 0 -2px rgba(133,77,26,.16),
+    0 4px 9px rgba(66,34,16,.25) !important;
+}
+
+@media (max-width: 370px) {
+  .workbench {
+    background-size: auto 25.8rem !important;
+    padding-block-start: 9.8rem !important;
+  }
+
+  .workbench::after {
+    inset-block-start: 23.4rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-button,
+  .secondary-button {
+    transition: none !important;
+  }
+}
