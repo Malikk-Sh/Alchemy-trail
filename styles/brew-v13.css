@@ -1,0 +1,203 @@
+/* Brew Scene v13 — atmosphere, material depth and scene grading. */
+
+.brewing-screen {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Shared lighting pass: cool daylight from the window, warm practical light from hearth/lantern. */
+.brewing-screen::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 52% 38%, rgba(157,225,235,.055), transparent 24rem),
+    radial-gradient(ellipse at 77% 57%, rgba(255,166,62,.09), transparent 14rem),
+    radial-gradient(circle at 11% 31%, rgba(255,195,90,.055), transparent 9rem);
+  mix-blend-mode: screen;
+}
+
+.brewing-screen::after {
+  content: "";
+  position: fixed;
+  z-index: 45;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 44%, transparent 46%, rgba(20,11,8,.055) 78%, rgba(15,8,6,.16) 100%);
+}
+
+.brewing-screen > * {
+  position: relative;
+}
+
+/* Carved, layered header instead of a flat brown bar. */
+.game-topbar {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.07), transparent 22%),
+    repeating-linear-gradient(92deg, rgba(255,255,255,.018) 0 1px, transparent 1px 21px),
+    linear-gradient(180deg,#513a30,#34231d 72%,#2c1c18) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.055),
+    inset 0 -2px rgba(18,9,7,.46),
+    0 5px 17px rgba(22,12,9,.36) !important;
+}
+
+.game-topbar::after {
+  content: "";
+  position: absolute;
+  inset-inline: 8px;
+  inset-block-end: 3px;
+  block-size: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg,transparent,rgba(219,166,103,.2),transparent);
+}
+
+.icon-button,
+.day-chip {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.09)),
+    #34221d !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.07),
+    inset 0 -2px rgba(15,8,6,.18),
+    0 4px 8px rgba(0,0,0,.23) !important;
+}
+
+/* Atlas frame gets a restrained physical edge so it reads as an object mounted above the bench. */
+.atlas-panel {
+  border-block-end: 1px solid rgba(221,175,106,.14);
+  box-shadow:
+    inset 0 -22px 38px rgba(0,0,0,.3),
+    inset 0 1px rgba(242,211,158,.05),
+    0 5px 0 #684630,
+    0 8px 18px rgba(29,15,10,.2) !important;
+}
+
+.panel-heading-row {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.055),
+    inset 0 -1px rgba(16,8,6,.17),
+    0 6px 15px rgba(0,0,0,.23) !important;
+}
+
+/* More convincing paper: centre highlight, stained perimeter, double inset edge. */
+.ingredient-card,
+.brew-readout,
+.result-card:not([hidden]) {
+  background:
+    radial-gradient(circle at 24% 14%, rgba(255,255,255,.62), transparent 28%),
+    radial-gradient(circle at 92% 86%, rgba(173,111,54,.06), transparent 28%),
+    linear-gradient(145deg,#fff0d3,#e6c798 74%,#d9b785) !important;
+}
+
+.ingredient-card {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.25),
+    inset 0 -8px 16px rgba(121,78,43,.035),
+    0 11px 20px rgba(37,20,12,.2) !important;
+}
+
+.brew-readout {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.23),
+    inset 0 -7px 12px rgba(116,73,40,.035),
+    0 11px 23px rgba(44,25,14,.17) !important;
+}
+
+/* Ground physical props harder into the counter. */
+.grind-pad::before {
+  filter:
+    drop-shadow(0 17px 10px rgba(26,14,10,.35))
+    drop-shadow(0 2px 0 rgba(255,255,255,.045)) !important;
+}
+
+.stir-pad::before {
+  filter:
+    drop-shadow(0 23px 13px rgba(20,11,8,.46))
+    drop-shadow(0 2px 0 rgba(255,255,255,.025)) !important;
+}
+
+.stir-block::after {
+  filter:
+    drop-shadow(0 12px 8px rgba(22,14,10,.32))
+    drop-shadow(0 0 10px rgba(120,211,216,.11)) !important;
+}
+
+/* Counter receives a shallow pool of warm light under the brewing station. */
+.control-block::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  z-index: -1;
+  inset: 34% -18% 7%;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(ellipse,rgba(255,203,123,.06),transparent 68%);
+  filter: blur(5px);
+}
+
+.stir-block::before {
+  background:
+    radial-gradient(ellipse,rgba(255,154,55,.36),rgba(255,96,30,.09) 44%,transparent 70%),
+    radial-gradient(circle at 50% 32%,rgba(255,225,151,.16),transparent 27%) !important;
+  filter: blur(6px) !important;
+}
+
+/* HUD resembles a carved tray sitting over the bottom edge. */
+.action-row {
+  border-color: rgba(230,194,143,.18) !important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.05),transparent 30%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.013) 0 1px,transparent 1px 16px),
+    rgba(48,30,23,.95) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.05),
+    inset 0 -2px rgba(14,7,5,.18),
+    0 13px 30px rgba(20,11,8,.38),
+    0 0 0 1px rgba(23,12,8,.18) !important;
+}
+
+.action-row button,
+.control-block > .primary-button {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.07),
+    inset 0 -3px rgba(26,13,9,.16),
+    0 5px 9px rgba(23,13,9,.17);
+}
+
+.action-row button:not(:disabled):active,
+.control-block > .primary-button:not(:disabled):active {
+  box-shadow:
+    inset 0 3px 7px rgba(18,9,7,.18),
+    inset 0 1px rgba(255,255,255,.025),
+    0 2px 4px rgba(23,13,9,.14) !important;
+}
+
+/* Resonance warms the whole local scene rather than only adding a glow to one object. */
+.brewing-screen.is-resonating::before,
+.brewing-screen.is-infused::before {
+  background:
+    radial-gradient(ellipse at 52% 38%,rgba(157,225,235,.045),transparent 24rem),
+    radial-gradient(ellipse at 73% 56%,rgba(255,177,69,.145),transparent 16rem),
+    radial-gradient(circle at 11% 31%,rgba(255,195,90,.06),transparent 9rem);
+}
+
+.brewing-screen.is-infused .ingredient-card {
+  filter: saturate(.93) brightness(.98);
+}
+
+@media (max-height: 720px) {
+  .brewing-screen::after {
+    background: radial-gradient(ellipse at 50% 44%,transparent 54%,rgba(15,8,6,.12) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brewing-screen::before,
+  .brewing-screen::after {
+    transition: none !important;
+  }
+}
